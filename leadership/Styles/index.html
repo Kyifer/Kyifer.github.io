@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Complete Web Effects Showcase</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Roboto+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="page-container">
+        <nav class="side-nav">
+            <div class="nav-logo">Effects Library</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="background-effects.html">1. Backgrounds</a></li>
+                <li><a href="scroll-navigation.html">2. Scrolling</a></li>
+                <li><a href="interactions.html">3. Interaction</a></li>
+                <li><a href="text-animations.html">4. Typography</a></li>
+                <li><a href="media.html">5. Imagery</a></li>
+                <li><a href="layout.html">6. Layout</a></li>
+                <li><a href="ui-themes.html">7. UI Styles</a></li>
+                <li><a href="dataviz.html">8. Data Viz</a></li>
+                <li><a href="loaders.html">9. Loaders</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="hero-header">
+                <h1 class="hero-title">Web Effects Showcase</h1>
+                <p class="hero-subtitle">A curated library of modern web animations and interactions, built with clean HTML, CSS, and JavaScript.</p>
+            </header>
+
+            <div class="effects-grid" id="chapterGrid">
+                <!-- Chapter cards will be dynamically inserted here -->
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Particle.js configuration
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {"value": 60, "density": {"enable": true, "value_area": 800}},
+                "color": {"value": "#4f46e5"},
+                "shape": {"type": "circle"},
+                "opacity": {"value": 0.4, "random": true},
+                "size": {"value": 3, "random": true},
+                "line_linked": {"enable": true, "distance": 150, "color": "#4f46e5", "opacity": 0.2, "width": 1},
+                "move": {"enable": true, "speed": 2, "direction": "none", "straight": false}
+            },
+            "interactivity": {
+                "events": {"onhover": {"enable": true, "mode": "grab"}, "onclick": {"enable": true, "mode": "push"}},
+                "modes": {"grab": {"distance": 140, "line_linked": {"opacity": 0.5}}, "push": {"particles_nb": 4}}
+            },
+            "retina_detect": true
+        });
+
+        // Chapter data
+        const chapters = [
+            { title: "1. Backgrounds", desc: "Aurora gradients, animated noise, interactive particles, and parallax scenes.", url: "background-effects.html" },
+            { title: "2. Scrolling", desc: "Scroll-triggered animations, snap sections, horizontal scroll, and page transitions.", url: "scroll-navigation.html" },
+            { title: "3. Interaction", desc: "Button ripples, magnetic cursors, 3D tilting, and drag-to-reveal mechanics.", url: "interactions.html" },
+            { title: "4. Typography", desc: "Typewriter effects, text masks, kinetic typography, and glitch animations.", url: "text-animations.html" },
+            { title: "5. Imagery & Media", desc: "SVG drawing, image sequences, Ken Burns effect, and before/after sliders.", url: "media.html" },
+            { title: "6. Layout", desc: "CSS Grid animations, masonry layouts, flipping cards, and accordion panels.", url: "layout.html" },
+            { title: "7. UI Styles", desc: "Glassmorphism, neumorphism, dark/light toggles, and custom scrollbars.", url: "ui-themes.html" },
+            { title: "8. Data Viz", desc: "Animated charts, timelines, radial progress indicators, and custom tooltips.", url: "dataviz.html" },
+            { title: "9. Loaders", desc: "SVG path loaders, liquid spinners, progress bars, and micro-loaders.", url: "loaders.html" }
+        ];
+
+        const grid = document.getElementById('chapterGrid');
+        chapters.forEach(chapter => {
+            const card = document.createElement('div');
+            card.className = 'effect-card chapter-card';
+            card.innerHTML = `
+                <h3 class="effect-title">${chapter.title}</h3>
+                <p class="effect-description">${chapter.desc}</p>
+                <a href="${chapter.url}" class="btn">View Chapter</a>
+            `;
+            grid.appendChild(card);
+        });
+    });
+    </script>
+</body>
+</html>
