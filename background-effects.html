@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background & Scene Effects Demo</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <!--
+    INSTRUCTIONS:
+    - Each section below demonstrates a different background/scene effect.
+    - To enable/disable an effect, comment/uncomment the relevant <section>.
+    - Add your own content inside the sections as needed.
+    - For more effects, copy/paste sections between pages.
+  -->
+  <!-- Particle.js CDN for particle backgrounds -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
+  <style>
+    /* Extra effect-specific styles here */
+    .fullscreen-bg {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2;
+      object-fit: cover;
+    }
+    .parallax {
+      position: relative; overflow: hidden; height: 400px;
+    }
+    .parallax-layer {
+      position: absolute; width: 100%; height: 100%;
+      will-change: transform;
+    }
+    .gradient-bg {
+      background: linear-gradient(120deg, #a16207, #b76e79, #fcd34d);
+      background-size: 200% 200%;
+      animation: gradientMove 8s ease-in-out infinite;
+    }
+    @keyframes gradientMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    .cinemagraph {
+      position: relative; overflow: hidden; height: 300px;
+    }
+    .cinemagraph img, .cinemagraph video {
+      position: absolute; width: 100%; height: 100%; object-fit: cover;
+    }
+    .cinemagraph img { z-index: 1; }
+    .cinemagraph video { z-index: 2; opacity: 0.4; pointer-events: none; }
+    .svg-filter-bg {
+      width: 100%; height: 200px; display: block;
+    }
+    .ambient-light {
+      position: relative; overflow: hidden;
+    }
+    .spotlight {
+      position: absolute; pointer-events: none; border-radius: 50%;
+      width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, transparent 80%);
+      mix-blend-mode: lighten; z-index: 10;
+      transition: left 0.1s, top 0.1s;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="background-effects.html" class="active">Background & Scene</a>
+      <a href="scroll-navigation.html">Scrolling & Navigation</a>
+      <a href="interactions.html">Interactions</a>
+      <a href="text-animations.html">Text Animations</a>
+      <a href="media.html">Imagery & Media</a>
+      <a href="layout.html">Layout & Structure</a>
+      <a href="ui-themes.html">UI Styles & Themes</a>
+      <a href="dataviz.html">Data Visualization</a>
+      <a href="loaders.html">Loaders</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Background & Scene Effects</h1>
+    <p>Each section below is an example. <strong>To use an effect, copy the section to your own page or uncomment as needed.</strong></p>
+
+    <!-- 1. Full-Screen Video Loop -->
+    <section>
+      <!-- INSTRUCTIONS: Replace src with your own video. To remove, comment out this <section>. -->
+      <video class="fullscreen-bg" src="https://www.w3schools.com/howto/rain.mp4" autoplay loop muted playsinline></video>
+      <div style="position:relative; z-index:1; padding:2rem; color:#fff;">
+        <h2>Full-Screen Video Background</h2>
+        <p>This is a looping, muted video background. You can use any .mp4 or .webm file.</p>
+      </div>
+    </section>
+
+    <!-- 2. Parallax Layers -->
+    <section class="parallax" id="parallax-demo">
+      <!-- INSTRUCTIONS: Add more .parallax-layer divs for more depth. -->
+      <div class="parallax-layer" style="background:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80') center/cover; z-index:1;" data-depth="0.2"></div>
+      <div class="parallax-layer" style="background:url('https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80') center/cover; z-index:2;" data-depth="0.5"></div>
+      <div style="position:relative; z-index:3; padding:2rem; color:#fff;">
+        <h2>Parallax Layers</h2>
+        <p>Foreground and background move at different speeds as you scroll or move your mouse.</p>
+      </div>
+    </section>
+
+    <!-- 3. Dynamic Gradient Skies -->
+    <section class="gradient-bg" style="height:200px; display:flex; align-items:center; justify-content:center;">
+      <!-- INSTRUCTIONS: Change colors in the .gradient-bg class in the <style> above. -->
+      <h2 style="color:#fff;">Dynamic Gradient Sky</h2>
+    </section>
+
+    <!-- 4. Cinemagraph Overlay -->
+    <section class="cinemagraph">
+      <!-- INSTRUCTIONS: Replace image/video with your own. Video should be subtle and looped. -->
+      <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=800&q=80" alt="Still" />
+      <video src="https://www.w3schools.com/howto/rain.mp4" autoplay loop muted playsinline></video>
+      <div style="position:relative; z-index:3; color:#fff; padding:1rem;">
+        <h2>Cinemagraph Overlay</h2>
+        <p>Still photo with subtle looping video motion overlay.</p>
+      </div>
+    </section>
+
+    <!-- 5. Particle Background -->
+    <section style="position:relative; height:200px;">
+      <!-- INSTRUCTIONS: Particle background using tsParticles. Edit the config in the <script> below. -->
+      <div id="tsparticles" style="position:absolute; width:100%; height:100%; z-index:0;"></div>
+      <div style="position:relative; z-index:1; color:#222; padding:2rem;">
+        <h2>Particle Background</h2>
+        <p>Animated particles using tsParticles. You can change the style in the script below.</p>
+      </div>
+      <script>
+        tsParticles.load("tsparticles", {
+          particles: { number: { value: 40 }, color: { value: "#a16207" }, shape: { type: "circle" }, opacity: { value: 0.5 }, size: { value: 4 }, move: { enable: true, speed: 1 } },
+          interactivity: { events: { onhover: { enable: true, mode: "repulse" } } }
+        });
+      </script>
+    </section>
+
+    <!-- 6. SVG Filter Backdrop -->
+    <section>
+      <!-- INSTRUCTIONS: SVG filter for turbulence/blur/color-shift. Edit the SVG below. -->
+      <svg class="svg-filter-bg">
+        <filter id="turbulence" x="0" y="0" width="100%" height="100%">
+          <feTurbulence id="turb" baseFrequency="0.02 0.03" numOctaves="2" seed="2"/>
+          <feDisplacementMap in2="turb" in="SourceGraphic" scale="20" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+        <rect width="100%" height="100%" fill="#b76e79" filter="url(#turbulence)"/>
+      </svg>
+      <div style="position:relative; z-index:1; color:#fff; padding:1rem;">
+        <h2>SVG Filter Backdrop</h2>
+        <p>SVG turbulence and displacement for organic backgrounds.</p>
+      </div>
+    </section>
+
+    <!-- 7. Ambient Light Effect -->
+    <section class="ambient-light" style="height:200px; background:#222; color:#fff;">
+      <!-- INSTRUCTIONS: Move your mouse to see the spotlight. -->
+      <div class="spotlight" id="spotlight"></div>
+      <div style="position:relative; z-index:2; padding:2rem;">
+        <h2>Ambient Light Effect</h2>
+        <p>Mouse-driven spotlight follows your cursor.</p>
+      </div>
+      <script>
+        const spotlight = document.getElementById('spotlight');
+        document.querySelector('.ambient-light').addEventListener('mousemove', e => {
+          const rect = e.currentTarget.getBoundingClientRect();
+          spotlight.style.left = (e.clientX - rect.left - 100) + 'px';
+          spotlight.style.top = (e.clientY - rect.top - 100) + 'px';
+        });
+      </script>
+    </section>
+  </main>
+</body>
+</html> 

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Visualization & Infographics Demo</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <!--
+    INSTRUCTIONS:
+    - Each section below demonstrates a different data viz/infographic effect.
+    - To enable/disable an effect, comment/uncomment the relevant <section>.
+    - For more effects, copy/paste sections between pages.
+  -->
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .timeline {position: relative; margin: 2rem 0; padding-left: 2rem;}
+    .timeline-event {position: relative; margin-bottom: 2rem;}
+    .timeline-dot {position: absolute; left: -1.2rem; top: 0.5rem; width: 1rem; height: 1rem; background: var(--primary); border-radius: 50%;}
+    .radial-progress {width: 120px; height: 120px;}
+    .custom-tooltip {position: absolute; background: var(--accent); color: #fff; padding: 0.5rem 1rem; border-radius: 0.5rem; pointer-events: none; opacity: 0; transition: opacity 0.2s;}
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="background-effects.html">Background & Scene</a>
+      <a href="scroll-navigation.html">Scrolling & Navigation</a>
+      <a href="interactions.html">Interactions</a>
+      <a href="text-animations.html">Text Animations</a>
+      <a href="media.html">Imagery & Media</a>
+      <a href="layout.html">Layout & Structure</a>
+      <a href="ui-themes.html">UI Styles & Themes</a>
+      <a href="dataviz.html" class="active">Data Visualization</a>
+      <a href="loaders.html">Loaders</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Data Visualization & Infographics</h1>
+    <p>Each section below is an example. <strong>To use an effect, copy the section to your own page or uncomment as needed.</strong></p>
+
+    <!-- 1. Animated Charts & Graphs -->
+    <section>
+      <!-- INSTRUCTIONS: Chart.js animated bar chart. -->
+      <canvas id="barChart" width="400" height="200"></canvas>
+      <script>
+        new Chart(document.getElementById('barChart').getContext('2d'), {
+          type: 'bar',
+          data: {labels: ['A','B','C','D'], datasets: [{label:'Demo', data:[12,19,3,5], backgroundColor:['#a16207','#b76e79','#fcd34d','#36454f']}]},
+          options: {animation:{duration:1500}}
+        });
+      </script>
+    </section>
+
+    <!-- 2. Timeline Scroll Animations -->
+    <section>
+      <!-- INSTRUCTIONS: Events animate in as you scroll. -->
+      <div class="timeline">
+        <div class="timeline-event"><div class="timeline-dot"></div>Event 1</div>
+        <div class="timeline-event"><div class="timeline-dot"></div>Event 2</div>
+        <div class="timeline-event"><div class="timeline-dot"></div>Event 3</div>
+      </div>
+    </section>
+
+    <!-- 3. Radial Progress Indicators -->
+    <section>
+      <!-- INSTRUCTIONS: Circular loader fills up. -->
+      <svg class="radial-progress" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" stroke="#eee" stroke-width="10" fill="none"/>
+        <circle cx="50" cy="50" r="45" stroke="#a16207" stroke-width="10" fill="none" stroke-dasharray="282.6" stroke-dashoffset="282.6" id="radialBar"/>
+      </svg>
+      <script>
+        let offset = 282.6;
+        let progress = 0;
+        const bar = document.getElementById('radialBar');
+        function animateRadial() {
+          if(progress < 0.7) {
+            progress += 0.01;
+            bar.setAttribute('stroke-dashoffset', offset - offset*progress);
+            requestAnimationFrame(animateRadial);
+          }
+        }
+        animateRadial();
+      </script>
+    </section>
+
+    <!-- 4. Custom Tooltip Animations -->
+    <section>
+      <!-- INSTRUCTIONS: Hover to see animated tooltip. -->
+      <div style="display:inline-block; position:relative;" onmouseover="showTip(event)" onmousemove="moveTip(event)" onmouseout="hideTip()">
+        <span class="btn">Hover me!</span>
+        <div class="custom-tooltip" id="tooltip">Animated Tooltip</div>
+      </div>
+      <script>
+        const tip = document.getElementById('tooltip');
+        function showTip(e) {tip.style.opacity=1;}
+        function moveTip(e) {tip.style.left=e.offsetX+20+'px'; tip.style.top=e.offsetY+'px';}
+        function hideTip() {tip.style.opacity=0;}
+      </script>
+    </section>
+  </main>
+</body>
+</html> 

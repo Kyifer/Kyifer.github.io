@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interaction & Micro-Interactions Demo</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <!--
+    INSTRUCTIONS:
+    - Each section below demonstrates a different interaction/micro-interaction effect.
+    - To enable/disable an effect, comment/uncomment the relevant <section>.
+    - For more effects, copy/paste sections between pages.
+  -->
+  <!-- Vanilla-Tilt.js CDN for 3D tilt -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+  <style>
+    .ripple-btn {position:relative; overflow:hidden;}
+    .ripple {position:absolute; border-radius:50%; transform:scale(0); animation:ripple 0.6s linear; background:rgba(255,255,255,0.7); pointer-events:none;}
+    @keyframes ripple {to {transform:scale(4); opacity:0;}}
+    .magnetic {display:inline-block; transition:transform 0.2s;}
+    .tilt-card {width:300px; height:180px; background:var(--accent); color:#fff; border-radius:1rem; display:flex; align-items:center; justify-content:center; font-size:2rem; margin:2rem auto;}
+    .drag-reveal {position:relative; width:300px; height:100px; background:var(--surface); border-radius:1rem; overflow:hidden; margin:2rem auto;}
+    .drag-handle {position:absolute; left:0; top:0; width:40px; height:100%; background:var(--primary); cursor:ew-resize; z-index:2;}
+    .drag-content {position:absolute; left:0; top:0; width:0; height:100%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; transition:width 0.3s; z-index:1;}
+    .form-anim input:focus {outline:none; border-bottom:2px solid var(--primary); transition: border 0.3s;}
+    .popout-card {transition:box-shadow 0.2s, transform 0.2s; box-shadow:var(--shadow);}
+    .popout-card:hover {box-shadow:0 8px 32px rgba(0,0,0,0.18); transform:translateY(-8px) scale(1.03);}
+    .touch-gesture {width:200px; height:200px; background:var(--primary); color:#fff; border-radius:1rem; display:flex; align-items:center; justify-content:center; font-size:1.5rem; margin:2rem auto; touch-action:pan-x pan-y;}
+    .cursor-trail {position:fixed; pointer-events:none; left:0; top:0; width:100vw; height:100vh; z-index:9999;}
+    .trail-dot {position:absolute; width:16px; height:16px; border-radius:50%; background:var(--accent); opacity:0.5;}
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="background-effects.html">Background & Scene</a>
+      <a href="scroll-navigation.html">Scrolling & Navigation</a>
+      <a href="interactions.html" class="active">Interactions</a>
+      <a href="text-animations.html">Text Animations</a>
+      <a href="media.html">Imagery & Media</a>
+      <a href="layout.html">Layout & Structure</a>
+      <a href="ui-themes.html">UI Styles & Themes</a>
+      <a href="dataviz.html">Data Visualization</a>
+      <a href="loaders.html">Loaders</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Interaction & Micro-Interactions</h1>
+    <p>Each section below is an example. <strong>To use an effect, copy the section to your own page or uncomment as needed.</strong></p>
+
+    <!-- 1. Button Ripples -->
+    <section>
+      <!-- INSTRUCTIONS: Click the button to see a ripple effect. -->
+      <button class="btn ripple-btn" onclick="createRipple(event)">Ripple Button</button>
+      <script>
+        function createRipple(e) {
+          const btn = e.currentTarget;
+          const circle = document.createElement('span');
+          circle.className = 'ripple';
+          const d = Math.max(btn.clientWidth, btn.clientHeight);
+          circle.style.width = circle.style.height = d + 'px';
+          circle.style.left = (e.clientX - btn.getBoundingClientRect().left - d/2) + 'px';
+          circle.style.top = (e.clientY - btn.getBoundingClientRect().top - d/2) + 'px';
+          btn.appendChild(circle);
+          setTimeout(() => circle.remove(), 600);
+        }
+      </script>
+    </section>
+
+    <!-- 2. Magnetic Cursor Zones -->
+    <section>
+      <!-- INSTRUCTIONS: Move your mouse over the box to see it "pull" toward the cursor. -->
+      <div class="magnetic" id="magnetic" style="width:200px; height:100px; background:var(--primary); color:#fff; border-radius:1rem; display:flex; align-items:center; justify-content:center; margin:2rem auto;">Magnetic Zone</div>
+      <script>
+        const mag = document.getElementById('magnetic');
+        mag.addEventListener('mousemove', e => {
+          const rect = mag.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width/2;
+          const y = e.clientY - rect.top - rect.height/2;
+          mag.style.transform = `translate(${x/8}px,${y/8}px)`;
+        });
+        mag.addEventListener('mouseleave', () => mag.style.transform = '');
+      </script>
+    </section>
+
+    <!-- 3. Hover 3D Tilt -->
+    <section>
+      <!-- INSTRUCTIONS: Hover the card to see 3D tilt. -->
+      <div class="tilt-card" data-tilt>3D Tilt Card</div>
+      <script>VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {max:15,speed:400,glare:true,"max-glare":0.2});</script>
+    </section>
+
+    <!-- 4. Drag-to-Reveal -->
+    <section>
+      <!-- INSTRUCTIONS: Drag the handle to reveal content. -->
+      <div class="drag-reveal" id="dragReveal">
+        <div class="drag-handle" id="dragHandle"></div>
+        <div class="drag-content" id="dragContent">Revealed!</div>
+      </div>
+      <script>
+        const dragHandle = document.getElementById('dragHandle');
+        const dragContent = document.getElementById('dragContent');
+        let dragging = false;
+        dragHandle.addEventListener('mousedown', () => dragging = true);
+        window.addEventListener('mouseup', () => dragging = false);
+        window.addEventListener('mousemove', e => {
+          if (!dragging) return;
+          const box = document.getElementById('dragReveal').getBoundingClientRect();
+          let width = e.clientX - box.left;
+          width = Math.max(0, Math.min(width, box.width));
+          dragContent.style.width = width + 'px';
+        });
+      </script>
+    </section>
+
+    <!-- 5. Form Field Focus Animations -->
+    <section>
+      <!-- INSTRUCTIONS: Focus the input to see animation. -->
+      <form class="form-anim" style="margin:2rem auto; max-width:300px;">
+        <input type="text" placeholder="Focus me!" style="width:100%; border:none; border-bottom:2px solid #ccc; padding:0.5rem; font-size:1.1rem;">
+      </form>
+    </section>
+
+    <!-- 6. Content-Aware Pop-Outs -->
+    <section>
+      <!-- INSTRUCTIONS: Hover the card to see it pop out. -->
+      <div class="popout-card" style="width:250px; height:120px; background:var(--surface); margin:2rem auto; display:flex; align-items:center; justify-content:center; font-size:1.2rem;">Pop-Out Card</div>
+    </section>
+
+    <!-- 7. Touch-Gesture Animations -->
+    <section>
+      <!-- INSTRUCTIONS: Try swiping or pinching on touch devices. -->
+      <div class="touch-gesture" id="touchBox">Touch Me</div>
+      <script>
+        let startX = 0;
+        document.getElementById('touchBox').addEventListener('touchstart', e => {
+          startX = e.touches[0].clientX;
+        });
+        document.getElementById('touchBox').addEventListener('touchmove', e => {
+          const dx = e.touches[0].clientX - startX;
+          e.currentTarget.style.transform = `translateX(${dx}px)`;
+        });
+        document.getElementById('touchBox').addEventListener('touchend', e => {
+          e.currentTarget.style.transform = '';
+        });
+      </script>
+    </section>
+
+    <!-- 8. Cursor-Drawn Trails -->
+    <section>
+      <!-- INSTRUCTIONS: Move your mouse to draw a trail. -->
+      <div class="cursor-trail" id="cursorTrail"></div>
+      <script>
+        const trail = document.getElementById('cursorTrail');
+        document.addEventListener('mousemove', e => {
+          const dot = document.createElement('div');
+          dot.className = 'trail-dot';
+          dot.style.left = (e.clientX-8) + 'px';
+          dot.style.top = (e.clientY-8) + 'px';
+          trail.appendChild(dot);
+          setTimeout(() => dot.remove(), 400);
+        });
+      </script>
+    </section>
+  </main>
+</body>
+</html> 

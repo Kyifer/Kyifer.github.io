@@ -1,0 +1,104 @@
+/*
+  styles.css
+  This file contains the main styles for your community webpages.
+  You can change colors, fonts, and layout here. 
+  Look for comments like 'EDIT HERE' to customize easily.
+*/
+
+:root {
+  /* === EDIT HERE: Main Color Palette === */
+  --primary: #a16207; /* Gold/Amber */
+  --primary-dark: #7c2d12;
+  --accent: #b76e79; /* Rose Gold */
+  --background: #fffbeb; /* Cream */
+  --text: #374151; /* Dark Gray */
+  --surface: #fff8e1; /* Light surface */
+  --glass: rgba(255,255,255,0.3);
+  --shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--background);
+  color: var(--text);
+  margin: 0;
+  min-height: 100vh;
+  transition: background 0.5s, color 0.5s;
+}
+
+header, nav {
+  background: var(--primary-dark);
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+nav {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  justify-content: center;
+}
+nav a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background 0.2s, color 0.2s;
+}
+nav a:hover, nav a.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--surface);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+h1, h2, h3 {
+  font-family: 'Inter', Arial, sans-serif;
+  color: var(--primary-dark);
+}
+
+/* === Glassmorphism Utility === */
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+}
+
+/* === Button Styles === */
+.btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: var(--shadow);
+}
+.btn:hover {
+  background: var(--primary-dark);
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  main {
+    padding: 1rem;
+  }
+  nav {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+}
+
+/* === Add more effect-specific classes in each demo page === */ 

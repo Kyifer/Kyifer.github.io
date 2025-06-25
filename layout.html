@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layout & Structure Demo</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <!--
+    INSTRUCTIONS:
+    - Each section below demonstrates a different layout/structure effect.
+    - To enable/disable an effect, comment/uncomment the relevant <section>.
+    - For more effects, copy/paste sections between pages.
+  -->
+  <!-- Masonry CDN -->
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+  <style>
+    .asym-grid {display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1rem;}
+    .asym-card {background: var(--surface); border-radius: 1rem; box-shadow: var(--shadow); padding: 1.5rem;}
+    .masonry {column-count: 3; column-gap: 1rem;}
+    .masonry-item {background: var(--primary); color: #fff; border-radius: 1rem; margin-bottom: 1rem; padding: 1rem;}
+    .grid-anim {display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;}
+    .grid-anim-item {background: var(--accent); color: #fff; border-radius: 1rem; padding: 1.5rem; transition: transform 0.3s;}
+    .grid-anim-item:hover {transform: scale(1.08) rotate(-2deg);}
+    .accordion {width: 100%; max-width: 600px; margin: 2rem auto;}
+    .accordion-item {background: var(--surface); border-radius: 1rem; margin-bottom: 1rem; overflow: hidden;}
+    .accordion-header {padding: 1rem; cursor: pointer; font-weight: bold; background: var(--primary); color: #fff;}
+    .accordion-content {max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1); padding: 0 1rem;}
+    .accordion-item.open .accordion-content {max-height: 200px; padding: 1rem;}
+    .flip-card {background: transparent; width: 200px; height: 120px; perspective: 1000px; margin: 2rem auto;}
+    .flip-card-inner {position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d;}
+    .flip-card:hover .flip-card-inner {transform: rotateY(180deg);}
+    .flip-card-front, .flip-card-back {position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 1rem; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;}
+    .flip-card-front {background: var(--primary); color: #fff;}
+    .flip-card-back {background: var(--accent); color: #fff; transform: rotateY(180deg);}
+    .sticky-fill {position: sticky; top: 0; background: var(--surface); padding: 1rem; border-radius: 1rem; box-shadow: var(--shadow);}
+    .split-screen {display: flex;}
+    .split-panel {flex: 1; height: 200px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: flex 0.5s;}
+    .split-panel.left {background: var(--primary); color: #fff;}
+    .split-panel.right {background: var(--accent); color: #fff;}
+    .split-screen:hover .left {flex: 2;}
+    .split-screen:hover .right {flex: 1;}
+    .carousel2 {display: flex; overflow-x: auto; gap: 1rem; padding: 1rem;}
+    .carousel2-item {min-width: 200px; height: 150px; background: var(--primary); color: #fff; border-radius: 1rem; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;}
+    .modular-scale {font-size: clamp(1rem, 2vw, 2rem); line-height: 1.5;}
+    .progressive-list {list-style: none; padding: 0;}
+    .progressive-list li {background: var(--surface); margin-bottom: 0.5rem; border-radius: 0.5rem; padding: 1rem; transition: max-height 0.4s, opacity 0.4s; max-height: 3rem; overflow: hidden; opacity: 1;}
+    .progressive-list li.collapsed {max-height: 0; opacity: 0; padding: 0 1rem;}
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="background-effects.html">Background & Scene</a>
+      <a href="scroll-navigation.html">Scrolling & Navigation</a>
+      <a href="interactions.html">Interactions</a>
+      <a href="text-animations.html">Text Animations</a>
+      <a href="media.html">Imagery & Media</a>
+      <a href="layout.html" class="active">Layout & Structure</a>
+      <a href="ui-themes.html">UI Styles & Themes</a>
+      <a href="dataviz.html">Data Visualization</a>
+      <a href="loaders.html">Loaders</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Layout & Structure</h1>
+    <p>Each section below is an example. <strong>To use an effect, copy the section to your own page or uncomment as needed.</strong></p>
+
+    <!-- 1. Asymmetrical/Grid Overlaps -->
+    <section>
+      <!-- INSTRUCTIONS: Cards overlap in a dynamic grid. -->
+      <div class="asym-grid">
+        <div class="asym-card" style="grid-row:span 2;">Tall Card</div>
+        <div class="asym-card">Short Card</div>
+        <div class="asym-card">Short Card</div>
+      </div>
+    </section>
+
+    <!-- 2. Masonry/Isotope Layouts -->
+    <section>
+      <!-- INSTRUCTIONS: Pinterest-style adjustable grid. -->
+      <div class="masonry" id="masonry">
+        <div class="masonry-item">Item 1</div>
+        <div class="masonry-item">Item 2</div>
+        <div class="masonry-item">Item 3</div>
+        <div class="masonry-item">Item 4</div>
+        <div class="masonry-item">Item 5</div>
+      </div>
+      <script>window.onload = () => new Masonry('#masonry', {itemSelector:'.masonry-item'});</script>
+    </section>
+
+    <!-- 3. CSS Grid Animations -->
+    <section>
+      <!-- INSTRUCTIONS: Grid items animate on hover. -->
+      <div class="grid-anim">
+        <div class="grid-anim-item">A</div>
+        <div class="grid-anim-item">B</div>
+        <div class="grid-anim-item">C</div>
+      </div>
+    </section>
+
+    <!-- 4. Collapsible Accordion Panels -->
+    <section>
+      <!-- INSTRUCTIONS: Click header to expand/collapse. -->
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">Panel 1</div>
+          <div class="accordion-content">Content for panel 1.</div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">Panel 2</div>
+          <div class="accordion-content">Content for panel 2.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Rotating/Flipping Cards -->
+    <section>
+      <!-- INSTRUCTIONS: Hover to flip card. -->
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">Front</div>
+          <div class="flip-card-back">Back</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Sticky Fill Animations -->
+    <section>
+      <!-- INSTRUCTIONS: Element sticks and animates out. -->
+      <div class="sticky-fill">Sticky Fill Animation</div>
+    </section>
+
+    <!-- 7. Interactive Split-Screen -->
+    <section>
+      <!-- INSTRUCTIONS: Panels move at different rates on hover. -->
+      <div class="split-screen">
+        <div class="split-panel left">Left Panel</div>
+        <div class="split-panel right">Right Panel</div>
+      </div>
+    </section>
+
+    <!-- 8. Dynamic Content Carousel -->
+    <section>
+      <!-- INSTRUCTIONS: Multi-row, auto-height adjust. -->
+      <div class="carousel2">
+        <div class="carousel2-item">1</div>
+        <div class="carousel2-item">2</div>
+        <div class="carousel2-item">3</div>
+      </div>
+    </section>
+
+    <!-- 9. Modular Scale Typographic Grid -->
+    <section>
+      <!-- INSTRUCTIONS: Responsive font and spacing scale. -->
+      <div class="modular-scale">This text uses a modular scale for responsive sizing.</div>
+    </section>
+
+    <!-- 10. Progressive Disclosure Lists -->
+    <section>
+      <!-- INSTRUCTIONS: Click to expand/collapse list items. -->
+      <ul class="progressive-list">
+        <li onclick="this.classList.toggle('collapsed')">Read more 1</li>
+        <li onclick="this.classList.toggle('collapsed')">Read more 2</li>
+        <li onclick="this.classList.toggle('collapsed')">Read more 3</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html> 
