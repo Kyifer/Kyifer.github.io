@@ -1211,3 +1211,54 @@ pre, code {
 #microLoaderBtn.loading .micro-loader {
     display: block;
 }
+
+/* 10. Responsive Design */
+@media (max-width: 768px) {
+    .page-container {
+        flex-direction: column;
+    }
+
+    .side-nav {
+        position: static;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-primary);
+        padding: 1rem;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 1.5rem;
+        height: auto; /* Allow content to determine height */
+        overflow-y: visible; /* Reset overflow */
+    }
+
+    .nav-logo {
+        margin-bottom: 1rem;
+    }
+    
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .nav-links li a {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .chapter-heading {
+        font-size: 2rem;
+    }
+
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+
+    table {
+        width: 100%;
+        min-width: 600px; /* Ensure table has a minimum width to make scrolling useful */
+    }
+}
