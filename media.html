@@ -1,151 +1,364 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Imagery & Media Demo</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <!--
-    INSTRUCTIONS:
-    - Each section below demonstrates a different imagery/media effect.
-    - To enable/disable an effect, comment/uncomment the relevant <section>.
-    - For more effects, copy/paste sections between pages.
-  -->
-  <!-- CDN for before/after slider -->
-  <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css" />
-  <style>
-    .svg-draw {stroke-dasharray: 400; stroke-dashoffset: 400; animation: draw 2s forwards;}
-    @keyframes draw {to {stroke-dashoffset: 0;}}
-    .kenburns {overflow: hidden; width: 100%; height: 200px; position: relative;}
-    .kenburns img {width: 100%; height: 100%; object-fit: cover; transform: scale(1.1); animation: kenburns 8s ease-in-out infinite alternate;}
-    @keyframes kenburns {to {transform: scale(1.2) translate(-10px, -10px);}}
-    .mosaic {display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px;}
-    .mosaic img {width: 100%; display: block; transition: transform 0.5s;}
-    .mosaic img:hover {transform: scale(1.1) rotate(2deg);}
-    .canvas-filters {width: 100%; max-width: 400px; display: block; margin: 1rem auto;}
-    .blur-up {filter: blur(12px); transition: filter 1s;}
-    .blur-up.loaded {filter: blur(0);}
-    .slider-container {width: 100%; max-width: 600px; margin: 2rem auto;}
-  </style>
-</head>
-<body>
-  <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="background-effects.html">Background & Scene</a>
-      <a href="scroll-navigation.html">Scrolling & Navigation</a>
-      <a href="interactions.html">Interactions</a>
-      <a href="text-animations.html">Text Animations</a>
-      <a href="media.html" class="active">Imagery & Media</a>
-      <a href="layout.html">Layout & Structure</a>
-      <a href="ui-themes.html">UI Styles & Themes</a>
-      <a href="dataviz.html">Data Visualization</a>
-      <a href="loaders.html">Loaders</a>
-    </nav>
-  </header>
-  <main>
-    <h1>Imagery & Media</h1>
-    <p>Each section below is an example. <strong>To use an effect, copy the section to your own page or uncomment as needed.</strong></p>
-
-    <!-- 1. SVG Draw-On Effect -->
-    <section>
-      <!-- INSTRUCTIONS: SVG path animates as if being drawn. -->
-      <svg width="200" height="100">
-        <path class="svg-draw" d="M10 80 Q 95 10 180 80" stroke="#a16207" stroke-width="4" fill="none"/>
-      </svg>
-    </section>
-
-    <!-- 2. Image Sequence Animations -->
-    <section>
-      <!-- INSTRUCTIONS: Frame-by-frame sprite on scroll/hover. -->
-      <img id="sprite" src="https://css-tricks.com/examples/SpriteSheetAnimation/sprite.png" width="100" height="100" style="object-fit:cover;">
-      <script>
-        // Simple hover frame animation
-        const sprite = document.getElementById('sprite');
-        let frame = 0;
-        sprite.addEventListener('mouseenter', () => {
-          frame = 0;
-          sprite.interval = setInterval(() => {
-            sprite.style.objectPosition = `-${frame*100}px 0`;
-            frame = (frame+1)%6;
-          }, 100);
-        });
-        sprite.addEventListener('mouseleave', () => {
-          clearInterval(sprite.interval);
-          sprite.style.objectPosition = '0 0';
-        });
-      </script>
-    </section>
-
-    <!-- 3. Mosaic/Tile Transitions -->
-    <section>
-      <!-- INSTRUCTIONS: Hover tiles for animation. -->
-      <div class="mosaic">
-        <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=200&q=80" alt="Tile1">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=200&q=80" alt="Tile2">
-        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=200&q=80" alt="Tile3">
-        <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=200&q=80" alt="Tile4">
-      </div>
-    </section>
-
-    <!-- 4. Photo Ken Burns Effect -->
-    <section class="kenburns">
-      <!-- INSTRUCTIONS: Subtle pan/zoom on image. -->
-      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Ken Burns">
-    </section>
-
-    <!-- 5. Responsive Canvas Filters -->
-    <section>
-      <!-- INSTRUCTIONS: Real-time blur/brightness controls. -->
-      <canvas id="canvas" class="canvas-filters" width="400" height="200"></canvas>
-      <input type="range" id="blur" min="0" max="10" value="0"> Blur
-      <input type="range" id="bright" min="50" max="150" value="100"> Brightness
-      <script>
-        const c = document.getElementById('canvas');
-        const ctx = c.getContext('2d');
-        const img = new window.Image();
-        img.src = 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80';
-        img.onload = () => ctx.drawImage(img,0,0,400,200);
-        document.getElementById('blur').oninput = update;
-        document.getElementById('bright').oninput = update;
-        function update() {
-          ctx.filter = `blur(${document.getElementById('blur').value}px) brightness(${document.getElementById('bright').value}%)`;
-          ctx.drawImage(img,0,0,400,200);
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Imagery & Media Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Roboto+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CDN for before/after slider -->
+    <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #0f172a;
+        color: #cbd5e1;
+        background-image: radial-gradient(
+          at top,
+          hsla(215, 41%, 25%, 0.3),
+          transparent 50%
+        );
+        overflow: hidden;
+      }
+      .page-container {
+        display: flex;
+      }
+      .side-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 260px;
+        background-color: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 2rem 1rem;
+        z-index: 1000;
+        overflow-y: auto;
+      }
+      .main-content {
+        flex-grow: 1;
+        margin-left: 260px;
+        padding: 4rem;
+        height: 100vh;
+        overflow-y: auto;
+      }
+      @media (max-width: 1024px) {
+        .side-nav {
+          transform: translateX(-100%);
         }
-      </script>
-    </section>
+        .main-content {
+          margin-left: 0;
+        }
+      }
+      .nav-link {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: #94a3b8;
+        transition:
+          background-color 0.2s,
+          color 0.2s;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .nav-link:hover {
+        background-color: rgba(79, 70, 229, 0.1);
+        color: #e2e8f0;
+      }
+      .nav-link.active {
+        background-color: rgba(79, 70, 229, 0.8);
+        color: #ffffff;
+        font-weight: 600;
+      }
+      .chapter-heading {
+        font-size: 2.5rem;
+        font-weight: 700;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid;
+        border-image: linear-gradient(to right, #4f46e5, #a855f7) 1;
+        margin-bottom: 2rem;
+      }
+      section.effect-demo {
+        margin-bottom: 3rem;
+        background: rgba(30, 41, 59, 0.7);
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 0 4px 32px rgba(79, 70, 229, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      section.effect-demo h3 {
+        font-size: 1.5rem;
+        color: #a5b4fc;
+        margin-bottom: 0.5rem;
+      }
+      section.effect-demo p {
+        color: #cbd5e1;
+        margin-bottom: 1rem;
+      }
+      .svg-draw {
+        stroke-dasharray: 400;
+        stroke-dashoffset: 400;
+        animation: draw 2s forwards;
+      }
+      @keyframes draw {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+      .kenburns {
+        overflow: hidden;
+        width: 100%;
+        height: 200px;
+        position: relative;
+      }
+      .kenburns img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.1);
+        animation: kenburns 8s ease-in-out infinite alternate;
+      }
+      @keyframes kenburns {
+        to {
+          transform: scale(1.2) translate(-10px, -10px);
+        }
+      }
+      .mosaic {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 4px;
+      }
+      .mosaic img {
+        width: 100%;
+        display: block;
+        transition: transform 0.5s;
+      }
+      .mosaic img:hover {
+        transform: scale(1.1) rotate(2deg);
+      }
+      .canvas-filters {
+        width: 100%;
+        max-width: 400px;
+        display: block;
+        margin: 1rem auto;
+      }
+      .blur-up {
+        filter: blur(12px);
+        transition: filter 1s;
+      }
+      .blur-up.loaded {
+        filter: blur(0);
+      }
+      /* Adjusting juxtapose styles for dark theme */
+      .jx-arrow {
+        border-color: #cbd5e1 !important;
+      }
+      .jx-control .jx-left,
+      .jx-control .jx-right {
+        background: rgba(30, 41, 59, 0.9) !important;
+        color: #cbd5e1 !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      }
+      .jx-control .jx-left:before,
+      .jx-control .jx-right:before {
+        border-color: #cbd5e1 !important;
+      }
+      .jx-label {
+        color: #0f172a !important;
+      }
+      .slider-container {
+        width: 100%;
+        max-width: 600px;
+        margin: 2rem auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-container">
+      <nav class="side-nav">
+        <h1 class="text-2xl font-bold mb-8 px-4 text-white">Effects Library</h1>
+        <a class="nav-link" href="background-effects.html">1. Backgrounds</a>
+        <a class="nav-link" href="scroll-navigation.html">2. Scrolling</a>
+        <a class="nav-link" href="interactions.html">3. Interaction</a>
+        <a class="nav-link" href="text-animations.html">4. Typography</a>
+        <a class="nav-link active" href="media.html">5. Imagery</a>
+        <a class="nav-link" href="layout.html">6. Layout</a>
+        <a class="nav-link" href="ui-themes.html">7. UI Styles</a>
+        <a class="nav-link" href="dataviz.html">8. Data Viz</a>
+        <a class="nav-link" href="loaders.html">9. Loaders</a>
+      </nav>
+      <main class="main-content">
+        <h2 class="chapter-heading">Imagery & Media</h2>
 
-    <!-- 6. Lazy-Load Blur-Up -->
-    <section>
-      <!-- INSTRUCTIONS: Blurred preview sharpens on load. -->
-      <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=20&q=10" data-src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80" class="blur-up" id="blurUp" width="400" height="200">
-      <script>
-        const blurUp = document.getElementById('blurUp');
-        const img2 = new window.Image();
-        img2.src = blurUp.dataset.src;
-        img2.onload = () => {
-          blurUp.src = img2.src;
-          blurUp.classList.add('loaded');
-        };
-      </script>
-    </section>
+        <!-- 1. SVG Draw-On Effect -->
+        <section class="effect-demo">
+          <h3>SVG Draw-On Effect</h3>
+          <p>SVG path animates as if being drawn.</p>
+          <svg width="200" height="100">
+            <path
+              class="svg-draw"
+              d="M10 80 Q 95 10 180 80"
+              stroke="#a16207"
+              stroke-width="4"
+              fill="none"
+            />
+          </svg>
+        </section>
 
-    <!-- 7. Interactive Before/After Sliders -->
-    <section>
-      <!-- INSTRUCTIONS: Drag the slider to compare images. -->
-      <div class="slider-container">
-        <div id="juxtapose"></div>
-      </div>
-      <script>
-        window.addEventListener('DOMContentLoaded', function() {
-          new juxtapose.JXSlider('#juxtapose', [
-            {src: 'https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80', label: 'Before'},
-            {src: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80', label: 'After'}
-          ], {animate: true, showLabels: true});
-        });
-      </script>
-    </section>
-  </main>
-</body>
-</html> 
+        <!-- 2. Image Sequence Animations -->
+        <section class="effect-demo">
+          <h3>Image Sequence Animations</h3>
+          <p>Frame-by-frame sprite on scroll/hover.</p>
+          <img
+            id="sprite"
+            src="https://css-tricks.com/examples/SpriteSheetAnimation/sprite.png"
+            width="100"
+            height="100"
+            style="object-fit: cover"
+          />
+          <script>
+            // Simple hover frame animation
+            const sprite = document.getElementById("sprite");
+            let frame = 0;
+            sprite.addEventListener("mouseenter", () => {
+              frame = 0;
+              sprite.interval = setInterval(() => {
+                sprite.style.objectPosition = `-${frame * 100}px 0`;
+                frame = (frame + 1) % 6;
+              }, 100);
+            });
+            sprite.addEventListener("mouseleave", () => {
+              clearInterval(sprite.interval);
+              sprite.style.objectPosition = "0 0";
+            });
+          </script>
+        </section>
+
+        <!-- 3. Mosaic/Tile Transitions -->
+        <section class="effect-demo">
+          <h3>Mosaic/Tile Transitions</h3>
+          <p>Hover tiles for animation.</p>
+          <div class="mosaic">
+            <img
+              src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=200&q=80"
+              alt="Tile1"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=200&q=80"
+              alt="Tile2"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=200&q=80"
+              alt="Tile3"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=200&q=80"
+              alt="Tile4"
+            />
+          </div>
+        </section>
+
+        <!-- 4. Photo Ken Burns Effect -->
+        <section class="effect-demo kenburns">
+          <h3>Photo Ken Burns Effect</h3>
+          <p>Subtle pan/zoom on image.</p>
+          <img
+            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
+            alt="Ken Burns"
+          />
+        </section>
+
+        <!-- 5. Responsive Canvas Filters -->
+        <section class="effect-demo">
+          <h3>Responsive Canvas Filters</h3>
+          <p>Real-time blur/brightness controls.</p>
+          <canvas
+            id="canvas"
+            class="canvas-filters"
+            width="400"
+            height="200"
+          ></canvas>
+          <input type="range" id="blur" min="0" max="10" value="0" /> Blur
+          <input type="range" id="bright" min="50" max="150" value="100" />
+          Brightness
+          <script>
+            const c = document.getElementById("canvas");
+            const ctx = c.getContext("2d");
+            const img = new window.Image();
+            img.src =
+              "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80";
+            img.onload = () => ctx.drawImage(img, 0, 0, 400, 200);
+            document.getElementById("blur").oninput = update;
+            document.getElementById("bright").oninput = update;
+            function update() {
+              ctx.filter = `blur(${document.getElementById("blur").value}px) brightness(${document.getElementById("bright").value}%)`;
+              ctx.drawImage(img, 0, 0, 400, 200);
+            }
+          </script>
+        </section>
+
+        <!-- 6. Lazy-Load Blur-Up -->
+        <section class="effect-demo">
+          <h3>Lazy-Load Blur-Up</h3>
+          <p>Blurred preview sharpens on load.</p>
+          <img
+            src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=20&q=10"
+            data-src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80"
+            class="blur-up"
+            id="blurUp"
+            width="400"
+            height="200"
+          />
+          <script>
+            const blurUp = document.getElementById("blurUp");
+            const img2 = new window.Image();
+            img2.src = blurUp.dataset.src;
+            img2.onload = () => {
+              blurUp.src = img2.src;
+              blurUp.classList.add("loaded");
+            };
+          </script>
+        </section>
+
+        <!-- 7. Interactive Before/After Sliders -->
+        <section class="effect-demo">
+          <h3>Interactive Before/After Sliders</h3>
+          <p>Drag the slider to compare images.</p>
+          <div class="slider-container">
+            <div id="juxtapose"></div>
+          </div>
+          <script>
+            window.addEventListener("DOMContentLoaded", function () {
+              new juxtapose.JXSlider(
+                "#juxtapose",
+                [
+                  {
+                    src: "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80",
+                    label: "Before",
+                  },
+                  {
+                    src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
+                    label: "After",
+                  },
+                ],
+                { animate: true, showLabels: true }
+              );
+            });
+          </script>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UI Styles & Themes Demo</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <title>Chapter 7: UI Styles & Themes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <!--
     INSTRUCTIONS:
     - Each section below demonstrates a different UI style/theme effect.
@@ -12,9 +12,24 @@
     - For more effects, copy/paste sections between pages.
   -->
   <style>
+    body { font-family: "Inter", sans-serif; background-color: #0f172a; color: #cbd5e1; background-image: radial-gradient(at top, hsla(215, 41%, 25%, 0.3), transparent 50%); overflow: hidden; }
+    .page-container { display: flex; }
+    .side-nav { position: fixed; top: 0; left: 0; height: 100vh; width: 260px; background-color: rgba(15, 23, 42, 0.6); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-right: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem 1rem; z-index: 1000; overflow-y: auto; }
+    .main-content { flex-grow: 1; margin-left: 260px; padding: 4rem; height: 100vh; overflow-y: auto; }
+    @media (max-width: 1024px) { .side-nav { transform: translateX(-100%); } .main-content { margin-left: 0; } }
+    .nav-link { display: flex; align-items: center; padding: 0.75rem 1rem; border-radius: 0.5rem; margin-bottom: 0.5rem; font-weight: 500; color: #94a3b8; transition: background-color 0.2s, color 0.2s; cursor: pointer; text-decoration: none; }
+    .nav-link:hover { background-color: rgba(79, 70, 229, 0.1); color: #e2e8f0; }
+    .nav-link.active { background-color: rgba(79, 70, 229, 0.8); color: #ffffff; font-weight: 600; }
+    .chapter-heading { font-size: 2.5rem; font-weight: 700; padding-bottom: 1rem; border-bottom: 2px solid; border-image: linear-gradient(to right, #4f46e5, #a855f7) 1; margin-bottom: 2rem; }
+    section.effect-demo { margin-bottom: 3rem; background: rgba(30,41,59,0.7); border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 32px rgba(79,70,229,0.08); border: 1px solid rgba(255,255,255,0.08); }
+    section.effect-demo h3 { font-size: 1.5rem; color: #a5b4fc; margin-bottom: 0.5rem; }
+    section.effect-demo p { color: #cbd5e1; margin-bottom: 1rem; }
     .glass-demo {background: var(--glass); backdrop-filter: blur(12px); border-radius: 1rem; box-shadow: var(--shadow); padding: 2rem;}
     .neumorph {background: #e0e0e0; border-radius: 1rem; box-shadow: 8px 8px 24px #bebebe, -8px -8px 24px #ffffff; padding: 2rem; color: #36454f;}
     .theme-toggle {margin: 1rem 0;}
+    .btn {
+      background-color: #4f46e5; color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 500; cursor: pointer; transition: background-color 0.2s; border: none;
+    }
     .brutal {background: #fff; color: #000; border: 4px solid #000; font-family: 'Press Start 2P', monospace; padding: 1rem; border-radius: 0.5rem; box-shadow: 0 0 0 4px #b76e79;}
     .custom-scroll {height: 100px; overflow-y: scroll; background: var(--surface); border-radius: 1rem; padding: 1rem;}
     .custom-scroll::-webkit-scrollbar {width: 12px; background: #b76e79;}
@@ -29,28 +44,26 @@
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
-<body>
-  <header>
+<body class="dark">
+  <div class="page-container">
     <nav>
-      <a href="index.html">Home</a>
+      <h1 class="text-2xl font-bold mb-8 px-4 text-white">Effects Library</h1>
       <a href="background-effects.html">Background & Scene</a>
       <a href="scroll-navigation.html">Scrolling & Navigation</a>
       <a href="interactions.html">Interactions</a>
       <a href="text-animations.html">Text Animations</a>
       <a href="media.html">Imagery & Media</a>
       <a href="layout.html">Layout & Structure</a>
-      <a href="ui-themes.html" class="active">UI Styles & Themes</a>
+      <a class="nav-link active" href="/ui-themes.html">7. UI Styles</a>
       <a href="dataviz.html">Data Visualization</a>
       <a href="loaders.html">Loaders</a>
     </nav>
-  </header>
-  <main>
-    <h1>UI Styles & Themes</h1>
-    <p>Each section below is an example. <strong>To use an effect, copy the section to your own page or uncomment as needed.</strong></p>
+    <main class="main-content">
+      <h2 class="chapter-heading">Chapter 7: UI Styles & Themes</h2>
 
-    <!-- 1. Glassmorphism -->
-    <section class="glass-demo">
-      <!-- INSTRUCTIONS: Glassmorphism effect using blur and transparency. -->
+      <!-- 1. Glassmorphism -->
+      <section class="effect-demo glass-demo">
+        <!-- INSTRUCTIONS: Glassmorphism effect using blur and transparency. -->
       <h2>Glassmorphism</h2>
       <p>This box uses a glassy, frosted effect.</p>
     </section>
@@ -63,8 +76,8 @@
     </section>
 
     <!-- 3. Dark/Light Mode Toggle -->
-    <section>
-      <!-- INSTRUCTIONS: Click to toggle dark/light mode. -->
+      <section class="effect-demo">
+        <!-- INSTRUCTIONS: Click to toggle dark/light mode. -->
       <button class="btn theme-toggle" onclick="toggleTheme()">Toggle Dark/Light Mode</button>
       <script>
         function toggleTheme() {
@@ -81,8 +94,8 @@
     </section>
 
     <!-- 4. Theme-Based CSS Variable Animation -->
-    <section>
-      <!-- INSTRUCTIONS: Animate color variables. -->
+      <section class="effect-demo">
+        <!-- INSTRUCTIONS: Animate color variables. -->
       <button class="btn" onclick="animateTheme()">Animate Theme</button>
       <script>
         function animateTheme() {
@@ -93,8 +106,8 @@
     </section>
 
     <!-- 5. Brutalism/Retro 8-Bit Pixel UI -->
-    <section class="brutal">
-      <!-- INSTRUCTIONS: Pixelated, retro style. -->
+      <section class="effect-demo brutal">
+        <!-- INSTRUCTIONS: Pixelated, retro style. -->
       <h2>Brutalism/Retro 8-Bit</h2>
       <p>Pixel font, bold borders, and scanline effect.</p>
     </section>
@@ -102,12 +115,12 @@
     <!-- 6. Custom Scrollbars -->
     <section>
       <!-- INSTRUCTIONS: Custom colored scrollbars. -->
-      <div class="custom-scroll" style="height:80px;">Scroll me!<br>More content<br>Even more content<br>Keep scrolling!</div>
+      <div class="effect-demo custom-scroll" style="height:80px;">Scroll me!<br>More content<br>Even more content<br>Keep scrolling!</div>
     </section>
 
     <!-- 7. SVG Icon Animations -->
-    <section>
-      <!-- INSTRUCTIONS: Hover to animate icon. -->
+      <section class="effect-demo">
+        <!-- INSTRUCTIONS: Hover to animate icon. -->
       <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#b76e79"/><path d="M8 12l2 2 4-4" stroke="#fff" stroke-width="2" fill="none"/></svg>
     </section>
 
@@ -119,14 +132,14 @@
     </section>
 
     <!-- 9. Floating Action Buttons (FAB) -->
-    <section>
-      <!-- INSTRUCTIONS: FAB with motion path. -->
+      <section class="effect-demo">
+        <!-- INSTRUCTIONS: FAB with motion path. -->
       <div class="fab">+</div>
     </section>
 
     <!-- 10. Multi-Step Form Wizards -->
-    <section>
-      <!-- INSTRUCTIONS: Click next/prev to slide between steps. -->
+      <section class="effect-demo">
+        <!-- INSTRUCTIONS: Click next/prev to slide between steps. -->
       <form class="form-wizard">
         <div class="wizard-step active" id="step1">
           <h3>Step 1</h3>
@@ -156,6 +169,7 @@
         }
       </script>
     </section>
-  </main>
+    </main>
+  </div>
 </body>
 </html> 

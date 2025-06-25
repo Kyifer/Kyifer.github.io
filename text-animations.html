@@ -1,150 +1,302 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Typography & Text Animation Demo</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <!--
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typography & Text Animation Demo</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <!--
     INSTRUCTIONS:
     - Each section below demonstrates a different text animation effect.
     - To enable/disable an effect, comment/uncomment the relevant <section>.
     - For more effects, copy/paste sections between pages.
   -->
-  <!-- GSAP for text animation, Three.js for 3D text -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <style>
-    .typewriter {font-family:monospace; font-size:1.5rem; border-right:2px solid var(--primary); white-space:nowrap; overflow:hidden;}
-    .masked-text {font-size:2rem; background:linear-gradient(90deg,#a16207,#b76e79,#fcd34d); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
-    .kinetic {display:inline-block; font-size:2rem;}
-    .glitch {color:#fff; position:relative; font-size:2rem;}
-    .glitch::before, .glitch::after {content:attr(data-text); position:absolute; left:0; width:100%; overflow:hidden;}
-    .glitch::before {left:2px; text-shadow:-2px 0 red; animation:glitch1 1s infinite linear alternate-reverse;}
-    .glitch::after {left:-2px; text-shadow:2px 0 blue; animation:glitch2 1s infinite linear alternate-reverse;}
-    @keyframes glitch1 {0%{clip-path:inset(0 0 80% 0);} 100%{clip-path:inset(80% 0 0 0);}}
-    @keyframes glitch2 {0%{clip-path:inset(80% 0 0 0);} 100%{clip-path:inset(0 0 80% 0);}}
-    .liquid-text {font-size:2.5rem; filter:url(#gooey); color:var(--primary);}
-    .gradient-fill {font-size:2rem; background:linear-gradient(90deg,#a16207,#b76e79,#fcd34d); background-size:200% 200%; animation:gradientMove 4s infinite alternate; -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
-    @keyframes gradientMove {0%{background-position:0% 50%;}100%{background-position:100% 50%;}}
-    .extrude {font-size:2rem; color:var(--primary-dark); text-shadow:2px 2px 0 #b76e79, 4px 4px 0 #fcd34d;}
-    .hover-reveal span {opacity:0.2; transition:opacity 0.3s;}
-    .hover-reveal:hover span {opacity:1;}
-  </style>
-</head>
-<body>
-  <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="background-effects.html">Background & Scene</a>
-      <a href="scroll-navigation.html">Scrolling & Navigation</a>
-      <a href="interactions.html">Interactions</a>
-      <a href="text-animations.html" class="active">Text Animations</a>
-      <a href="media.html">Imagery & Media</a>
-      <a href="layout.html">Layout & Structure</a>
-      <a href="ui-themes.html">UI Styles & Themes</a>
-      <a href="dataviz.html">Data Visualization</a>
-      <a href="loaders.html">Loaders</a>
-    </nav>
-  </header>
-  <main>
-    <h1>Typography & Text Animation</h1>
-    <p>Each section below is an example. <strong>To use an effect, copy the section to your own page or uncomment as needed.</strong></p>
-
-    <!-- 1. Typewriter/Terminal Effect -->
-    <section>
-      <!-- INSTRUCTIONS: JS-driven typing with blinking cursor. -->
-      <div class="typewriter" id="typewriter"></div>
-      <script>
-        const text = "Typewriter/Terminal Effect Example.";
-        let i = 0;
-        function type() {
-          if (i < text.length) {
-            document.getElementById('typewriter').textContent += text.charAt(i);
-            i++;
-            setTimeout(type, 80);
-          }
+    <!-- GSAP for text animation, Three.js for 3D text -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+      .typewriter {
+        font-family: monospace;
+        font-size: 1.5rem;
+        border-right: 2px solid var(--primary);
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .masked-text {
+        font-size: 2rem;
+        background: linear-gradient(90deg, #a16207, #b76e79, #fcd34d);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .kinetic {
+        display: inline-block;
+        font-size: 2rem;
+      }
+      .glitch {
+        color: #fff;
+        position: relative;
+        font-size: 2rem;
+      }
+      .glitch::before,
+      .glitch::after {
+        content: attr(data-text);
+        position: absolute;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+      }
+      .glitch::before {
+        left: 2px;
+        text-shadow: -2px 0 red;
+        animation: glitch1 1s infinite linear alternate-reverse;
+      }
+      .glitch::after {
+        left: -2px;
+        text-shadow: 2px 0 blue;
+        animation: glitch2 1s infinite linear alternate-reverse;
+      }
+      @keyframes glitch1 {
+        0% {
+          clip-path: inset(0 0 80% 0);
         }
-        type();
-      </script>
-    </section>
+        100% {
+          clip-path: inset(80% 0 0 0);
+        }
+      }
+      @keyframes glitch2 {
+        0% {
+          clip-path: inset(80% 0 0 0);
+        }
+        100% {
+          clip-path: inset(0 0 80% 0);
+        }
+      }
+      .liquid-text {
+        font-size: 2.5rem;
+        filter: url(#gooey);
+        color: var(--primary);
+      }
+      .gradient-fill {
+        font-size: 2rem;
+        background: linear-gradient(90deg, #a16207, #b76e79, #fcd34d);
+        background-size: 200% 200%;
+        animation: gradientMove 4s infinite alternate;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      @keyframes gradientMove {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 100% 50%;
+        }
+      }
+      .extrude {
+        font-size: 2rem;
+        color: var(--primary-dark);
+        text-shadow:
+          2px 2px 0 #b76e79,
+          4px 4px 0 #fcd34d;
+      }
+      .hover-reveal span {
+        opacity: 0.2;
+        transition: opacity 0.3s;
+      }
+      .hover-reveal:hover span {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="background-effects.html">Background & Scene</a>
+        <a href="scroll-navigation.html">Scrolling & Navigation</a>
+        <a href="interactions.html">Interactions</a>
+        <a href="text-animations.html" class="active">Text Animations</a>
+        <a href="media.html">Imagery & Media</a>
+        <a href="layout.html">Layout & Structure</a>
+        <a href="ui-themes.html">UI Styles & Themes</a>
+        <a href="dataviz.html">Data Visualization</a>
+        <a href="loaders.html">Loaders</a>
+      </nav>
+    </header>
+    <main>
+      <h1>Typography & Text Animation</h1>
+      <p>
+        Each section below is an example.
+        <strong
+          >To use an effect, copy the section to your own page or uncomment as
+          needed.</strong
+        >
+      </p>
 
-    <!-- 2. Text Masked by Video/Gradient -->
-    <section>
-      <!-- INSTRUCTIONS: Text masked by animated gradient. -->
-      <div class="masked-text">Masked Gradient Text</div>
-    </section>
+      <!-- 1. Typewriter/Terminal Effect -->
+      <section>
+        <!-- INSTRUCTIONS: JS-driven typing with blinking cursor. -->
+        <div class="typewriter" id="typewriter"></div>
+        <script>
+          const text = "Typewriter/Terminal Effect Example.";
+          let i = 0;
+          function type() {
+            if (i < text.length) {
+              document.getElementById("typewriter").textContent +=
+                text.charAt(i);
+              i++;
+              setTimeout(type, 80);
+            }
+          }
+          type();
+        </script>
+      </section>
 
-    <!-- 3. Kinetic Letter Animations -->
-    <section>
-      <!-- INSTRUCTIONS: Letters animate in a wave. -->
-      <div class="kinetic" id="kinetic">Kinetic Animation</div>
-      <script>
-        const kinetic = document.getElementById('kinetic');
-        kinetic.innerHTML = kinetic.textContent.split('').map((l,i)=>`<span style='display:inline-block;animation:wave 1s ${i*0.05}s infinite alternate;'>${l}</span>`).join('');
-      </script>
-      <style>@keyframes wave{to{transform:translateY(-10px);}}</style>
-    </section>
+      <!-- 2. Text Masked by Video/Gradient -->
+      <section>
+        <!-- INSTRUCTIONS: Text masked by animated gradient. -->
+        <div class="masked-text">Masked Gradient Text</div>
+      </section>
 
-    <!-- 4. Scroll-Linked Text Paths -->
-    <section>
-      <!-- INSTRUCTIONS: Text follows an SVG path as you scroll. -->
-      <svg width="100%" height="80">
-        <path id="curve" d="M20,60 Q200,10 400,60 T780,60" fill="transparent"/>
-        <text width="100%">
-          <textPath xlink:href="#curve">Scroll-Linked Text Path Example</textPath>
-        </text>
-      </svg>
-    </section>
+      <!-- 3. Kinetic Letter Animations -->
+      <section>
+        <!-- INSTRUCTIONS: Letters animate in a wave. -->
+        <div class="kinetic" id="kinetic">Kinetic Animation</div>
+        <script>
+          const kinetic = document.getElementById("kinetic");
+          kinetic.innerHTML = kinetic.textContent
+            .split("")
+            .map(
+              (l, i) =>
+                `<span style='display:inline-block;animation:wave 1s ${i * 0.05}s infinite alternate;'>${l}</span>`
+            )
+            .join("");
+        </script>
+        <style>
+          @keyframes wave {
+            to {
+              transform: translateY(-10px);
+            }
+          }
+        </style>
+      </section>
 
-    <!-- 5. Split-Text FX -->
-    <section>
-      <!-- INSTRUCTIONS: Layered text vibrating independently. -->
-      <div style="position:relative;">
-        <span style="position:absolute; left:2px; color:#b76e79; animation:split1 0.2s infinite alternate;">Split</span>
-        <span style="position:absolute; left:-2px; color:#fcd34d; animation:split2 0.2s infinite alternate;">Split</span>
-        <span style="position:relative;">Split</span>
-      </div>
-      <style>@keyframes split1{to{top:2px;}}@keyframes split2{to{top:-2px;}}</style>
-    </section>
+      <!-- 4. Scroll-Linked Text Paths -->
+      <section>
+        <!-- INSTRUCTIONS: Text follows an SVG path as you scroll. -->
+        <svg width="100%" height="80">
+          <path
+            id="curve"
+            d="M20,60 Q200,10 400,60 T780,60"
+            fill="transparent"
+          />
+          <text width="100%">
+            <textPath xlink:href="#curve">
+              Scroll-Linked Text Path Example
+            </textPath>
+          </text>
+        </svg>
+      </section>
 
-    <!-- 6. Glitch/Text Distortion -->
-    <section>
-      <!-- INSTRUCTIONS: Glitch effect using CSS. -->
-      <div class="glitch" data-text="Glitch!">Glitch!</div>
-    </section>
+      <!-- 5. Split-Text FX -->
+      <section>
+        <!-- INSTRUCTIONS: Layered text vibrating independently. -->
+        <div style="position: relative">
+          <span
+            style="
+              position: absolute;
+              left: 2px;
+              color: #b76e79;
+              animation: split1 0.2s infinite alternate;
+            "
+            >Split</span
+          >
+          <span
+            style="
+              position: absolute;
+              left: -2px;
+              color: #fcd34d;
+              animation: split2 0.2s infinite alternate;
+            "
+            >Split</span
+          >
+          <span style="position: relative">Split</span>
+        </div>
+        <style>
+          @keyframes split1 {
+            to {
+              top: 2px;
+            }
+          }
+          @keyframes split2 {
+            to {
+              top: -2px;
+            }
+          }
+        </style>
+      </section>
 
-    <!-- 7. Liquid Text Effects -->
-    <section>
-      <!-- INSTRUCTIONS: Gooey SVG blobs forming letters. -->
-      <svg width="300" height="80">
-        <defs>
-          <filter id="gooey"><feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"/><feBlend in="SourceGraphic" in2="goo"/></filter>
-        </defs>
-        <text x="10" y="60" font-size="60" fill="#a16207" filter="url(#gooey)">Liquid</text>
-      </svg>
-    </section>
+      <!-- 6. Glitch/Text Distortion -->
+      <section>
+        <!-- INSTRUCTIONS: Glitch effect using CSS. -->
+        <div class="glitch" data-text="Glitch!">Glitch!</div>
+      </section>
 
-    <!-- 8. Animated Gradient Fill -->
-    <section>
-      <!-- INSTRUCTIONS: Multi-color gradients moving through text. -->
-      <div class="gradient-fill">Animated Gradient Fill</div>
-    </section>
+      <!-- 7. Liquid Text Effects -->
+      <section>
+        <!-- INSTRUCTIONS: Gooey SVG blobs forming letters. -->
+        <svg width="300" height="80">
+          <defs>
+            <filter id="gooey">
+              <feGaussianBlur
+                in="SourceGraphic"
+                stdDeviation="6"
+                result="blur"
+              />
+              <feColorMatrix
+                in="blur"
+                mode="matrix"
+                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+                result="goo"
+              />
+              <feBlend in="SourceGraphic" in2="goo" />
+            </filter>
+          </defs>
+          <text
+            x="10"
+            y="60"
+            font-size="60"
+            fill="#a16207"
+            filter="url(#gooey)"
+          >
+            Liquid
+          </text>
+        </svg>
+      </section>
 
-    <!-- 9. 3D Text Extrusion -->
-    <section>
-      <!-- INSTRUCTIONS: 3D text using CSS text-shadow. -->
-      <div class="extrude">3D Text Extrusion</div>
-    </section>
+      <!-- 8. Animated Gradient Fill -->
+      <section>
+        <!-- INSTRUCTIONS: Multi-color gradients moving through text. -->
+        <div class="gradient-fill">Animated Gradient Fill</div>
+      </section>
 
-    <!-- 10. Hover-to-Reveal Words -->
-    <section>
-      <!-- INSTRUCTIONS: Hover to reveal each letter. -->
-      <div class="hover-reveal">{
-        <span>H</span><span>o</span><span>v</span><span>e</span><span>r</span> <span>t</span><span>o</span> <span>r</span><span>e</span><span>v</span><span>e</span><span>a</span><span>l</span>
-      }</div>
-    </section>
-  </main>
-</body>
-</html> 
+      <!-- 9. 3D Text Extrusion -->
+      <section>
+        <!-- INSTRUCTIONS: 3D text using CSS text-shadow. -->
+        <div class="extrude">3D Text Extrusion</div>
+      </section>
+
+      <!-- 10. Hover-to-Reveal Words -->
+      <section>
+        <!-- INSTRUCTIONS: Hover to reveal each letter. -->
+        <div class="hover-reveal">
+          { <span>H</span><span>o</span><span>v</span><span>e</span
+          ><span>r</span> <span>t</span><span>o</span> <span>r</span
+          ><span>e</span><span>v</span><span>e</span><span>a</span
+          ><span>l</span> }
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

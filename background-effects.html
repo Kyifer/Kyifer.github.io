@@ -1,115 +1,359 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="dark">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chapter 1: Background & Scene Effects</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet" />
-  <style>
-    body { font-family: "Inter", sans-serif; background-color: #0f172a; color: #cbd5e1; background-image: radial-gradient(at top, hsla(215, 41%, 25%, 0.3), transparent 50%); overflow: hidden; }
-    .page-container { display: flex; }
-    .side-nav { position: fixed; top: 0; left: 0; height: 100vh; width: 260px; background-color: rgba(15, 23, 42, 0.6); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-right: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem 1rem; z-index: 1000; overflow-y: auto; }
-    .main-content { flex-grow: 1; margin-left: 260px; padding: 4rem; height: 100vh; overflow-y: auto; }
-    @media (max-width: 1024px) { .side-nav { transform: translateX(-100%); } .main-content { margin-left: 0; } }
-    .nav-link { display: flex; align-items: center; padding: 0.75rem 1rem; border-radius: 0.5rem; margin-bottom: 0.5rem; font-weight: 500; color: #94a3b8; transition: background-color 0.2s, color 0.2s; cursor: pointer; text-decoration: none; }
-    .nav-link:hover { background-color: rgba(79, 70, 229, 0.1); color: #e2e8f0; }
-    .nav-link.active, .nav-link[href="background-effects.html"] { background-color: rgba(79, 70, 229, 0.8); color: #ffffff; font-weight: 600; }
-    .chapter-heading { font-size: 2.5rem; font-weight: 700; padding-bottom: 1rem; border-bottom: 2px solid; border-image: linear-gradient(to right, #4f46e5, #a855f7) 1; margin-bottom: 2rem; }
-    section.effect-demo { margin-bottom: 3rem; background: rgba(30,41,59,0.7); border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 32px rgba(79,70,229,0.08); border: 1px solid rgba(255,255,255,0.08); }
-    section.effect-demo h3 { font-size: 1.5rem; color: #a5b4fc; margin-bottom: 0.5rem; }
-    section.effect-demo p { color: #cbd5e1; margin-bottom: 1rem; }
-    .fullscreen-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; object-fit: cover; }
-    .parallax { position: relative; overflow: hidden; height: 400px; }
-    .parallax-layer { position: absolute; width: 100%; height: 100%; will-change: transform; }
-    .gradient-bg { background: linear-gradient(120deg, #a16207, #b76e79, #fcd34d); background-size: 200% 200%; animation: gradientMove 8s ease-in-out infinite; }
-    @keyframes gradientMove { 0% {background-position: 0% 50%;} 50% {background-position: 100% 50%;} 100% {background-position: 0% 50%;} }
-    .cinemagraph { position: relative; overflow: hidden; height: 300px; }
-    .cinemagraph img, .cinemagraph video { position: absolute; width: 100%; height: 100%; object-fit: cover; }
-    .cinemagraph img { z-index: 1; }
-    .cinemagraph video { z-index: 2; opacity: 0.4; pointer-events: none; }
-    .svg-filter-bg { width: 100%; height: 200px; display: block; }
-    .ambient-light { position: relative; overflow: hidden; }
-    .spotlight { position: absolute; pointer-events: none; border-radius: 50%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, transparent 80%); mix-blend-mode: lighten; z-index: 10; transition: left 0.1s, top 0.1s; }
-  </style>
-</head>
-<body>
-  <div class="page-container">
-    <nav class="side-nav">
-      <h1 class="text-2xl font-bold mb-8 px-4 text-white">Effects Library</h1>
-      <a class="nav-link" href="background-effects.html">1. Backgrounds</a>
-      <a class="nav-link" href="scroll-navigation.html">2. Scrolling</a>
-      <a class="nav-link" href="interactions.html">3. Interaction</a>
-      <a class="nav-link" href="text-animations.html">4. Typography</a>
-      <a class="nav-link" href="media.html">5. Imagery</a>
-      <a class="nav-link" href="layout.html">6. Layout</a>
-      <a class="nav-link" href="ui-themes.html">7. UI Styles</a>
-      <a class="nav-link" href="dataviz.html">8. Data Viz</a>
-      <a class="nav-link" href="loaders.html">9. Loaders</a>
-    </nav>
-    <main class="main-content">
-      <h2 class="chapter-heading">Chapter 1: Background & Scene Effects</h2>
-      <!-- 1. Full-Screen Video Loop -->
-      <section class="effect-demo">
-        <h3>Full-Screen Video Loop</h3>
-        <p>This is a looping, muted video background. You can use any .mp4 or .webm file.</p>
-        <video class="fullscreen-bg" src="https://www.w3schools.com/howto/rain.mp4" autoplay loop muted playsinline></video>
-      </section>
-      <!-- 2. Parallax Layers -->
-      <section class="effect-demo parallax" id="parallax-demo">
-        <h3>Parallax Layers</h3>
-        <p>Foreground and background move at different speeds as you scroll or move your mouse.</p>
-        <div class="parallax-layer" style="background:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80') center/cover; z-index:1;" data-depth="0.2"></div>
-        <div class="parallax-layer" style="background:url('https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80') center/cover; z-index:2;" data-depth="0.5"></div>
-        <div style="position:relative; z-index:3; padding:2rem; color:#fff;">Scroll or move your mouse to see the effect.</div>
-      </section>
-      <!-- 3. Dynamic Gradient Skies -->
-      <section class="effect-demo gradient-bg" style="height:200px; display:flex; align-items:center; justify-content:center;">
-        <h3>Dynamic Gradient Sky</h3>
-        <p>Color-shifting background using animated gradients.</p>
-      </section>
-      <!-- 4. Cinemagraph Overlay -->
-      <section class="effect-demo cinemagraph">
-        <h3>Cinemagraph Overlay</h3>
-        <p>Still photo with subtle looping video motion overlay.</p>
-        <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=800&q=80" alt="Still" />
-        <video src="https://www.w3schools.com/howto/rain.mp4" autoplay loop muted playsinline></video>
-      </section>
-      <!-- 5. Particle Background -->
-      <section class="effect-demo" style="position:relative; height:200px;">
-        <h3>Particle Background</h3>
-        <p>Animated particles using tsParticles. You can change the style in the script below.</p>
-        <div id="tsparticles" style="position:absolute; width:100%; height:100%; z-index:0;"></div>
-        <script>tsParticles.load("tsparticles", {particles: { number: { value: 40 }, color: { value: "#a16207" }, shape: { type: "circle" }, opacity: { value: 0.5 }, size: { value: 4 }, move: { enable: true, speed: 1 } }, interactivity: { events: { onhover: { enable: true, mode: "repulse" } } }});</script>
-      </section>
-      <!-- 6. SVG Filter Backdrop -->
-      <section class="effect-demo">
-        <h3>SVG Filter Backdrop</h3>
-        <p>SVG turbulence and displacement for organic backgrounds.</p>
-        <svg class="svg-filter-bg">
-          <filter id="turbulence" x="0" y="0" width="100%" height="100%">
-            <feTurbulence id="turb" baseFrequency="0.02 0.03" numOctaves="2" seed="2"/>
-            <feDisplacementMap in2="turb" in="SourceGraphic" scale="20" xChannelSelector="R" yChannelSelector="G"/>
-          </filter>
-          <rect width="100%" height="100%" fill="#b76e79" filter="url(#turbulence)"/>
-        </svg>
-      </section>
-      <!-- 7. Ambient Light Effect -->
-      <section class="effect-demo ambient-light" style="height:200px; background:#222; color:#fff;">
-        <h3>Ambient Light Effect</h3>
-        <p>Mouse-driven spotlight follows your cursor.</p>
-        <div class="spotlight" id="spotlight"></div>
-        <script>
-          const spotlight = document.getElementById('spotlight');
-          document.querySelector('.ambient-light').addEventListener('mousemove', e => {
-            const rect = e.currentTarget.getBoundingClientRect();
-            spotlight.style.left = (e.clientX - rect.left - 100) + 'px';
-            spotlight.style.top = (e.clientY - rect.top - 100) + 'px';
-          });
-        </script>
-      </section>
-    </main>
-  </div>
-</body>
-</html> 
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chapter 1: Background & Scene Effects</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Roboto+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #0f172a;
+        color: #cbd5e1;
+        background-image: radial-gradient(
+          at top,
+          hsla(215, 41%, 25%, 0.3),
+          transparent 50%
+        );
+        overflow: hidden;
+      }
+      .page-container {
+        display: flex;
+      }
+      .side-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 260px;
+        background-color: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 2rem 1rem;
+        z-index: 1000;
+        overflow-y: auto;
+      }
+      .main-content {
+        flex-grow: 1;
+        margin-left: 260px;
+        padding: 4rem;
+        height: 100vh;
+        overflow-y: auto;
+      }
+      @media (max-width: 1024px) {
+        .side-nav {
+          transform: translateX(-100%);
+        }
+        .main-content {
+          margin-left: 0;
+        }
+      }
+      .nav-link {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: #94a3b8;
+        transition:
+          background-color 0.2s,
+          color 0.2s;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .nav-link:hover {
+        background-color: rgba(79, 70, 229, 0.1);
+        color: #e2e8f0;
+      }
+      .nav-link.active,
+      .nav-link[href="background-effects.html"] {
+        background-color: rgba(79, 70, 229, 0.8);
+        color: #ffffff;
+        font-weight: 600;
+      }
+      .chapter-heading {
+        font-size: 2.5rem;
+        font-weight: 700;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid;
+        border-image: linear-gradient(to right, #4f46e5, #a855f7) 1;
+        margin-bottom: 2rem;
+      }
+      section.effect-demo {
+        margin-bottom: 3rem;
+        background: rgba(30, 41, 59, 0.7);
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 0 4px 32px rgba(79, 70, 229, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      section.effect-demo h3 {
+        font-size: 1.5rem;
+        color: #a5b4fc;
+        margin-bottom: 0.5rem;
+      }
+      section.effect-demo p {
+        color: #cbd5e1;
+        margin-bottom: 1rem;
+      }
+      .fullscreen-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -2;
+        object-fit: cover;
+      }
+      .parallax {
+        position: relative;
+        overflow: hidden;
+        height: 400px;
+      }
+      .parallax-layer {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        will-change: transform;
+      }
+      .gradient-bg {
+        background: linear-gradient(120deg, #a16207, #b76e79, #fcd34d);
+        background-size: 200% 200%;
+        animation: gradientMove 8s ease-in-out infinite;
+      }
+      @keyframes gradientMove {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      .cinemagraph {
+        position: relative;
+        overflow: hidden;
+        height: 300px;
+      }
+      .cinemagraph img,
+      .cinemagraph video {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .cinemagraph img {
+        z-index: 1;
+      }
+      .cinemagraph video {
+        z-index: 2;
+        opacity: 0.4;
+        pointer-events: none;
+      }
+      .svg-filter-bg {
+        width: 100%;
+        height: 200px;
+        display: block;
+      }
+      .ambient-light {
+        position: relative;
+        overflow: hidden;
+      }
+      .spotlight {
+        position: absolute;
+        pointer-events: none;
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.5) 0%,
+          transparent 80%
+        );
+        mix-blend-mode: lighten;
+        z-index: 10;
+        transition:
+          left 0.1s,
+          top 0.1s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-container">
+      <nav class="side-nav">
+        <h1 class="text-2xl font-bold mb-8 px-4 text-white">Effects Library</h1>
+        <a class="nav-link" href="background-effects.html">1. Backgrounds</a>
+        <a class="nav-link" href="scroll-navigation.html">2. Scrolling</a>
+        <a class="nav-link" href="interactions.html">3. Interaction</a>
+        <a class="nav-link" href="text-animations.html">4. Typography</a>
+        <a class="nav-link" href="media.html">5. Imagery</a>
+        <a class="nav-link" href="layout.html">6. Layout</a>
+        <a class="nav-link" href="ui-themes.html">7. UI Styles</a>
+        <a class="nav-link" href="dataviz.html">8. Data Viz</a>
+        <a class="nav-link" href="loaders.html">9. Loaders</a>
+      </nav>
+      <main class="main-content">
+        <h2 class="chapter-heading">Chapter 1: Background & Scene Effects</h2>
+        <!-- 1. Full-Screen Video Loop -->
+        <section class="effect-demo">
+          <h3>Full-Screen Video Loop</h3>
+          <p>
+            This is a looping, muted video background. You can use any .mp4 or
+            .webm file.
+          </p>
+          <video
+            class="fullscreen-bg"
+            src="https://www.w3schools.com/howto/rain.mp4"
+            autoplay
+            loop
+            muted
+            playsinline
+          ></video>
+        </section>
+        <!-- 2. Parallax Layers -->
+        <section class="effect-demo parallax" id="parallax-demo">
+          <h3>Parallax Layers</h3>
+          <p>
+            Foreground and background move at different speeds as you scroll or
+            move your mouse.
+          </p>
+          <div
+            class="parallax-layer"
+            style="
+              background: url(&quot;https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80&quot;)
+                center/cover;
+              z-index: 1;
+            "
+            data-depth="0.2"
+          ></div>
+          <div
+            class="parallax-layer"
+            style="
+              background: url(&quot;https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80&quot;)
+                center/cover;
+              z-index: 2;
+            "
+            data-depth="0.5"
+          ></div>
+          <div
+            style="position: relative; z-index: 3; padding: 2rem; color: #fff"
+          >
+            Scroll or move your mouse to see the effect.
+          </div>
+        </section>
+        <!-- 3. Dynamic Gradient Skies -->
+        <section
+          class="effect-demo gradient-bg"
+          style="
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <h3>Dynamic Gradient Sky</h3>
+          <p>Color-shifting background using animated gradients.</p>
+        </section>
+        <!-- 4. Cinemagraph Overlay -->
+        <section class="effect-demo cinemagraph">
+          <h3>Cinemagraph Overlay</h3>
+          <p>Still photo with subtle looping video motion overlay.</p>
+          <img
+            src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=800&q=80"
+            alt="Still"
+          />
+          <video
+            src="https://www.w3schools.com/howto/rain.mp4"
+            autoplay
+            loop
+            muted
+            playsinline
+          ></video>
+        </section>
+        <!-- 5. Particle Background -->
+        <section class="effect-demo" style="position: relative; height: 200px">
+          <h3>Particle Background</h3>
+          <p>
+            Animated particles using tsParticles. You can change the style in
+            the script below.
+          </p>
+          <div
+            id="tsparticles"
+            style="position: absolute; width: 100%; height: 100%; z-index: 0"
+          ></div>
+          <script>
+            tsParticles.load("tsparticles", {
+              particles: {
+                number: { value: 40 },
+                color: { value: "#a16207" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5 },
+                size: { value: 4 },
+                move: { enable: true, speed: 1 },
+              },
+              interactivity: {
+                events: { onhover: { enable: true, mode: "repulse" } },
+              },
+            });
+          </script>
+        </section>
+        <!-- 6. SVG Filter Backdrop -->
+        <section class="effect-demo">
+          <h3>SVG Filter Backdrop</h3>
+          <p>SVG turbulence and displacement for organic backgrounds.</p>
+          <svg class="svg-filter-bg">
+            <filter id="turbulence" x="0" y="0" width="100%" height="100%">
+              <feTurbulence
+                id="turb"
+                baseFrequency="0.02 0.03"
+                numOctaves="2"
+                seed="2"
+              />
+              <feDisplacementMap
+                in2="turb"
+                in="SourceGraphic"
+                scale="20"
+                xChannelSelector="R"
+                yChannelSelector="G"
+              />
+            </filter>
+            <rect
+              width="100%"
+              height="100%"
+              fill="#b76e79"
+              filter="url(#turbulence)"
+            />
+          </svg>
+        </section>
+        <!-- 7. Ambient Light Effect -->
+        <section
+          class="effect-demo ambient-light"
+          style="height: 200px; background: #222; color: #fff"
+        >
+          <h3>Ambient Light Effect</h3>
+          <p>Mouse-driven spotlight follows your cursor.</p>
+          <div class="spotlight" id="spotlight"></div>
+          <script>
+            const spotlight = document.getElementById("spotlight");
+            document
+              .querySelector(".ambient-light")
+              .addEventListener("mousemove", (e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                spotlight.style.left = e.clientX - rect.left - 100 + "px";
+                spotlight.style.top = e.clientY - rect.top - 100 + "px";
+              });
+          </script>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
