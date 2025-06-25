@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <<<<<<< HEAD
     <title>Community Leader Handbook</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
@@ -10,798 +11,887 @@
       rel="stylesheet"
     />
     <style>
-      /* Define a warm color palette with Tailwind defaults */
-      :root {
-        --color-primary-dark: #7c2d12; /* Deep Rust/Terracotta - similar to orange-900 */
-        --color-primary: #a16207; /* Muted Gold/Orange - similar to amber-700 */
-        --color-primary-light: #fcd34d; /* Muted Yellow/Gold - similar to amber-300 */
-        --color-background: #fffbeb; /* Very light cream/amber-50 */
-        --color-text-dark: #374151; /* Dark Gray - similar to gray-700 */
-        --color-text-light: #4b5563; /* Medium Gray - similar to gray-600 */
-        --color-link: #a16207; /* Matches primary */
-        --color-link-hover: #7c2d12; /* Matches primary dark */
+            /* Define a warm color palette with Tailwind defaults */
+            :root {
+              --color-primary-dark: #7c2d12; /* Deep Rust/Terracotta - similar to orange-900 */
+              --color-primary: #a16207; /* Muted Gold/Orange - similar to amber-700 */
+              --color-primary-light: #fcd34d; /* Muted Yellow/Gold - similar to amber-300 */
+              --color-background: #fffbeb; /* Very light cream/amber-50 */
+              --color-text-dark: #374151; /* Dark Gray - similar to gray-700 */
+              --color-text-light: #4b5563; /* Medium Gray - similar to gray-600 */
+              --color-link: #a16207; /* Matches primary */
+              --color-link-hover: #7c2d12; /* Matches primary dark */
 
-        /* New Charcoal & Rose Gold Palette for Navigation */
-        --color-charcoal: #36454f; /* Dark charcoal grey */
-        --color-dark-charcoal: #2c3539; /* Even darker charcoal */
-        --color-light-charcoal: #4a555b; /* Lighter charcoal for hover */
-        --color-rose-gold: #b76e79; /* Rose Gold for accents */
-        --color-rose-gold-light: #daa06d; /* Lighter Rose Gold for some text */
-      }
+              /* New Charcoal & Rose Gold Palette for Navigation */
+              --color-charcoal: #36454f; /* Dark charcoal grey */
+              --color-dark-charcoal: #2c3539; /* Even darker charcoal */
+              --color-light-charcoal: #4a555b; /* Lighter charcoal for hover */
+              --color-rose-gold: #b76e79; /* Rose Gold for accents */
+              --color-rose-gold-light: #daa06d; /* Lighter Rose Gold for some text */
+            }
 
-      body {
-        font-family: "Inter", sans-serif;
-        background-color: var(--color-background);
-        color: var(--color-text-dark);
-      }
-      .sidebar {
-        background-color: var(--color-charcoal); /* Charcoal Grey for sidebar */
-        color: #ffffff; /* Keep main text white for contrast */
-        height: 100vh;
-        position: sticky;
-        top: 0;
-        overflow-y: auto;
-      }
-      .sidebar h1 {
-        background-color: var(
-          --color-dark-charcoal
-        ); /* Darker charcoal for title background */
-        color: var(--color-rose-gold); /* Rose Gold for Handbook title */
-      }
-      .nav-link {
-        padding: 0.75rem 1rem;
-        cursor: pointer;
-        transition: background-color 0.2s ease, color 0.2s ease;
-        border-radius: 0.5rem;
-        margin-bottom: 0.5rem;
-        display: block;
-        color: var(
-          --color-rose-gold-light
-        ); /* Lighter Rose Gold for nav links */
-      }
-      .nav-link:hover {
-        background-color: var(
-          --color-light-charcoal
-        ); /* Lighter charcoal on hover */
-        color: var(--color-rose-gold); /* Deeper Rose Gold on hover */
-      }
-      .nav-link.active {
-        background-color: var(
-          --color-dark-charcoal
-        ); /* Darker charcoal when active */
-        color: var(--color-rose-gold); /* Deeper Rose Gold for active link */
-        font-weight: 600;
-      }
-      .content-section {
-        display: none;
-        animation: fadeIn 0.5s ease-out;
-      }
-      .content-section.active {
-        display: block;
-      }
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
+            body {
+              font-family: "Inter", sans-serif;
+              background-color: var(--color-background);
+              color: var(--color-text-dark);
+            }
+            .sidebar {
+              background-color: var(--color-charcoal); /* Charcoal Grey for sidebar */
+              color: #ffffff; /* Keep main text white for contrast */
+              height: 100vh;
+              position: sticky;
+              top: 0;
+              overflow-y: auto;
+            }
+            .sidebar h1 {
+              background-color: var(
+                --color-dark-charcoal
+              ); /* Darker charcoal for title background */
+              color: var(--color-rose-gold); /* Rose Gold for Handbook title */
+            }
+            .nav-link {
+              padding: 0.75rem 1rem;
+              cursor: pointer;
+              transition: background-color 0.2s ease, color 0.2s ease;
+              border-radius: 0.5rem;
+              margin-bottom: 0.5rem;
+              display: block;
+              color: var(
+                --color-rose-gold-light
+              ); /* Lighter Rose Gold for nav links */
+            }
+            .nav-link:hover {
+              background-color: var(
+                --color-light-charcoal
+              ); /* Lighter charcoal on hover */
+              color: var(--color-rose-gold); /* Deeper Rose Gold on hover */
+            }
+            .nav-link.active {
+              background-color: var(
+                --color-dark-charcoal
+              ); /* Darker charcoal when active */
+              color: var(--color-rose-gold); /* Deeper Rose Gold for active link */
+              font-weight: 600;
+            }
+            .content-section {
+              display: none;
+              animation: fadeIn 0.5s ease-out;
+            }
+            .content-section.active {
+              display: block;
+            }
+            @keyframes fadeIn {
+              from {
+                opacity: 0;
+                transform: translateY(10px);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
 
-      /* Custom scrollbar for better aesthetics with new palette */
-      .sidebar::-webkit-scrollbar {
-        width: 8px;
-      }
-      .sidebar::-webkit-scrollbar-track {
-        background: #505b62; /* Slightly lighter charcoal for track */
-        border-radius: 10px;
-      }
-      .sidebar::-webkit-scrollbar-thumb {
-        background: var(--color-rose-gold); /* Rose Gold for thumb */
-        border-radius: 10px;
-      }
-      .sidebar::-webkit-scrollbar-thumb:hover {
-        background: #a05c67; /* Darker rose gold on hover */
-      }
+            /* Custom scrollbar for better aesthetics with new palette */
+            .sidebar::-webkit-scrollbar {
+              width: 8px;
+            }
+            .sidebar::-webkit-scrollbar-track {
+              background: #505b62; /* Slightly lighter charcoal for track */
+              border-radius: 10px;
+            }
+            .sidebar::-webkit-scrollbar-thumb {
+              background: var(--color-rose-gold); /* Rose Gold for thumb */
+              border-radius: 10px;
+            }
+            .sidebar::-webkit-scrollbar-thumb:hover {
+              background: #a05c67; /* Darker rose gold on hover */
+            }
 
-      /* Adjust content specific colors (keeping existing warm palette for content) */
-      .main-content h2 {
-        border-color: var(
-          --color-primary-light
-        ); /* Lighter accent for border */
-        color: var(--color-text-dark); /* Keep headings dark for readability */
-      }
-      .main-content h3 {
-        color: var(--color-primary); /* Use primary for subheadings */
-      }
-      .main-content a {
-        color: var(--color-link);
-      }
-      .main-content a:hover {
-        color: var(--color-link-hover);
-      }
-      .prose p,
-      .prose ul,
-      .prose ol {
-        color: var(--color-text-light); /* Slightly lighter for body text */
-      }
+            /* Adjust content specific colors (keeping existing warm palette for content) */
+            .main-content h2 {
+              border-color: var(
+                --color-primary-light
+              ); /* Lighter accent for border */
+              color: var(--color-text-dark); /* Keep headings dark for readability */
+            }
+            .main-content h3 {
+              color: var(--color-primary); /* Use primary for subheadings */
+            }
+            .main-content a {
+              color: var(--color-link);
+            }
+            .main-content a:hover {
+              color: var(--color-link-hover);
+            }
+            .prose p,
+            .prose ul,
+            .prose ol {
+              color: var(--color-text-light); /* Slightly lighter for body text */
+            }
 
-      /* Callout box styling */
-      .callout-box {
-        background-color: #fff8e1; /* Light yellow/cream */
-        border-left: 5px solid #f97316; /* Orange-500 */
-        padding: 1rem;
-        margin: 1.5rem 0;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-      }
-      .callout-box h4 {
-        color: #ea580c; /* Orange-600 */
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-      }
-      /* Custom styles for Eisenhower Matrix */
-      .eisenhower-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        margin-top: 1.5rem;
-      }
-      .eisenhower-cell {
-        border: 1px solid #e2e8f0; /* Light gray border */
-        border-radius: 0.5rem;
-        padding: 1rem;
-        text-align: center;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-      }
-      .eisenhower-cell h4 {
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        font-size: 1.125rem; /* text-lg */
-      }
-      .eisenhower-cell.do-it-now {
-        background-color: #fef2f2; /* red-50 */
-        border-color: #ef4444; /* red-500 */
-      }
-      .eisenhower-cell.do-it-now h4 {
-        color: #dc2626; /* red-600 */
-      }
-      .eisenhower-cell.schedule-it {
-        background-color: #eff6ff; /* blue-50 */
-        border-color: #3b82f6; /* blue-500 */
-      }
-      .eisenhower-cell.schedule-it h4 {
-        color: #2563eb; /* blue-600 */
-      }
-      .eisenhower-cell.delegate-it {
-        background-color: #ecfdf5; /* green-50 */
-        border-color: #22c55e; /* green-500 */
-      }
-      .eisenhower-cell.delegate-it h4 {
-        color: #16a34a; /* green-600 */
-      }
-      .eisenhower-cell.eliminate-it {
-        background-color: #f5f5f4; /* neutral-100 */
-        border-color: #a8a29e; /* neutral-400 */
-      }
-      .eisenhower-cell.eliminate-it h4 {
-        color: #78716c; /* neutral-600 */
-      }
+            /* Callout box styling */
+            .callout-box {
+              background-color: #fff8e1; /* Light yellow/cream */
+              border-left: 5px solid #f97316; /* Orange-500 */
+              padding: 1rem;
+              margin: 1.5rem 0;
+              border-radius: 0.5rem;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            }
+            .callout-box h4 {
+              color: #ea580c; /* Orange-600 */
+              font-weight: 600;
+              margin-bottom: 0.5rem;
+            }
+            /* Custom styles for Eisenhower Matrix */
+            .eisenhower-grid {
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 1rem;
+              margin-top: 1.5rem;
+            }
+            .eisenhower-cell {
+              border: 1px solid #e2e8f0; /* Light gray border */
+              border-radius: 0.5rem;
+              padding: 1rem;
+              text-align: center;
+              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            }
+            .eisenhower-cell h4 {
+              font-weight: 700;
+              margin-bottom: 0.5rem;
+              font-size: 1.125rem; /* text-lg */
+            }
+            .eisenhower-cell.do-it-now {
+              background-color: #fef2f2; /* red-50 */
+              border-color: #ef4444; /* red-500 */
+            }
+            .eisenhower-cell.do-it-now h4 {
+              color: #dc2626; /* red-600 */
+            }
+            .eisenhower-cell.schedule-it {
+              background-color: #eff6ff; /* blue-50 */
+              border-color: #3b82f6; /* blue-500 */
+            }
+            .eisenhower-cell.schedule-it h4 {
+              color: #2563eb; /* blue-600 */
+            }
+            .eisenhower-cell.delegate-it {
+              background-color: #ecfdf5; /* green-50 */
+              border-color: #22c55e; /* green-500 */
+            }
+            .eisenhower-cell.delegate-it h4 {
+              color: #16a34a; /* green-600 */
+            }
+            .eisenhower-cell.eliminate-it {
+              background-color: #f5f5f4; /* neutral-100 */
+              border-color: #a8a29e; /* neutral-400 */
+            }
+            .eisenhower-cell.eliminate-it h4 {
+              color: #78716c; /* neutral-600 */
+            }
 
-      /* Styles for numbered steps in amber */
-      .numbered-steps-grid {
-        display: grid;
-        grid-template-columns: 1fr; /* Single column by default */
-        gap: 1rem;
-        margin-top: 1.5rem;
-      }
-      @media (min-width: 768px) {
-        .numbered-steps-grid {
-          grid-template-columns: repeat(
-            auto-fit,
-            minmax(280px, 1fr)
-          ); /* 2 or 3 columns on larger screens */
-        }
-      }
-      .numbered-step-item {
-        background-color: #fffbeb; /* amber-50 */
-        padding: 1rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        border: 1px solid #fcd34d; /* amber-300 */
-        display: flex;
-        align-items: flex-start;
-        gap: 0.75rem;
-      }
-      .numbered-step-item .step-number {
-        flex-shrink: 0;
-        width: 2rem;
-        height: 2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: var(--color-primary); /* Muted Gold/Orange */
-        color: white;
-        border-radius: 9999px; /* full rounded */
-        font-weight: 700;
-        font-size: 1rem;
-      }
-      .numbered-step-item .step-content h5 {
-        color: var(--color-primary-dark); /* Deep Rust/Terracotta */
-        font-weight: 600;
-        margin-bottom: 0.25rem;
-      }
-      .numbered-step-item .step-content p {
-        font-size: 0.875rem; /* text-sm */
-        color: var(--color-text-light);
-      }
+            /* Styles for numbered steps in amber */
+            .numbered-steps-grid {
+              display: grid;
+              grid-template-columns: 1fr; /* Single column by default */
+              gap: 1rem;
+              margin-top: 1.5rem;
+            }
+            @media (min-width: 768px) {
+              .numbered-steps-grid {
+                grid-template-columns: repeat(
+                  auto-fit,
+                  minmax(280px, 1fr)
+                ); /* 2 or 3 columns on larger screens */
+              }
+            }
+            .numbered-step-item {
+              background-color: #fffbeb; /* amber-50 */
+              padding: 1rem;
+              border-radius: 0.5rem;
+              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+              border: 1px solid #fcd34d; /* amber-300 */
+              display: flex;
+              align-items: flex-start;
+              gap: 0.75rem;
+            }
+            .numbered-step-item .step-number {
+              flex-shrink: 0;
+              width: 2rem;
+              height: 2rem;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background-color: var(--color-primary); /* Muted Gold/Orange */
+              color: white;
+              border-radius: 9999px; /* full rounded */
+              font-weight: 700;
+              font-size: 1rem;
+            }
+            .numbered-step-item .step-content h5 {
+              color: var(--color-primary-dark); /* Deep Rust/Terracotta */
+              font-weight: 600;
+              margin-bottom: 0.25rem;
+            }
+            .numbered-step-item .step-content p {
+              font-size: 0.875rem; /* text-sm */
+              color: var(--color-text-light);
+            }
 
-      /* Styles for key strategies grid */
-      .key-strategies-grid {
-        display: grid;
-        grid-template-columns: 1fr; /* Single column by default */
-        gap: 1.5rem;
-        margin-top: 1.5rem;
-      }
+            /* Styles for key strategies grid */
+            .key-strategies-grid {
+              display: grid;
+              grid-template-columns: 1fr; /* Single column by default */
+              gap: 1.5rem;
+              margin-top: 1.5rem;
+            }
 
-      @media (min-width: 768px) {
-        .key-strategies-grid {
-          grid-template-columns: repeat(
-            auto-fit,
-            minmax(300px, 1fr)
-          ); /* 2 columns on medium screens */
-        }
-      }
+            @media (min-width: 768px) {
+              .key-strategies-grid {
+                grid-template-columns: repeat(
+                  auto-fit,
+                  minmax(300px, 1fr)
+                ); /* 2 columns on medium screens */
+              }
+            }
 
-      .strategy-item {
-        background-color: #f7fee7; /* lime-50 */
-        padding: 1.25rem;
-        border-radius: 0.75rem;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-        border: 1px solid #a3e635; /* lime-400 */
-      }
+            .strategy-item {
+              background-color: #f7fee7; /* lime-50 */
+              padding: 1.25rem;
+              border-radius: 0.75rem;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+              border: 1px solid #a3e635; /* lime-400 */
+            }
 
-      .strategy-item h5 {
-        font-weight: 600;
-        color: #4d7c0f; /* lime-800 */
-        margin-bottom: 0.5rem;
-      }
+            .strategy-item h5 {
+              font-weight: 600;
+              color: #4d7c0f; /* lime-800 */
+              margin-bottom: 0.5rem;
+            }
 
-      .strategy-item p {
-        font-size: 0.95rem;
-        color: #4b5563; /* gray-600 */
-      }
+            .strategy-item p {
+              font-size: 0.95rem;
+              color: #4b5563; /* gray-600 */
+            }
 
-      /* New styles for conflict section visuals */
-      .conflict-signs-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        margin-top: 1.5rem;
-      }
-      @media (min-width: 640px) {
-        .conflict-signs-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-      @media (min-width: 1024px) {
-        .conflict-signs-grid {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-      .conflict-sign-item {
-        background-color: #ffebee; /* red-50 */
-        border-left: 4px solid #ef4444; /* red-500 */
-        padding: 1rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-      }
-      .conflict-sign-item p {
-        font-weight: 500;
-        color: #dc2626; /* red-600 */
-      }
+            /* New styles for conflict section visuals */
+            .conflict-signs-grid {
+              display: grid;
+              grid-template-columns: 1fr;
+              gap: 1rem;
+              margin-top: 1.5rem;
+            }
+            @media (min-width: 640px) {
+              .conflict-signs-grid {
+                grid-template-columns: repeat(2, 1fr);
+              }
+            }
+            @media (min-width: 1024px) {
+              .conflict-signs-grid {
+                grid-template-columns: repeat(3, 1fr);
+              }
+            }
+            .conflict-sign-item {
+              background-color: #ffebee; /* red-50 */
+              border-left: 4px solid #ef4444; /* red-500 */
+              padding: 1rem;
+              border-radius: 0.5rem;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            }
+            .conflict-sign-item p {
+              font-weight: 500;
+              color: #dc2626; /* red-600 */
+            }
 
-      .deescalation-tips-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        margin-top: 1.5rem;
-      }
-      @media (min-width: 640px) {
-        .deescalation-tips-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-      .deescalation-tip {
-        background-color: #ecfdf5; /* green-50 */
-        border-left: 4px solid #22c55e; /* green-500 */
-        padding: 1rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-      }
-      .deescalation-tip.avoid {
-        background-color: #fef2f2; /* red-50 */
-        border-left: 4px solid #ef4444; /* red-500 */
-      }
-      .deescalation-tip .icon {
-        font-size: 1.5rem;
-        line-height: 1;
-        color: #15803d; /* green-700 */
-      }
-      .deescalation-tip.avoid .icon {
-        color: #b91c1c; /* red-700 */
-      }
-      .deescalation-tip p {
-        color: #374151; /* gray-700 */
-      }
+            .deescalation-tips-grid {
+              display: grid;
+              grid-template-columns: 1fr;
+              gap: 1rem;
+              margin-top: 1.5rem;
+            }
+            @media (min-width: 640px) {
+              .deescalation-tips-grid {
+                grid-template-columns: repeat(2, 1fr);
+              }
+            }
+            .deescalation-tip {
+              background-color: #ecfdf5; /* green-50 */
+              border-left: 4px solid #22c55e; /* green-500 */
+              padding: 1rem;
+              border-radius: 0.5rem;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+              display: flex;
+              align-items: center;
+              gap: 0.75rem;
+            }
+            .deescalation-tip.avoid {
+              background-color: #fef2f2; /* red-50 */
+              border-left: 4px solid #ef4444; /* red-500 */
+            }
+            .deescalation-tip .icon {
+              font-size: 1.5rem;
+              line-height: 1;
+              color: #15803d; /* green-700 */
+            }
+            .deescalation-tip.avoid .icon {
+              color: #b91c1c; /* red-700 */
+            }
+            .deescalation-tip p {
+              color: #374151; /* gray-700 */
+            }
 
-      .process-flow {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 2rem 0;
-      }
-      .process-step {
-        background-color: #fffbeb; /* amber-50 */
-        border: 1px solid #fcd34d; /* amber-300 */
-        padding: 0.75rem 1.25rem;
-        border-radius: 0.5rem;
-        margin-bottom: 0.75rem;
-        width: fit-content;
-        text-align: center;
-        font-weight: 500;
-        color: #7c2d12; /* primary-dark */
-        position: relative;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-      }
-      .process-arrow {
-        width: 0;
-        height: 0;
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-top: 8px solid #fcd34d; /* amber-300 */
-        margin-bottom: 0.75rem;
-      }
-      .process-flow .step-description {
-        font-size: 0.9rem;
-        color: var(--color-text-light);
-        margin-top: 0.25rem;
-        max-width: 300px; /* Constrain width for readability */
-      }
+            .process-flow {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              margin: 2rem 0;
+            }
+            .process-step {
+              background-color: #fffbeb; /* amber-50 */
+              border: 1px solid #fcd34d; /* amber-300 */
+              padding: 0.75rem 1.25rem;
+              border-radius: 0.5rem;
+              margin-bottom: 0.75rem;
+              width: fit-content;
+              text-align: center;
+              font-weight: 500;
+              color: #7c2d12; /* primary-dark */
+              position: relative;
+              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            }
+            .process-arrow {
+              width: 0;
+              height: 0;
+              border-left: 8px solid transparent;
+              border-right: 8px solid transparent;
+              border-top: 8px solid #fcd34d; /* amber-300 */
+              margin-bottom: 0.75rem;
+            }
+            .process-flow .step-description {
+              font-size: 0.9rem;
+              color: var(--color-text-light);
+              margin-top: 0.25rem;
+              max-width: 300px; /* Constrain width for readability */
+            }
 
-      /* New styles for Safety & Risk Management section */
-      .safety-checklist-item {
-        background-color: #f0fdf4; /* emerald-50 */
-        border-left: 4px solid #34d399; /* emerald-400 */
-        padding: 1rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        display: flex;
-        align-items: flex-start;
-        gap: 0.75rem;
-      }
-      .safety-checklist-item .icon {
-        color: #059669; /* emerald-600 */
-        font-size: 1.5rem;
-        line-height: 1;
-        flex-shrink: 0;
-      }
-      .safety-checklist-item p {
-        color: var(--color-text-light);
-      }
+            /* New styles for Safety & Risk Management section */
+            .safety-checklist-item {
+              background-color: #f0fdf4; /* emerald-50 */
+              border-left: 4px solid #34d399; /* emerald-400 */
+              padding: 1rem;
+              border-radius: 0.5rem;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+              display: flex;
+              align-items: flex-start;
+              gap: 0.75rem;
+            }
+            .safety-checklist-item .icon {
+              color: #059669; /* emerald-600 */
+              font-size: 1.5rem;
+              line-height: 1;
+              flex-shrink: 0;
+            }
+            .safety-checklist-item p {
+              color: var(--color-text-light);
+            }
 
-      .first-aid-kit-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
-        margin-top: 1.5rem;
-      }
-      @media (min-width: 640px) {
-        .first-aid-kit-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-      @media (min-width: 1024px) {
-        .first-aid-kit-grid {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-      .kit-item {
-        background-color: #f0fdf4; /* emerald-50 */
-        border-left: 4px solid #34d399; /* emerald-400 */
-        padding: 0.75rem 1rem;
-        border-radius: 0.5rem;
-        font-size: 0.95rem;
-        color: #10b981; /* emerald-600 */
-        font-weight: 500;
-      }
+            .first-aid-kit-grid {
+              display: grid;
+              grid-template-columns: 1fr;
+              gap: 0.75rem;
+              margin-top: 1.5rem;
+            }
+            @media (min-width: 640px) {
+              .first-aid-kit-grid {
+                grid-template-columns: repeat(2, 1fr);
+              }
+            }
+            @media (min-width: 1024px) {
+              .first-aid-kit-grid {
+                grid-template-columns: repeat(3, 1fr);
+              }
+            }
+            .kit-item {
+              background-color: #f0fdf4; /* emerald-50 */
+              border-left: 4px solid #34d399; /* emerald-400 */
+              padding: 0.75rem 1rem;
+              border-radius: 0.5rem;
+              font-size: 0.95rem;
+              color: #10b981; /* emerald-600 */
+              font-weight: 500;
+            }
 
-      .gdpr-principle-item {
-        background-color: #e0f2fe; /* light blue */
-        border-left: 4px solid #38b2ac; /* teal-500 */
-        padding: 1rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      }
-      .gdpr-principle-item h5 {
-        font-weight: 600;
-        color: #0d9488; /* teal-700 */
-        margin-bottom: 0.25rem;
-      }
-      .gdpr-principle-item p {
-        font-size: 0.9rem;
-        color: var(--color-text-light);
-      }
+            .gdpr-principle-item {
+              background-color: #e0f2fe; /* light blue */
+              border-left: 4px solid #38b2ac; /* teal-500 */
+              padding: 1rem;
+              border-radius: 0.5rem;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            }
+            .gdpr-principle-item h5 {
+              font-weight: 600;
+              color: #0d9488; /* teal-700 */
+              margin-bottom: 0.25rem;
+            }
+            .gdpr-principle-item p {
+              font-size: 0.9rem;
+              color: var(--color-text-light);
+            }
 
-      /* New styles for Communication section */
-      .tone-style-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        margin-top: 1.5rem;
-      }
-      @media (min-width: 768px) {
-        .tone-style-grid {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-      .tone-item {
-        background-color: #f5f3ff; /* violet-50 */
-        border-left: 4px solid #8b5cf6; /* violet-500 */
-        padding: 1rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      }
-      .tone-item h5 {
-        font-weight: 600;
-        color: #7c3aed; /* violet-600 */
-        margin-bottom: 0.5rem;
-      }
-      .tone-item ul {
-        list-style-type: disc;
-        list-style-position: inside;
-        margin-left: 0.5rem;
-        font-size: 0.95rem;
-        color: var(--color-text-light);
-      }
-      .tone-item ul li {
-        margin-bottom: 0.25rem;
-      }
+            /* New styles for Communication section */
+            .tone-style-grid {
+              display: grid;
+              grid-template-columns: 1fr;
+              gap: 1.5rem;
+              margin-top: 1.5rem;
+            }
+            @media (min-width: 768px) {
+              .tone-style-grid {
+                grid-template-columns: repeat(3, 1fr);
+              }
+            }
+            .tone-item {
+              background-color: #f5f3ff; /* violet-50 */
+              border-left: 4px solid #8b5cf6; /* violet-500 */
+              padding: 1rem;
+              border-radius: 0.5rem;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            }
+            .tone-item h5 {
+              font-weight: 600;
+              color: #7c3aed; /* violet-600 */
+              margin-bottom: 0.5rem;
+            }
+            .tone-item ul {
+              list-style-type: disc;
+              list-style-position: inside;
+              margin-left: 0.5rem;
+              font-size: 0.95rem;
+              color: var(--color-text-light);
+            }
+            .tone-item ul li {
+              margin-bottom: 0.25rem;
+            }
 
-      .nvc-steps-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        margin-top: 1.5rem;
-      }
-      @media (min-width: 640px) {
-        .nvc-steps-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-      .nvc-step {
-        background-color: #ecfdf5; /* green-50 */
-        border-left: 4px solid #10b981; /* emerald-500 */
-        padding: 1rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-        display: flex;
-        align-items: flex-start;
-        gap: 0.75rem;
-      }
-      .nvc-step .step-label {
-        font-size: 1.25rem; /* text-xl */
-        font-weight: 700;
-        color: #059669; /* emerald-600 */
-        flex-shrink: 0;
-        line-height: 1;
-      }
-      .nvc-step .step-content h5 {
-        font-weight: 600;
-        color: #047857; /* emerald-700 */
-        margin-bottom: 0.25rem;
-      }
-      .nvc-step .step-content p {
-        font-size: 0.9rem;
-        color: var(--color-text-light);
-      }
+            .nvc-steps-grid {
+              display: grid;
+              grid-template-columns: 1fr;
+              gap: 1rem;
+              margin-top: 1.5rem;
+            }
+            @media (min-width: 640px) {
+              .nvc-steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+              }
+            }
+            .nvc-step {
+              background-color: #ecfdf5; /* green-50 */
+              border-left: 4px solid #10b981; /* emerald-500 */
+              padding: 1rem;
+              border-radius: 0.5rem;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+              display: flex;
+              align-items: flex-start;
+              gap: 0.75rem;
+            }
+            .nvc-step .step-label {
+              font-size: 1.25rem; /* text-xl */
+              font-weight: 700;
+              color: #059669; /* emerald-600 */
+              flex-shrink: 0;
+              line-height: 1;
+            }
+            .nvc-step .step-content h5 {
+              font-weight: 600;
+              color: #047857; /* emerald-700 */
+              margin-bottom: 0.25rem;
+            }
+            .nvc-step .step-content p {
+              font-size: 0.9rem;
+              color: var(--color-text-light);
+            }
 
-      /* New styles for Dos & Don'ts */
-      .dos-donts-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        margin-top: 1.5rem;
-      }
-      @media (min-width: 768px) {
-        .dos-donts-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-      .dos-column,
-      .donts-column {
-        padding: 1rem;
-        border-radius: 0.75rem;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-      }
-      .dos-column {
-        background-color: #f0fdf4; /* emerald-50 */
-        border: 1px solid #34d399; /* emerald-400 */
-      }
-      .donts-column {
-        background-color: #fef2f2; /* red-50 */
-        border: 1px solid #ef4444; /* red-400 */
-      }
-      .dos-column h5,
-      .donts-column h5 {
-        font-weight: 700;
-        margin-bottom: 1rem;
-        font-size: 1.25rem; /* text-xl */
-        text-align: center;
-      }
-      .dos-column h5 {
-        color: #059669; /* emerald-600 */
-      }
-      .donts-column h5 {
-        color: #dc2626; /* red-600 */
-      }
-      .dos-column ul,
-      .donts-column ul {
-        list-style: none; /* Remove default bullets */
-        padding: 0;
-        margin: 0;
-      }
-      .dos-column ul li,
-      .donts-column ul li {
-        display: flex;
-        align-items: flex-start;
-        margin-bottom: 0.75rem;
-        font-size: 0.95rem;
-        color: var(--color-text-light);
-      }
-      .dos-column ul li .icon {
-        color: #10b981; /* emerald-500 */
-        font-size: 1.2rem;
-        margin-right: 0.5rem;
-        flex-shrink: 0;
-      }
-      .donts-column ul li .icon {
-        color: #ef4444; /* red-500 */
-        font-size: 1.2rem;
-        margin-right: 0.5rem;
-        flex-shrink: 0;
-      }
+            /* New styles for Dos & Don'ts */
+            .dos-donts-grid {
+              display: grid;
+              grid-template-columns: 1fr;
+              gap: 1.5rem;
+              margin-top: 1.5rem;
+            }
+            @media (min-width: 768px) {
+              .dos-donts-grid {
+                grid-template-columns: repeat(2, 1fr);
+              }
+            }
+            .dos-column,
+            .donts-column {
+              padding: 1rem;
+              border-radius: 0.75rem;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            }
+            .dos-column {
+              background-color: #f0fdf4; /* emerald-50 */
+              border: 1px solid #34d399; /* emerald-400 */
+            }
+            .donts-column {
+              background-color: #fef2f2; /* red-50 */
+              border: 1px solid #ef4444; /* red-400 */
+            }
+            .dos-column h5,
+            .donts-column h5 {
+              font-weight: 700;
+              margin-bottom: 1rem;
+              font-size: 1.25rem; /* text-xl */
+              text-align: center;
+            }
+            .dos-column h5 {
+              color: #059669; /* emerald-600 */
+            }
+            .donts-column h5 {
+              color: #dc2626; /* red-600 */
+            }
+            .dos-column ul,
+            .donts-column ul {
+              list-style: none; /* Remove default bullets */
+              padding: 0;
+              margin: 0;
+            }
+            .dos-column ul li,
+            .donts-column ul li {
+              display: flex;
+              align-items: flex-start;
+              margin-bottom: 0.75rem;
+              font-size: 0.95rem;
+              color: var(--color-text-light);
+            }
+            .dos-column ul li .icon {
+              color: #10b981; /* emerald-500 */
+              font-size: 1.2rem;
+              margin-right: 0.5rem;
+              flex-shrink: 0;
+            }
+            .donts-column ul li .icon {
+              color: #ef4444; /* red-500 */
+              font-size: 1.2rem;
+              margin-right: 0.5rem;
+              flex-shrink: 0;
+            }
 
-      .enforcement-tiers-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        margin-top: 1.5rem;
-      }
-      @media (min-width: 768px) {
-        .enforcement-tiers-grid {
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        }
-      }
-      .enforcement-tier-item {
-        background-color: #f5f5f4; /* neutral-100 */
-        border-left: 4px solid #a8a29e; /* neutral-400 */
-        padding: 1rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      }
-      .enforcement-tier-item h5 {
-        font-weight: 600;
-        color: #57534e; /* neutral-700 */
-        margin-bottom: 0.5rem;
-      }
-      .enforcement-tier-item ul {
-        list-style-type: disc;
-        list-style-position: inside;
-        margin-left: 0.5rem;
-        font-size: 0.9rem;
-        color: var(--color-text-light);
-      }
-      .enforcement-tier-item ul li {
-        margin-bottom: 0.25rem;
-      }
+            .enforcement-tiers-grid {
+              display: grid;
+              grid-template-columns: 1fr;
+              gap: 1.5rem;
+              margin-top: 1.5rem;
+            }
+            @media (min-width: 768px) {
+              .enforcement-tiers-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+              }
+            }
+            .enforcement-tier-item {
+              background-color: #f5f5f4; /* neutral-100 */
+              border-left: 4px solid #a8a29e; /* neutral-400 */
+              padding: 1rem;
+              border-radius: 0.5rem;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            }
+            .enforcement-tier-item h5 {
+              font-weight: 600;
+              color: #57534e; /* neutral-700 */
+              margin-bottom: 0.5rem;
+            }
+            .enforcement-tier-item ul {
+              list-style-type: disc;
+              list-style-position: inside;
+              margin-left: 0.5rem;
+              font-size: 0.9rem;
+              color: var(--color-text-light);
+            }
+            .enforcement-tier-item ul li {
+              margin-bottom: 0.25rem;
+            }
 
-      /* New styles for Trust, Vetting & Warning Signs */
-      .red-flag-item {
-        background-color: #fef2f2; /* red-50 */
-        border-left: 4px solid #dc2626; /* red-600 */
-        padding: 1rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-      }
-      .red-flag-item p {
-        font-weight: 500;
-        color: #b91c1c; /* red-700 */
-      }
-      .burnout-sign-item {
-        background-color: #fffaf0; /* orange-50 */
-        border-left: 4px solid #f97316; /* orange-500 */
-        padding: 1rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-      }
-      .burnout-sign-item p {
-        font-weight: 500;
-        color: #d97706; /* orange-700 */
-      }
+            /* New styles for Trust, Vetting & Warning Signs */
+            .red-flag-item {
+              background-color: #fef2f2; /* red-50 */
+              border-left: 4px solid #dc2626; /* red-600 */
+              padding: 1rem;
+              border-radius: 0.5rem;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            }
+            .red-flag-item p {
+              font-weight: 500;
+              color: #b91c1c; /* red-700 */
+            }
+            .burnout-sign-item {
+              background-color: #fffaf0; /* orange-50 */
+              border-left: 4px solid #f97316; /* orange-500 */
+              padding: 1rem;
+              border-radius: 0.5rem;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            }
+            .burnout-sign-item p {
+              font-weight: 500;
+              color: #d97706; /* orange-700 */
+            }
 
-      /* Grid for list items */
-      .list-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
-        margin-top: 1rem;
-      }
-      @media (min-width: 640px) {
-        .list-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-      @media (min-width: 1024px) {
-        .list-grid {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-      .list-grid-item {
-        background-color: #fbf7ed; /* light amber for lists */
-        padding: 0.75rem 1rem;
-        border-radius: 0.5rem;
-        font-size: 0.95rem;
-        color: var(--color-text-light);
-        border: 1px solid #fcd34d; /* amber-300 */
-      }
+            /* Grid for list items */
+            .list-grid {
+              display: grid;
+              grid-template-columns: 1fr;
+              gap: 0.75rem;
+              margin-top: 1rem;
+            }
+            @media (min-width: 640px) {
+              .list-grid {
+                grid-template-columns: repeat(2, 1fr);
+              }
+            }
+            @media (min-width: 1024px) {
+              .list-grid {
+                grid-template-columns: repeat(3, 1fr);
+              }
+            }
+            .list-grid-item {
+              background-color: #fbf7ed; /* light amber for lists */
+              padding: 0.75rem 1rem;
+              border-radius: 0.5rem;
+              font-size: 0.95rem;
+              color: var(--color-text-light);
+              border: 1px solid #fcd34d; /* amber-300 */
+            }
 
-      /* Styles for Tables */
-      .handbook-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 1.5rem 0;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 0.5rem;
-        overflow: hidden; /* Ensures rounded corners apply to table */
-      }
-      .handbook-table th,
-      .handbook-table td {
-        padding: 0.75rem 1rem;
-        border: 1px solid #e5e7eb; /* gray-200 */
-        text-align: left;
-      }
-      .handbook-table th {
-        background-color: #f3f4f6; /* gray-100 */
-        font-weight: 600;
-        color: var(--color-text-dark);
-        text-transform: uppercase;
-        font-size: 0.875rem;
-      }
-      .handbook-table tr:nth-child(even) {
-        background-color: #fafafa; /* Lighter background for even rows */
-      }
-      .handbook-table tr:hover {
-        background-color: #f0f4f8; /* blue-50 on hover for better UX */
-      }
+            /* Styles for Tables */
+            .handbook-table {
+              width: 100%;
+              border-collapse: collapse;
+              margin: 1.5rem 0;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+              border-radius: 0.5rem;
+              overflow: hidden; /* Ensures rounded corners apply to table */
+            }
+            .handbook-table th,
+            .handbook-table td {
+              padding: 0.75rem 1rem;
+              border: 1px solid #e5e7eb; /* gray-200 */
+              text-align: left;
+            }
+            .handbook-table th {
+              background-color: #f3f4f6; /* gray-100 */
+              font-weight: 600;
+              color: var(--color-text-dark);
+              text-transform: uppercase;
+              font-size: 0.875rem;
+            }
+            .handbook-table tr:nth-child(even) {
+              background-color: #fafafa; /* Lighter background for even rows */
+            }
+            .handbook-table tr:hover {
+              background-color: #f0f4f8; /* blue-50 on hover for better UX */
+            }
 
-      /* For Survey sections to appear more like a form */
-      .survey-section {
-        background-color: #fdfaf6; /* A very light cream */
-        border: 1px solid #fcd34d; /* amber-300 */
-        padding: 1.5rem;
-        border-radius: 0.75rem;
-        margin-top: 2rem;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-      }
-      .survey-section h4 {
-        color: var(--color-primary-dark);
-        font-weight: 700;
-        margin-bottom: 1rem;
-      }
-      .survey-section label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 500;
-        color: var(--color-text-dark);
-      }
-      .survey-section input[type="text"],
-      .survey-section textarea {
-        width: 100%;
-        padding: 0.75rem;
-        border: 1px solid #d1d5db; /* gray-300 */
-        border-radius: 0.375rem;
-        margin-bottom: 1rem;
-        font-size: 0.95rem;
-        color: var(--color-text-dark);
-      }
-      .survey-section textarea {
-        min-height: 80px;
-      }
-      .survey-section ul.list-feedback li {
-        list-style: none; /* Remove default bullet */
-        margin-left: 0;
-        margin-bottom: 0.5rem;
-      }
-      .survey-section ul.list-feedback li input[type="radio"] {
-        margin-right: 0.5rem;
-      }
+            /* For Survey sections to appear more like a form */
+            .survey-section {
+              background-color: #fdfaf6; /* A very light cream */
+              border: 1px solid #fcd34d; /* amber-300 */
+              padding: 1.5rem;
+              border-radius: 0.75rem;
+              margin-top: 2rem;
+              box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            }
+            .survey-section h4 {
+              color: var(--color-primary-dark);
+              font-weight: 700;
+              margin-bottom: 1rem;
+            }
+            .survey-section label {
+              display: block;
+              margin-bottom: 0.5rem;
+              font-weight: 500;
+              color: var(--color-text-dark);
+            }
+            .survey-section input[type="text"],
+            .survey-section textarea {
+              width: 100%;
+              padding: 0.75rem;
+              border: 1px solid #d1d5db; /* gray-300 */
+              border-radius: 0.375rem;
+              margin-bottom: 1rem;
+              font-size: 0.95rem;
+              color: var(--color-text-dark);
+            }
+            .survey-section textarea {
+              min-height: 80px;
+            }
+            .survey-section ul.list-feedback li {
+              list-style: none; /* Remove default bullet */
+              margin-left: 0;
+              margin-bottom: 0.5rem;
+            }
+            .survey-section ul.list-feedback li input[type="radio"] {
+              margin-right: 0.5rem;
+            }
 
-      /* Styling for the Code of Conduct template */
-      .code-of-conduct-template {
-        background-color: #f8fafc; /* blue-50 */
-        border: 1px solid #e0f2fe; /* blue-100 */
-        padding: 1.5rem;
-        border-radius: 0.75rem;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-        margin-top: 2rem;
-      }
-      .code-of-conduct-template h4 {
-        color: #1e40af; /* blue-800 */
-        font-weight: 700;
-        margin-bottom: 1rem;
-        text-align: center;
-      }
-      .code-of-conduct-template h5 {
-        color: #1d4ed8; /* blue-700 */
-        font-weight: 600;
-        margin-top: 1.25rem;
-        margin-bottom: 0.75rem;
-      }
-      .code-of-conduct-template ul {
-        list-style-type: disc;
-        list-style-position: inside;
-        margin-left: 1rem;
-        color: #4b5563; /* gray-600 */
-        font-size: 0.95rem;
-      }
-      .code-of-conduct-template ul li {
-        margin-bottom: 0.5rem;
-      }
-      .code-of-conduct-template strong {
-        color: #374151; /* gray-700 */
-      }
-      .code-of-conduct-template pre {
-        background-color: #e2e8f0; /* gray-200 */
-        padding: 1rem;
-        border-radius: 0.5rem;
-        overflow-x: auto;
-        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
-          Courier, monospace;
-        font-size: 0.875rem;
-        color: #334155; /* slate-700 */
-        margin-top: 1rem;
-      }
+            /* Styling for the Code of Conduct template */
+            .code-of-conduct-template {
+              background-color: #f8fafc; /* blue-50 */
+              border: 1px solid #e0f2fe; /* blue-100 */
+              padding: 1.5rem;
+              border-radius: 0.75rem;
+              box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+              margin-top: 2rem;
+            }
+            .code-of-conduct-template h4 {
+              color: #1e40af; /* blue-800 */
+              font-weight: 700;
+              margin-bottom: 1rem;
+              text-align: center;
+            }
+            .code-of-conduct-template h5 {
+              color: #1d4ed8; /* blue-700 */
+              font-weight: 600;
+              margin-top: 1.25rem;
+              margin-bottom: 0.75rem;
+            }
+            .code-of-conduct-template ul {
+              list-style-type: disc;
+              list-style-position: inside;
+              margin-left: 1rem;
+              color: #4b5563; /* gray-600 */
+              font-size: 0.95rem;
+            }
+            .code-of-conduct-template ul li {
+              margin-bottom: 0.5rem;
+            }
+            .code-of-conduct-template strong {
+              color: #374151; /* gray-700 */
+            }
+            .code-of-conduct-template pre {
+              background-color: #e2e8f0; /* gray-200 */
+              padding: 1rem;
+              border-radius: 0.5rem;
+              overflow-x: auto;
+              font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+                Courier, monospace;
+              font-size: 0.875rem;
+              color: #334155; /* slate-700 */
+              margin-top: 1rem;
+            }
 
-      /* Responsive adjustments (already good, just ensure consistent application) */
-      @media (max-width: 768px) {
-        .sidebar {
-          width: 100%;
-          height: auto;
-          position: relative;
-          overflow-y: visible;
-        }
-        .sidebar-nav {
-          flex-direction: row;
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-        .nav-link {
-          padding: 0.5rem 0.75rem;
-          margin: 0.25rem;
-          font-size: 0.875rem;
-        }
-        .main-content {
-          padding-left: 1rem;
-          padding-right: 1rem;
-        }
-      }
+            /* Responsive adjustments (already good, just ensure consistent application) */
+            @media (max-width: 768px) {
+              .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                overflow-y: visible;
+              }
+              .sidebar-nav {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+              }
+              .nav-link {
+                padding: 0.5rem 0.75rem;
+                margin: 0.25rem;
+                font-size: 0.875rem;
+              }
+              .main-content {
+                padding-left: 1rem;
+                padding-right: 1rem;
+      =======
+          <title>The Community Leader's Compass</title>
+          <script src="https://cdn.tailwindcss.com"></script>
+          <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+          <style>
+              :root {
+                  --color-primary-dark: #0f766e; /* Teal-700 */
+                  --color-primary: #14b8a6;    /* Teal-500 */
+                  --color-primary-light: #ccfbf1;/* Teal-50 */
+                  --color-secondary: #a3e635;   /* Lime-400 */
+                  --color-secondary-light: #f7fee7;/* Lime-50 */
+                  --color-background: #f8fafc;  /* Slate-50 */
+                  --color-surface: #FFFFFF;
+                  --color-text-dark: #1e293b;   /* Slate-800 */
+                  --color-text-medium: #475569; /* Slate-600 */
+                  --color-text-light: #94a3b8;  /* Slate-400 */
+                  --color-border: #e2e8f0;     /* Slate-200 */
+              }
+              @keyframes gradient-animation { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+              @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+              body { font-family: 'Figtree', sans-serif; background-color: var(--color-background); color: var(--color-text-medium); }
+              #scroll-progress-bar { position: fixed; top: 0; left: 0; height: 5px; background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-primary)); background-size: 200% 200%; width: 0%; z-index: 1000; animation: gradient-animation 4s ease infinite; }
+              .sidebar { background-color: var(--color-text-dark); color: #cbd5e1; width: 260px; height: 100vh; position: sticky; top: 0; display: flex; flex-direction: column; border-right: 1px solid #334155; }
+              .sidebar-header { padding: 1.5rem; text-align: center; border-bottom: 1px solid #475569; }
+              .sidebar-header h1 { color: var(--color-surface); font-weight: 800; letter-spacing: -0.025em; }
+              .sidebar-header .compass-icon { color: var(--color-secondary); margin-bottom: 0.5rem; }
+              .sidebar-nav { flex-grow: 1; padding: 1rem; overflow-y: auto; }
+              .nav-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; margin-bottom: 0.25rem; border-radius: 0.5rem; color: #94a3b8; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); transform: translateX(0); cursor:pointer; }
+              .nav-link svg { transition: all 0.25s ease; }
+              .nav-link:hover { background-color: #334155; color: var(--color-surface); transform: translateX(4px); }
+              .nav-link:hover svg { color: var(--color-secondary); }
+              .nav-link.active { background-color: var(--color-secondary); color: var(--color-text-dark); font-weight: 600; }
+              .nav-link.active svg { color: var(--color-text-dark); }
+              .sidebar-footer { padding: 1.5rem; border-top: 1px solid #475569; font-size: 0.75rem; color: #64748b; text-align: center; }
+              .main-content { flex: 1; padding: 0; position: relative; overflow-y: auto; }
+              .content-section { display: none; padding: 2.5rem; }
+              .content-section.active { display: block; animation: fadeIn 0.5s ease-out; }
+              h2 { font-size: clamp(2.25rem, 5vw, 3.25rem); font-weight: 800; color: var(--color-text-dark); letter-spacing: -0.05em; margin-bottom: 1rem; }
+              h3 { font-size: clamp(1.5rem, 4vw, 1.875rem); font-weight: 700; color: var(--color-primary-dark); margin-top: 2rem; margin-bottom: 1rem; }
+              h4 { font-size: 1.25rem; font-weight: 700; color: var(--color-text-dark); margin-top: 2.5rem; margin-bottom: 1rem; }
+              h5 { font-size: 1.125rem; font-weight: 600; color: var(--color-text-dark); margin-top: 1.5rem; margin-bottom: 0.5rem; }
+              .prose { max-w: none; }
+              .prose a { color: var(--color-primary); font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--color-primary-light); transition: all 0.2s; }
+              .prose a:hover { background-color: var(--color-primary-light); border-bottom-color: var(--color-primary); }
+              .prose ul, .prose ol { padding-left: 1.25rem; }
+              .prose li { margin-bottom: 0.75rem; padding-left: 0.5rem; }
+              .prose p, .prose ul, .prose ol { line-height: 1.75; }
+              .hero-section { background: var(--color-text-dark); color: white; padding: 4rem 2rem; border-radius: 0.5rem; margin-bottom: 2.5rem; }
+              .callout-box { background-color: var(--color-secondary-light); border-left: 4px solid var(--color-secondary); padding: 1.5rem; margin: 2rem 0; border-radius: 0.5rem; }
+
+              .accordion-item { border-bottom: 1px solid var(--color-border); }
+              .accordion-header { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 1.25rem 0.5rem; cursor: pointer; background: none; border: none; text-align: left; }
+              .accordion-header:hover h3 { color: var(--color-primary); }
+              .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+              .accordion-content.open { max-height: 5000px; /* Adjust as needed */ }
+              .accordion-chevron { transition: transform 0.3s ease; color: var(--color-text-light); }
+              .accordion-header.active .accordion-chevron { transform: rotate(180deg); color: var(--color-primary); }
+              .fade-in-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+              .fade-in-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+
+              .card { background-color: white; border-radius: 0.75rem; border: 1px solid var(--color-border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05); }
+              .case-study-card { background-color: #f9fafb; border: 1px solid var(--color-border); border-radius: 0.75rem; padding: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+              .case-study-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(30, 41, 59, 0.1); }
+
+              /* Interactive Checklist Styles */
+              .interactive-checklist label { cursor: pointer; display: flex; align-items: center; transition: color 0.2s ease; padding: 0.75rem; border-radius: 0.5rem; background-color: #f8fafc; margin-bottom: 0.5rem;}
+              .interactive-checklist label:hover { background-color: #f1f5f9; }
+              .interactive-checklist input[type="checkbox"] { display: none; }
+              .interactive-checklist .checkbox-icon { border: 2px solid var(--color-border); border-radius: 4px; width: 1.4em; height: 1.4em; margin-right: 0.75em; display: inline-flex; align-items:center; justify-content:center; transition: all 0.2s ease; flex-shrink: 0;}
+              .interactive-checklist input[type="checkbox"]:checked + .checkbox-icon { background-color: var(--color-primary); border-color: var(--color-primary); color: white; }
+              .interactive-checklist input[type="checkbox"]:checked + .checkbox-icon svg { display: block; }
+              .interactive-checklist input[type="checkbox"]:checked ~ .checkbox-text { text-decoration: line-through; color: var(--color-text-light); }
+              .progress-bar-container { background-color: var(--color-border); border-radius: 9999px; overflow: hidden; height: 1rem; }
+              .progress-bar-fill { background: linear-gradient(90deg, var(--color-primary), var(--color-secondary)); height: 100%; width: 0%; transition: width 0.5s ease-out; }
+
+              .handbook-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+              .handbook-table th, .handbook-table td { border: 1px solid var(--color-border); padding: 0.75rem; text-align: left; }
+              .handbook-table th { background-color: #f8fafc; font-weight: 600; color: var(--color-text-dark); }
+
+              @media (max-width: 768px) {
+                  body { flex-direction: column; }
+                  .sidebar { width: 100%; height: auto; position: relative; }
+                  .main-content { padding: 1.5rem; }
+      >>>>>>> 7a146dbab5ffb69a1a17fba0028e4623ee10f893
+              }
+            }
     </style>
+    <<<<<<< HEAD
   </head>
   <body class="flex flex-col md:flex-row min-h-screen">
     <aside class="sidebar w-full md:w-64 p-4 shadow-lg rounded-r-lg">
@@ -6893,54 +6983,516 @@ With deepest gratitude,
     </main>
 
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const navLinks = document.querySelectorAll(".nav-link");
-        const contentSections = document.querySelectorAll(".content-section");
+            document.addEventListener("DOMContentLoaded", () => {
+              const navLinks = document.querySelectorAll(".nav-link");
+              const contentSections = document.querySelectorAll(".content-section");
 
-        // Function to show a specific section
-        function showSection(targetId) {
-          // Hide all content sections
-          contentSections.forEach((section) => {
-            section.classList.remove("active");
-          });
+              // Function to show a specific section
+              function showSection(targetId) {
+                // Hide all content sections
+                contentSections.forEach((section) => {
+                  section.classList.remove("active");
+                });
 
-          // Deactivate all navigation links
-          navLinks.forEach((link) => {
-            link.classList.remove("active");
-          });
+                // Deactivate all navigation links
+                navLinks.forEach((link) => {
+                  link.classList.remove("active");
+                });
 
-          // Show the target section and activate its link
-          const targetSection = document.getElementById(targetId);
-          if (targetSection) {
-            targetSection.classList.add("active");
-          }
-          const activeLink = document.querySelector(
-            `.nav-link[data-target="${targetId}"]`
-          );
-          if (activeLink) {
-            activeLink.classList.add("active");
-          }
-        }
+                // Show the target section and activate its link
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                  targetSection.classList.add("active");
+                }
+                const activeLink = document.querySelector(
+                  `.nav-link[data-target="${targetId}"]`
+                );
+                if (activeLink) {
+                  activeLink.classList.add("active");
+                }
+              }
 
-        // Add click event listeners to navigation links
-        navLinks.forEach((link) => {
-          link.addEventListener("click", (event) => {
-            const targetId = event.target.dataset.target;
-            if (targetId) {
-              showSection(targetId);
-            }
-          });
-        });
+              // Add click event listeners to navigation links
+              navLinks.forEach((link) => {
+                link.addEventListener("click", (event) => {
+                  const targetId = event.target.dataset.target;
+                  if (targetId) {
+                    showSection(targetId);
+                  }
+                });
+              });
 
-        // Set the initial active section when the page loads
-        const initialHash = window.location.hash.substring(1);
-        if (initialHash && document.getElementById(initialHash)) {
-          showSection(initialHash);
-        } else {
-          // Default to showing the 'introduction' section if no hash or invalid hash
-          showSection("introduction");
-        }
-      });
+              // Set the initial active section when the page loads
+              const initialHash = window.location.hash.substring(1);
+              if (initialHash && document.getElementById(initialHash)) {
+                showSection(initialHash);
+              } else {
+                // Default to showing the 'introduction' section if no hash or invalid hash
+                showSection("introduction");
+              }
+      =======
+      </head>
+      <body class="flex flex-col md:flex-row min-h-screen">
+          <div id="scroll-progress-bar"></div>
+
+          <aside class="sidebar">
+              <div class="sidebar-header">
+                  <svg class="compass-icon w-12 h-12 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" /><path stroke-linecap="round" stroke-linejoin="round" d="m15.91 8.41-5.424 5.424a1.5 1.5 0 0 1-2.122-2.122L13.8 6.3" /></svg>
+                  <h1 class="text-xl">The Leader's Compass</h1>
+              </div>
+              <nav class="sidebar-nav">
+                  <!-- Nav links will be populated by JS -->
+              </nav>
+              <div class="sidebar-footer">
+                  <p>&copy; 2025 Community Hub UK</p>
+              </div>
+          </aside>
+
+          <main id="main-content-area" class="main-content">
+             <!-- Content sections will be populated by JS -->
+          </main>
+
+          <script>
+            // Data object for all handbook content
+            const handbookContent = {
+                  "introduction": {
+                      title: "Introduction",
+                      icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h12A2.25 2.25 0 0 1 20.25 6v3.776" />`,
+                      content: `<div class="hero-section fade-in-on-scroll"><h2 class="text-white !border-0">Your Guide to Impactful Leadership</h2><p class="text-xl text-teal-200 mt-4">Fostering vibrant, safe, and well-managed social communities in Greater Manchester and beyond.</p></div><div class="prose max-w-none text-lg leading-relaxed fade-in-on-scroll"><p>This handbook is designed as a comprehensive resource for community leaders, offering practical guidance and expert insights to navigate the complexities inherent in fostering vibrant community life. The aim is to support the development of thriving social communities.</p><p>Greater Manchester is a dynamic area with a profound history of community spirit and collective action. This guide supports the overarching ambition for a city-region where every individual has an equitable opportunity to lead a fulfilling life, experience improved health and well-being, and access high-quality care and support when needed. The principles and practices outlined herein underscore the vital role that communities play in addressing health, social, and economic disparities.</p><p>To maximize utility, this guide is structured into distinct, navigable sections. Each begins with a summary, followed by detailed discussions, relevant frameworks, real-world examples, and actionable checklists. Key takeaways are highlighted, and essential templates are provided for immediate application. This design ensures the guide serves as both an easy-to-skim reference and an in-depth resource for ongoing development.</p></div>`
+                  },
+                  "leadership-foundations": {
+                      title: "1. Leadership Foundations",
+                      icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />`,
+                      summary: `<div class="callout-box"><h4 class="mt-0">Executive Summary</h4><p>Effective community leadership is built upon a strong understanding of various leadership theories, a well-developed emotional intelligence, and the ability to articulate a compelling vision and mission. This section explores key leadership theories, delves into the “leader’s mindset,” and outlines a step-by-step process for crafting inclusive community missions, highlighted with inspiring case studies from Greater Manchester.</p></div><div id="leadershipChart" class="card p-4 my-6 fade-in-on-scroll"></div>`,
+                      accordions: [
+                          { title: "Key Leadership Theories Explained", content: `<p>Leadership is not a one-size-fits-all concept; different situations and community needs call for varied approaches. Understanding key leadership theories can equip community leaders with the flexibility to adapt their style for maximum impact.</p><h4>Transformational Leadership</h4><p>This leadership approach inspires followers to achieve more than they thought possible by connecting their sense of identity and self to the organization's mission. It aims to create valuable and positive change in followers, ultimately developing them into leaders themselves. Core components include Idealized Influence (acting as a role model), Inspirational Motivation (articulating a compelling vision), Intellectual Stimulation (encouraging creativity), and Individualized Consideration (providing mentorship).</p><h4>Situational Leadership (Hersey & Blanchard)</h4><p>This model posits that effective leaders adjust their leadership style based on the "readiness" or maturity level of their followers concerning a specific task. Styles range from Telling (high task, low relationship) for beginners to Delegating (low task, low relationship) for experienced and confident individuals.</p><h4>Servant Leadership</h4><p>This approach prioritizes the needs of others, particularly those being served, and aims to help them grow as individuals. The leader's primary motivation is to serve, and leadership emerges from this desire. Core principles include listening, empathy, healing, awareness, and building community.</p><h4>Adaptive Leadership</h4><p>This is the ability to adjust to evolving demands and respond flexibly and creatively to complex situations. It involves guiding individuals through change by identifying and addressing both technical problems (with known solutions) and adaptive challenges (requiring changes in beliefs or behaviors).</p>` },
+                          { title: "The 'Leader’s Mindset' & Emotional Intelligence", content: `<p>A leader's mindset, encompassing their beliefs and attitudes, profoundly shapes their influence on others. Central to an effective leader's mindset is emotional intelligence (EI), which is the ability to recognize, understand, and manage one's own emotions and the emotions of others.</p><div id="eiChart" class="my-6 card p-4"></div><h4>Key Components of Emotional Intelligence:</h4><ul><li><strong>Self-Awareness:</strong> The ability to recognize and understand your own moods, motivations, and their effect on others.</li><li><strong>Self-Regulation:</strong> Involves controlling impulses, allowing a leader to manage their emotions and think before reacting rashly.</li><li><strong>Growth Mindset:</strong> The belief that abilities can be developed through dedication and persistence. This fosters resilience and promotes continuous learning.</li></ul>` },
+                          { title: "Vision-Setting & Mission Articulation", content: `<p>Crafting a compelling and inclusive community mission is fundamental to guiding collective action and inspiring engagement. A mission statement defines the organization's purpose, who it benefits, and how it makes an impact.</p><h4>Steps to Craft a Compelling Community Mission:</h4><ol><li><strong>Assemble a Diverse Team:</strong> Gather stakeholders including staff, volunteers, and community members.</li><li><strong>Initiate Discussion:</strong> Brainstorm the community's purpose, uniqueness, and values.</li><li><strong>Identify Commonalities:</strong> Pinpoint recurring themes and key needs.</li><li><strong>Draft Multiple Statements:</strong> Encourage team members to draft mission statements.</li><li><strong>Share and Refine:</strong> Collaboratively combine the best ideas into a single, strong statement.</li><li><strong>Seek External Feedback:</strong> Solicit feedback from a wider range of stakeholders.</li><li><strong>Finalize and Disseminate:</strong> Formally adopt the mission and share it widely.</li></ol>` },
+                          { title: "Case Studies from Greater Manchester", content: `<p>Greater Manchester has a rich history of community activism and boasts numerous inspiring grassroots leaders who have made significant impacts.</p><div class="py-4 space-y-6"> <div class="case-study-card"> <h4 class="mt-0">Yvonne Griggs</h4> <p class="prose max-w-none">An inspirational community leader who led the transformation of a local park, creating a safe space for children and the community through multicultural events and activities.</p></div> <div class="case-study-card"> <h4 class="mt-0">Daniel Sukula (Be The Change Youth Project, Bolton)</h4> <p class="prose max-w-none">Founder of a project for disadvantaged youth, recognized as "Unsung Hero of the Year" for his dedication to providing sports and mentoring services.</p></div> <div class="case-study-card"> <h4 class="mt-0">Nurturing Foundations (Harpurhey, Manchester)</h4> <p class="prose max-w-none">This organization won "Campaign of the Year" for its "Healthy Hearts Programme," a community-led initiative addressing health inequalities in racially minoritized communities.</p></div></div>` }
+                      ]
+                  },
+                  "organizational-time-management": {
+                      title: "2. Org & Time Management",
+                      icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0h18M12 12.75h.008v.008H12v-.008Zm-3 0h.008v.008H9v-.008Zm-3 0h.008v.008H6v-.008Zm-3 0h.008v.008H3v-.008Zm6 0h.008v.008H9v-.008Zm-3 0h.008v.008H6v-.008Zm6 0h.008v.008H12v-.008Zm-3 0h.008v.008H9v-.008Z" />`,
+                      summary: `<div class="callout-box"><h4 class="mt-0">Executive Summary</h4><p>Effective organizational and time management are crucial for community leaders to maximize impact with limited resources. This section covers essential frameworks like SMART goals and OKRs, prioritization techniques such as the Eisenhower Matrix and time blocking, best practices for delegation, and an overview of useful tools like Gantt charts, Trello, and Notion.</p></div><div id="ganttChart" class="card p-4 my-6 fade-in-on-scroll"></div>`,
+                      accordions: [
+                          { title: "Goal-Setting Frameworks: SMART & OKRs", content: `<h4>SMART Goals</h4><p>The SMART framework helps create clear, actionable, and trackable goals.</p><ul><li><strong>Specific:</strong> Define exactly what you want to achieve.</li><li><strong>Measurable:</strong> Establish criteria for tracking progress.</li><li><strong>Achievable:</strong> Ensure the goal is realistic.</li><li><strong>Relevant:</strong> The goal should align with your overall mission.</li><li><strong>Time-bound:</strong> Set a clear deadline.</li></ul><h4>OKRs (Objectives and Key Results)</h4><p>OKRs drive focus and alignment. They consist of qualitative Objectives and quantitative Key Results.</p><ul><li><strong>Objective:</strong> An ambitious, qualitative goal (e.g., "Enhance community well-being").</li><li><strong>Key Results:</strong> Measurable outcomes that track progress towards the objective (e.g., "Increase attendance at fitness classes by 30%").</li></ul>` },
+                          { title: "Prioritization & Delegation", content: `<h4>The Eisenhower Matrix</h4><p>A tool for categorizing tasks based on urgency and importance.</p><ul><li><strong>Urgent & Important (Do It Now):</strong> Crises, pressing deadlines.</li><li><strong>Not Urgent & Important (Schedule It):</strong> Long-term planning, relationship building.</li><li><strong>Urgent & Not Important (Delegate It):</strong> Some emails, routine admin.</li><li><strong>Not Urgent & Not Important (Eliminate It):</strong> Time-wasting activities.</li></ul><h4>Delegation Best Practices</h4><p>Delegation empowers your team. Delegate recurring decisions, special projects, and tasks that help others grow. Do not delegate sensitive matters, crises, or tasks requiring your unique expertise.</p><h4>Writing Clear Task Briefs</h4><p>A clear brief includes specific goals, deadlines, available resources, scope of authority, reporting requirements, and quality standards.</p>` },
+                          { title: "Project Management Tools", content: `<h4>Gantt Charts</h4><p>Visual timelines that lay out tasks, deadlines, and milestones, providing a clear roadmap for projects.</p><h4>Trello & Notion</h4><p><strong>Trello</strong> is a visual tool using boards, lists, and cards to organize tasks. <strong>Notion</strong> is an all-in-one workspace combining notes, databases, and project management, great for creating a central "Volunteer Hub" or tracking grants.</p>`}
+                      ]
+                  },
+                   "volunteer-management": {
+                      title: "3. Volunteer Management",
+                      icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M18 18.75a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3m12 0a9 9 0 1 1-12 0 9 9 0 0 1 12 0ZM9 10.5h.008v.008H9v-.008Zm6 0h.008v.008H15v-.008Z" />`,
+                      summary: `<div class="callout-box"><h4 class="mt-0">Executive Summary</h4><p>Effective volunteer management is vital for the success of community organizations. This section covers strategies for recruiting diverse volunteers, comprehensive onboarding and training frameworks, key retention techniques like recognition and feedback cycles, and the importance of a clear volunteer code of conduct and escalation paths.</p></div><div id="volunteerFunnelChart" class="card p-4 my-6 fade-in-on-scroll"></div>`,
+                      accordions: [
+                          { title: "Recruitment Strategies", content: `<h4>Writing Inclusive Role Descriptions</h4><p>To attract a diverse range of volunteers, write clear role descriptions that lay out tasks, specify skills needed (while being open to alternatives), state the time commitment, highlight the benefits and impact, and use welcoming, inclusive language.</p><h4>Outreach Channels</h4><p>Use a variety of channels: post on your website and social media, use platforms like Do-IT.life, attend local community events, partner with educational institutions, and encourage word-of-mouth referrals.</p>` },
+                          { title: "Onboarding and Training Frameworks", content: `<h4>Orientation Checklists</h4><p>A structured orientation makes new volunteers feel welcome and informed. Your checklist should include a warm welcome, an overview of the mission, a detailed explanation of the role, introduction to the team, a review of key policies (like safety and ethics), and a Q&A session.</p><h4>Mentorship “Buddy” Systems</h4><p>Pairing new volunteers with experienced ones provides guidance and fosters early bonds. To set this up: find enthusiastic mentors, train them on their role, set clear tasks for the pair, and gather feedback to improve the program.</p>` },
+                          { title: "Retention Techniques", content: `<h4>Recognition Programs</h4><p>Consistently showing appreciation is vital. This can range from regular "Thank You" messages and social media shout-outs to small gifts and recognition awards like "Volunteer of the Month."</p><h4>Feedback Cycles</h4><p>Demonstrate that volunteers' opinions are valued by using direct surveys, holding regular check-ins (e.g., at 30, 60, 90 days), and always following up on the feedback you receive.</p><h4>Growth Opportunities</h4><p>Offer valuable training in hard or soft skills, act as a reference for their future endeavors, and provide leadership opportunities for experienced volunteers to keep them engaged and developing.</p>` },
+                          { title: "Code of Conduct, Boundaries, and Escalation", content: `<h4>Volunteer Code of Conduct</h4><p>This outlines expected standards of behavior, including respectful conduct, confidentiality, and compliance with policies. It should be integrated into the induction process.</p><h4>Role Boundaries</h4><p>Clearly define the tasks, duties, and scope of authority for each volunteer role to prevent confusion and conflict. Address any overstepping promptly but gently.</p><h4>Escalation Paths</h4><p>Establish a structured process for addressing issues, from initial informal reporting to a formal complaint, investigation, decision, and appeal process. This ensures fairness and accountability.</p>` }
+                      ]
+                  },
+                  "community-management": {
+                      title: "4. Community Engagement",
+                      icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 16.5V21m3.75-18v1.5M12 12a6.75 6.75 0 0 0-6.75 6.75h13.5A6.75 6.75 0 0 0 12 12Z" />`,
+                      summary: `<div class="callout-box"><h4 class="mt-0">Executive Summary</h4><p>Effective community management fosters vibrant and sustainable online and offline communities. This section provides best practices for platform governance on Discord and Reddit, a step-by-step process for onboarding new members, engagement tactics like weekly prompts and AMAs, and strategies for building a strong culture of belonging.</p></div><div id="engagementChart" class="card p-4 my-6 fade-in-on-scroll"></div>`,
+                      accordions: [
+                          { title: "Platform Best Practices (Discord, Reddit)", content: `<h4>Discord Governance</h4><p>Successful Discord communities have clear structures. This includes defined moderation roles (Owner, Admin, Mods), dedicated channels for different topics (e.g., announcements, general chat), and effective use of tools like AutoMod and reporting bots to maintain safety.</p><h4>Reddit Moderation</h4><p>Managing a subreddit requires understanding its unique culture, setting clear and enforceable rules, collaborating with other moderators, and staying neutral in enforcement. Pinning key topics and hosting regular feedback threads are essential for engagement.</p>`},
+                          { title: "Onboarding New Members", content: `<h4>Welcome Messages</h4><p>Make new members feel connected from the start with personalized welcome messages, a welcome gift or resource, and public recognition in newsletters or on the platform.</p><h4>Community Guidelines</h4><p>Clearly communicated guidelines set expectations. They should define the community's purpose, explicitly prohibit negative behaviors (like hate speech and spam), and state the consequences for violations.</p><h4>Onboarding Surveys</h4><p>Gauge satisfaction and identify areas for improvement by sending a short survey to new members after a few months. Ask about their experience, how connected they feel, and what could be better.</p>`},
+                          { title: "Engagement Tactics", content: `<h4>Weekly Prompts & AMAs</h4><p>Sustain engagement with regular, light-hearted prompts (e.g., weekly check-ins, fun polls) to spark conversation. Host 'Ask Me Anything' (AMA) sessions with leaders or experts to build rapport and transparency.</p><h4>Peer-to-Peer Recognition</h4><p>Empower members to recognize each other. Create a "shout-out" channel or weekly thread, celebrate mini-milestones, and consider peer-voted awards to foster mutual support and team cohesion.</p>`},
+                          { title: "Building a Culture of Belonging", content: `<h4>DEIB (Diversity, Equity, Inclusion, and Belonging)</h4><p>Building an inclusive culture requires intentional effort. Key strategies include: conducting diversity training, establishing clear anti-harassment policies, promoting open communication (e.g., through listening circles), ensuring accessibility, celebrating diversity, and having leaders who actively model inclusive behavior.</p>`}
+                      ]
+                  },
+                  "conflict-resolution": {
+                      title: "5. Conflict Resolution",
+                      icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.17 48.17 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />`,
+                      summary: `<div class="callout-box"><h4 class="mt-0">Executive Summary</h4><p>Conflict is an inevitable part of any community. This section equips you with strategies to recognize early warning signs, de-escalate tensions, and mediate disputes using frameworks like interest-based negotiation and restorative circles. It also outlines formal procedures for dispute resolution, ensuring fairness and accountability.</p></div><div id="conflictChart" class="card p-4 my-6 fade-in-on-scroll"></div>`,
+                      accordions: [
+                          { title: "Early Warning Signs and De-escalation", content: `<h4>Early Warning Signs of Conflict</h4><p>Look for passive aggression, increased criticism, withdrawal from peers, changes in body language (e.g., clenched fists), or increased irritability. Recognizing these signs early can prevent escalation.</p><h4>De-escalation Strategies</h4><p>When intervening, stay calm, respect personal space, listen actively, and empathize with feelings without necessarily agreeing. Speak slowly, set clear boundaries by referencing community rules, and never say "Calm Down." If possible, change the setting to remove an audience.</p>`},
+                          { title: "Mediation Frameworks", content: `<h4>Interest-Based Negotiation</h4><p>This framework focuses on uncovering underlying needs ("interests") rather than fixed positions. The goal is to separate the people from the problem, brainstorm options for mutual gain, and find a solution that works for everyone.</p><h4>Restorative Circles</h4><p>This community-based approach brings all affected parties together to discuss the conflict, understand its impact, and collectively devise a plan to repair harm. It is facilitated in rounds, focusing on understanding the incident, its impact, and finding a resolution.</p>`},
+                          { title: "Formal Dispute Resolution Processes", content: `<h4>Reporting and Investigation</h4><p>Establish a clear process for formal complaints. This includes using a standardized reporting form, acknowledging receipt of the complaint promptly, gathering information through a fair and unbiased investigation, and maintaining confidentiality wherever possible.</p><h4>Follow-up</h4><p>After a resolution is reached, formally close the grievance, monitor the implementation of any agreements, and conduct scheduled check-ins. Use the experience as a lesson to evaluate and update community policies.</p>`},
+                          { title: "Sample Scripts and Templates", content: `<h4>Mediation Scripts</h4><p>Use scripts to guide mediation, ensuring fairness. Key phrases include: "Our goal is to help you figure out your own solution," and "We ask each of you to agree not to interrupt." Use neutral language to restate each person's perspective to ensure they feel heard.</p><h4>Apology Templates</h4><p>An effective apology should: acknowledge the mistake, express sincere regret, take responsibility without excuses, offer a solution or action plan, and politely request forgiveness. This structure can help mend relationships and rebuild trust.</p>`}
+                      ]
+                  },
+                  "safety-risk-management": {
+                      title: "6. Safety & Risk Management",
+                      icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286Z" />`,
+                      summary: `<div class="callout-box"><h4 class="mt-0">Executive Summary</h4><p>Ensuring safety and managing risk is paramount. This section provides guidance on physical meet-up safety (site-scouting, emergency procedures, first-aid), online safety (privacy, moderation of doxxing/hate speech), child/vulnerable adult safeguarding protocols, and essential legal considerations like insurance, liability waivers, and GDPR.</p></div>`,
+                      accordions: [
+                          { title: "Physical Meet-up Safety", content: `<h4>Site-Scouting Checklists</h4><p>Before any event, scout the venue and check for: safe entry/exit points, clear emergency routes, trip hazards, fire safety equipment, and first aid facilities. Ensure the venue is accessible and has adequate welfare facilities (toilets, drinking water).</p><h4>Emergency Procedures</h4><p>Develop a robust emergency plan that includes an evacuation procedure, a communication plan (in case primary methods fail), and pre-established liaison with local emergency services. Clearly define who has decision-making authority during a crisis.</p><h4>First-Aid Basics</h4><p>Ensure adequate first-aid provision based on event size and risk. First aiders should be qualified and identifiable, with a well-stocked first-aid kit readily available. Key skills include treating minor wounds, burns, and sprains, and knowing when to call for professional help.</p>`},
+                          { title: "Online Safety", content: `<h4>Privacy-Protection and Doxxing</h4><p>Protect members by promoting data minimization and educating them on using privacy settings. Advise members never to share sensitive personal information. Doxxing (publishing private information) should be a zero-tolerance offense, resulting in an immediate ban and, if necessary, reporting to authorities.</p><h4>Moderation Escalation for Hate Speech</h4><p>Hate speech must be removed immediately. The perpetrator should face suspension or a ban. Preserve evidence (screenshots) before removal for investigation. Be aware of legal obligations under the UK Online Safety Act 2023.</p>`},
+                          { title: "Safeguarding Protocols (UK Specific)", content: `<h4>Child and Vulnerable Adult Safeguarding</h4><p>This is a legal requirement. Key protocols include: appointing a Designated Safeguarding Lead (DSL), having a clear safeguarding policy, conducting appropriate DBS checks for volunteers in regulated activity, providing regular training, and establishing a clear code of conduct for interacting with children and vulnerable adults.</p><h4>Reporting and Responding</h4><p>Have a clear, well-understood procedure for reporting concerns internally to the DSL and externally to local authorities or the police. Know how to respond to a disclosure: listen, reassure, do not promise confidentiality that compromises safety, and report promptly.</p>`},
+                          { title: "Legal & Compliance", content: `<h4>Insurance</h4><p>Community groups need insurance. Key types include: Public Liability (for injury/damage to third parties), Employers' Liability (legally required for employees, often covers volunteers), and Trustee Indemnity (protects leaders from claims related to their decisions).</p><h4>Liability Waivers</h4><p>These are documents where participants acknowledge risks. While they can reduce liability, they do not protect against gross negligence and their enforceability varies. Always seek legal advice.</p><h4>GDPR Compliance</h4><p>The UK GDPR governs how you handle personal data. Key principles include lawfulness, data minimization, accuracy, and security. You must have a lawful basis for processing data, provide clear privacy notices, and have procedures to handle data subject rights (like access or erasure requests).</p>`}
+                      ]
+                  },
+                  "communication-leader": {
+                      title: "7. Communication",
+                      icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.056 3 12s4.03 8.25 9 8.25Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 12.75h.008v.008H12v-.008Z" />`,
+                      summary: `<div class="callout-box"><h4 class="mt-0">Executive Summary</h4><p>Effective communication is the cornerstone of successful leadership. This section outlines how to cultivate an inclusive, empathetic, and authoritative tone. It provides best practices for public speaking, writing templates for various scenarios (announcements, crisis comms), and delves into active listening and feedback techniques like Nonviolent Communication (NVC).</p></div>`,
+                      accordions: [
+                          { title: "Tone and Style Guide", content: `<h4>Inclusive, Empathetic, and Authoritative</h4><p>Your tone should be authoritative (knowledgeable, confident) without being authoritarian (demanding, controlling). Use inclusive, gender-neutral language and respect pronouns. Show empathy by actively listening and validating feelings. Be transparent and accountable to build trust.</p>`},
+                          { title: "Public Speaking and Event Facilitation", content: `<h4>Public Speaking</h4><p>Know your audience, research your topic thoroughly, and practice your delivery. Engage the audience with storytelling and clear nonverbal communication (eye contact, open posture). Speak clearly and vary your tone.</p><h4>Event Facilitation</h4><p>A facilitator's role is to guide, not dominate. Clearly define the event's purpose, set ground rules, manage time effectively, and encourage participation from everyone. Address conflict constructively and summarize key decisions and action items.</p>`},
+                          { title: "Writing Templates", content: `<h4>Announcement Posts</h4><p>An effective announcement has a catchy headline, a clear purpose, key details (who, what, when, where, why), and a clear call to action (e.g., "RSVP here").</p><h4>Crisis Communication</h4><p>In a crisis, be accurate, timely, transparent, and empathetic. In the initial phase, acknowledge the event and provide protective actions. Later, provide ongoing factual updates, correct misinformation, and share information about recovery efforts.</p><h4>Volunteer Thank-You Emails</h4><p>Make thank-yous personal and specific. Mention the specific contribution the volunteer made and explain the positive impact of their efforts. This is vital for morale and retention.</p>`},
+                          { title: "Active Listening and Feedback", content: `<h4>Active Listening</h4><p>This involves giving the speaker your undivided attention, using nonverbal cues to show you're listening, paraphrasing to confirm understanding ("So, what I hear you saying is..."), and asking open-ended questions to encourage elaboration.</p><h4>Nonviolent Communication (NVC)</h4><p>A framework for expressing yourself without judgment. It involves four steps: state a neutral Observation, express your Feeling, connect it to an unmet Need, and make a clear, positive Request.</p><h4>Feedback Techniques</h4><p>Give feedback that is specific, timely, and focused on behavior, not character. Balance positive observations with areas for growth, and work collaboratively to find solutions.</p>`}
+                      ]
+                  },
+                  "dos-donts-boundaries": {
+                      title: "8. Boundaries & Tolerances",
+                      icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" />`,
+                      summary: `<div class="callout-box"><h4 class="mt-0">Executive Summary</h4><p>Establishing clear "Dos & Don’ts" along with well-defined boundaries and tolerances is crucial for maintaining a healthy and respectful community environment. This section provides guidance on creating explicit lists of acceptable and unacceptable behaviors, ensuring fairness and consistency in enforcement, and outlines structured procedures for warnings, suspensions, and bans.</p></div>`,
+                      accordions: [
+                          { title: "Acceptable and Unacceptable Behavior", content: `<div class="grid md:grid-cols-2 gap-6 mt-6">
+                                            <div class="card p-6 bg-teal-50 border border-teal-200">
+                                                <h4 class="mt-0 text-teal-800">Acceptable Behavior ("Dos")</h4>
+                                                <ul class="list-disc pl-5 mt-4 space-y-2 text-teal-700">
+                                                    <li>Be Respectful and Courteous</li>
+                                                    <li>Be Inclusive and Welcoming</li>
+                                                    <li>Contribute Constructively</li>
+                                                    <li>Protect Privacy of Others</li>
+                                                    <li>Report Concerns Appropriately</li>
+                                                </ul>
+                                            </div>
+                                            <div class="card p-6 bg-rose-50 border border-rose-200">
+                                                <h4 class="mt-0 text-rose-800">Unacceptable Behavior ("Don’ts")</h4>
+                                                <ul class="list-disc pl-5 mt-4 space-y-2 text-rose-700">
+                                                    <li>Hate Speech & Discrimination</li>
+                                                    <li>Personal Attacks & Harassment</li>
+                                                    <li>Spam & Excessive Self-Promotion</li>
+                                                    <li>Illegal Activities & Doxxing</li>
+                                                    <li>Trolling & Deliberate Provocation</li>
+                                                </ul>
+                                            </div>
+                                        </div>`},
+                          { title: "Enforcement and Procedures", content: `<h4>Fair and Consistent Enforcement</h4><p>To build trust, enforcement must be fair. Key strategies include: being transparent with guidelines, applying rules consistently to all members, documenting all actions, and using violations as an opportunity to educate rather than just punish.</p><h4>Procedures for Warnings, Suspensions, and Bans</h4><p>Use a tiered approach: <strong>1. Warning:</strong> For minor/first-time offenses, issued privately. <strong>2. Temporary Suspension:</strong> For repeated minor offenses or moderate breaches, to provide a cooling-off period. <strong>3. Permanent Ban:</strong> For severe breaches like hate speech, doxxing, or threats.</p><h4>Escalation Matrix for Severe Breaches</h4><p>An escalation matrix provides a structured framework for handling severe breaches. It defines the issue, the escalation levels (e.g., Junior Mod -> Senior Mod -> Leadership -> Legal/Police), the criteria for moving up a level, and the responsibilities at each stage. This ensures serious issues are handled by the right people at the right time.</p>`}
+                      ]
+                  },
+                  "trust-vetting-warnings": {
+                      title: "9. Trust & Vetting",
+                      icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />`,
+                      summary: `<div class="callout-box"><h4 class="mt-0">Executive Summary</h4><p>Building and maintaining trust is fundamental. This section addresses crucial aspects of fostering trust, starting with robust volunteer and moderator vetting processes. It outlines red flags in behavior, such as bullying, power-tripping, and burnout, enabling early intervention. Strategies for actively building trust through transparency and accountability are explored, along with guidance on how to ethically cut ties with problematic individuals.</p></div>`,
+                      accordions: [
+                          { title: "Volunteer and Moderator Vetting", content: `<h4>Volunteer Vetting Process</h4><p>A thorough process includes: an application form, an informal interview, reference checks, a probationary period, and, where necessary for roles with regulated activity, a Disclosure and Barring Service (DBS) check. It is crucial to understand which level of DBS check is required.</p><h4>Moderator Vetting Process</h4><p>For online moderators, vet candidates by reviewing their existing community activity, interviewing them to assess judgment and impartiality, and implementing a trial period with limited permissions under the mentorship of senior moderators.</p>`},
+                          { title: "Red Flags in Behavior", content: `<h4>Bullying and Power-Tripping Signs</h4><p>Watch for aggressive or demeaning communication, excessive control, misuse of authority, gaslighting, spreading rumors, and resistance to feedback. These "toxic" behaviors undermine community health.</p><h4>Burnout Signs</h4><p>Leaders should be vigilant for burnout in themselves and their team. Signs include physical and emotional exhaustion, cynicism or detachment, a sense of reduced personal accomplishment, lack of motivation, and increased irritability. Address these signs with support, adjusted workloads, and encouragement to take breaks.</p>`},
+                          { title: "Trust-Building Strategies", content: `<h4>Transparency Reports</h4><p>Build confidence and accountability by regularly sharing information about your community's operations. This can include financial transparency, explaining the rationale behind key decisions, and providing anonymized data on moderation actions.</p><h4>Shared Leadership and Peer Accountability</h4><p>Distribute leadership responsibilities to foster collective ownership. When members are empowered and have shared goals, a culture of peer accountability naturally develops. Equip members with the skills to give constructive feedback and resolve minor conflicts among themselves.</p>`},
+                          { title: "When and How to Cut Ties", content: `<h4>Ethical Offboarding</h4><p>Removing a member or volunteer is a last resort, but sometimes necessary. The process must be handled ethically and according to policy. This includes formal notification referencing specific violations, a clear transition plan for their responsibilities (knowledge transfer), immediate revocation of access to all platforms and tools, and proper handling of their personal data according to GDPR.</p>`}
+                      ]
+                  },
+                  "templates-checklists-appendix": {
+                      title: "10. Appendix & Templates",
+                      icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />`,
+                      summary: `<div class="callout-box"><h4 class="mt-0">Resource Hub</h4><p>This appendix provides practical, interactive templates and checklists to assist community leaders in their daily operations, event planning, and volunteer management. Use these tools to streamline your processes and ensure best practices.</p></div>`,
+                      accordions: [
+                          {
+                              title: "Weekly Meet-up Planning Template",
+                              content: `<p>A well-planned meet-up is an engaging one. This template helps organize your regular community gatherings, ensuring all necessary aspects are covered for a smooth and impactful session.</p>
+                                        <div class="mt-6 space-y-6">
+                                          <div class="card p-6">
+                                              <h5 class="!mt-0">I. Core Logistics</h5>
+                                              <div class="grid md:grid-cols-3 gap-4 mt-4">
+                                                  <div><strong>Item:</strong> Date & Time Confirmed</div>
+                                                  <div><strong>Responsible:</strong> [Leader Name]</div>
+                                                  <div><strong>Status:</strong> <span class="font-semibold text-green-600">Complete</span></div>
+                                              </div>
+                                          </div>
+                                          <div class="card p-6">
+                                              <h5 class="!mt-0">II. Content & Facilitation</h5>
+                                              <div class="grid md:grid-cols-3 gap-4 mt-4">
+                                                  <div><strong>Item:</strong> Agenda Drafted</div>
+                                                  <div><strong>Responsible:</strong> [Leader Name]</div>
+                                                  <div><strong>Status:</strong> <span class="font-semibold text-yellow-600">In Progress</span></div>
+                                                  <div class="md:col-span-3"><strong>Notes:</strong> Key discussion points, activity outline, guest speaker confirmation.</div>
+                                              </div>
+                                          </div>
+                                          <div class="card p-6">
+                                              <h5 class="!mt-0">IV. Support & Safety</h5>
+                                              <div class="grid md:grid-cols-3 gap-4 mt-4">
+                                                  <div><strong>Item:</strong> Volunteer Support Confirmed</div>
+                                                  <div><strong>Responsible:</strong> [Volunteer Coordinator]</div>
+                                                  <div><strong>Status:</strong> <span class="font-semibold text-gray-500">Not Started</span></div>
+                                              </div>
+                                          </div>
+                                        </div>`
+                          },
+                          {
+                              title: "Interactive: Event Safety Audit",
+                              content: `<p>A dynamic checklist to ensure all safety considerations are addressed for community events. Completing this audit helps create a secure environment for participants and volunteers.</p>
+                                         <div id="safetyChecklist" class="interactive-checklist mt-6">
+                                           <div class="mb-4">
+                                             <div class="flex justify-between items-center mb-2">
+                                               <span class="font-bold text-slate-700">Checklist Progress</span>
+                                               <span id="progressText" class="font-bold text-slate-700">0%</span>
+                                             </div>
+                                             <div class="progress-bar-container"><div id="progressBar" class="progress-bar-fill"></div></div>
+                                           </div>
+                                           <h5 class="mt-6">I. Venue & Site Assessment</h5>
+                                           <label><input type="checkbox" data-category="venue"><span class="checkbox-icon"><svg class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span><span class="checkbox-text">Maximum capacity of venue understood & adhered to.</span></label>
+                                           <label><input type="checkbox" data-category="venue"><span class="checkbox-icon"><svg class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span><span class="checkbox-text">Emergency routes are clear, wide enough, and well-lit.</span></label>
+                                           <label><input type="checkbox" data-category="venue"><span class="checkbox-icon"><svg class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span><span class="checkbox-text">Venue is accessible for individuals with disabilities (ramps, accessible toilets).</span></label>
+                                           <h5 class="mt-6">II. Fire Safety</h5>
+                                           <label><input type="checkbox" data-category="fire"><span class="checkbox-icon"><svg class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span><span class="checkbox-text">Fire exits are clearly marked and unobstructed.</span></label>
+                                           <label><input type="checkbox" data-category="fire"><span class="checkbox-icon"><svg class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span><span class="checkbox-text">Fire extinguishers are present, visible, and have been recently inspected.</span></label>
+                                           <h5 class="mt-6">III. First Aid & Medical</h5>
+                                           <label><input type="checkbox" data-category="medical"><span class="checkbox-icon"><svg class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span><span class="checkbox-text">Sufficient first aid cover is in place (designated first aiders).</span></label>
+                                           <label><input type="checkbox" data-category="medical"><span class="checkbox-icon"><svg class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span><span class="checkbox-text">A well-stocked first aid kit is available and its location is known.</span></label>
+                                           <label><input type="checkbox" data-category="medical"><span class="checkbox-icon"><svg class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span><span class="checkbox-text">Emergency contact numbers are clearly displayed.</span></label>
+                                         </div>`
+                          },
+                          {
+                              title: "Visualizing Volunteer Feedback",
+                              content: `<p>Regular feedback helps improve volunteer experiences and strengthens retention. This template can be adapted for online or paper surveys. Visualizing the data, as shown in the example chart below, can quickly highlight areas of success and opportunities for improvement.</p>
+                                        <div class="grid md:grid-cols-2 gap-8 items-center mt-6">
+                                            <div id="feedbackChart" class="card p-4"></div>
+                                            <div class="survey-form-template">
+                                                <h5 class="mt-0">Sample Survey Questions</h5>
+                                                <div class="space-y-4">
+                                                    <div><label class="font-semibold block mb-1">Overall, how satisfied are you with your volunteer experience?</label><p class="text-sm text-slate-500">(Scale: 1-5, from Very Dissatisfied to Very Satisfied)</p></div>
+                                                    <div><label class="font-semibold block mb-1">Did you feel welcomed and supported during your onboarding?</label><p class="text-sm text-slate-500">(Yes/No)</p></div>
+                                                    <div><label class="font-semibold block mb-1">Do you feel your contributions are valued?</label><p class="text-sm text-slate-500">(Yes/No/Somewhat)</p></div>
+                                                    <div><label class="font-semibold block mb-1">What could we do to improve your experience?</label><p class="text-sm text-slate-500">(Open text)</p></div>
+                                                </div>
+                                            </div>
+                                        </div>`
+                          },
+                          {
+                              title: "Community Code of Conduct Template",
+                              content: `<p>A clear, visible Code of Conduct is the foundation of a safe and respectful community. It sets expectations, defines boundaries, and provides a framework for moderation. Adapt this template for your community's specific needs.</p>
+                                        <div class="grid md:grid-cols-2 gap-6 mt-6">
+                                            <div class="card p-6 bg-teal-50 border border-teal-200">
+                                                <h4 class="mt-0 text-teal-800">Expected Behaviors (The "Dos")</h4>
+                                                <ul class="list-disc pl-5 mt-4 space-y-2 text-teal-700">
+                                                    <li><strong>Be Respectful:</strong> Treat all members with courtesy, even when you disagree.</li>
+                                                    <li><strong>Be Inclusive:</strong> Welcome people of all backgrounds and identities.</li>
+                                                    <li><strong>Contribute Constructively:</strong> Keep discussions on-topic and focused on positive outcomes.</li>
+                                                    <li><strong>Protect Privacy:</strong> Respect the privacy of fellow members. Do not share personal information without consent.</li>
+                                                    <li><strong>Report Concerns:</strong> If you see a violation, report it to the moderation team.</li>
+                                                </ul>
+                                            </div>
+                                            <div class="card p-6 bg-rose-50 border border-rose-200">
+                                                <h4 class="mt-0 text-rose-800">Unacceptable Behaviors (The "Don'ts")</h4>
+                                                <ul class="list-disc pl-5 mt-4 space-y-2 text-rose-700">
+                                                    <li><strong>Hate Speech & Discrimination:</strong> No slurs, stereotyping, or attacks based on identity. Zero tolerance.</li>
+                                                    <li><strong>Personal Attacks & Harassment:</strong> No insults, threats, or bullying.</li>
+                                                    <li><strong>Spam & Self-Promotion:</strong> No unsolicited advertising or irrelevant content.</li>
+                                                    <li><strong>Illegal Activities:</strong> Do not share content that promotes or enables illegal acts.</li>
+                                                    <li><strong>Doxxing:</strong> Sharing private information is strictly forbidden and will result in an immediate ban.</li>
+                                                </ul>
+                                            </div>
+                                        </div>`
+                          }
+                      ]
+                  }
+              };
+
+            // --- SCRIPT INITIALIZATION ---
+            document.addEventListener("DOMContentLoaded", () => {
+              const navContainer = document.querySelector(".sidebar-nav");
+              const mainContentContainer = document.getElementById("main-content-area");
+              const progressBar = document.getElementById('scroll-progress-bar');
+              const charts = {}; // Object to store initialized charts
+
+              // --- DYNAMIC UI POPULATION ---
+              function populateUI() {
+                  navContainer.innerHTML = '';
+                  mainContentContainer.innerHTML = '';
+
+                  for (const sectionId in handbookContent) {
+                      const data = handbookContent[sectionId];
+
+                      const navLink = document.createElement('a');
+                      navLink.className = 'nav-link';
+                      navLink.href = `#${sectionId}`;
+                      navLink.dataset.target = sectionId;
+                      navLink.innerHTML = `<svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">${data.icon}</svg><span>${data.title}</span>`;
+                      navContainer.appendChild(navLink);
+
+                      const contentSection = document.createElement('section');
+                      contentSection.id = sectionId;
+                      contentSection.className = 'content-section';
+
+                      let contentHTML = ``;
+                      if (sectionId !== 'introduction') {
+                        contentHTML += `<h2 class="!border-0">${data.title}</h2>`;
+                      }
+
+                      if (data.summary) contentHTML += `<div class="prose max-w-none">${data.summary}</div>`;
+                      if (data.content) contentHTML += `<div class="prose max-w-none">${data.content}</div>`;
+
+                      if (data.accordions) {
+                          let accordionHTML = '<div class="accordion mt-8 border-t border-gray-200">';
+                          data.accordions.forEach(item => {
+                              accordionHTML += `
+                                  <div class="accordion-item fade-in-on-scroll">
+                                      <button class="accordion-header">
+                                          <h3 class="mt-0 mb-0">${item.title}</h3>
+                                          <svg class="accordion-chevron w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m19 9-7 7-7-7"/></svg>
+                                      </button>
+                                      <div class="accordion-content">
+                                          <div class="prose max-w-none py-4">${item.content}</div>
+                                      </div>
+                                  </div>`;
+                          });
+                          accordionHTML += '</div>';
+                          contentHTML += accordionHTML;
+                      }
+                      contentSection.innerHTML = contentHTML;
+                      mainContentContainer.appendChild(contentSection);
+                  }
+              }
+
+              // --- EVENT LISTENERS & SETUP FUNCTIONS ---
+              function setupAccordions() {
+                  mainContentContainer.addEventListener("click", (e) => {
+                      const header = e.target.closest(".accordion-header");
+                      if (header) {
+                          const content = header.nextElementSibling;
+                          header.classList.toggle("active");
+                          content.classList.toggle("open");
+                      }
+                  });
+              }
+
+              function setupScrollAnimations() {
+                  const observer = new IntersectionObserver((entries) => {
+                      entries.forEach(entry => {
+                          if (entry.isIntersecting) {
+                              entry.target.classList.add('is-visible');
+                          }
+                      });
+                  }, { rootMargin: "0px 0px -100px 0px" });
+
+                  document.querySelectorAll('.fade-in-on-scroll').forEach(section => observer.observe(section));
+              }
+
+              function showSection(targetId) {
+                  document.querySelectorAll(".content-section").forEach(section => section.classList.remove("active"));
+                  document.querySelectorAll(".nav-link").forEach(link => link.classList.remove("active"));
+
+                  const targetSection = document.getElementById(targetId);
+                  if (targetSection) {
+                      targetSection.classList.add("active");
+                      mainContentContainer.scrollTop = 0;
+                  }
+
+                  const activeLink = document.querySelector(`.nav-link[data-target="${targetId}"]`);
+                  if (activeLink) activeLink.classList.add("active");
+
+                  initializeSectionScripts(targetId);
+              }
+
+              // --- INTERACTIVE & CHART RENDERING ---
+              function setupInteractiveChecklists() {
+                  const checklist = document.getElementById('safetyChecklist');
+                  if (!checklist || checklist.dataset.initialized) return;
+
+                  const checkboxes = checklist.querySelectorAll('input[type="checkbox"]');
+                  const progressBar = document.getElementById('progressBar');
+                  const progressText = document.getElementById('progressText');
+                  const total = checkboxes.length;
+
+                  const updateProgress = () => {
+                      const checkedCount = checklist.querySelectorAll('input[type="checkbox"]:checked').length;
+                      const percentage = total > 0 ? (checkedCount / total) * 100 : 0;
+                      progressBar.style.width = `${percentage}%`;
+                      progressText.textContent = `${Math.round(percentage)}%`;
+                  };
+
+                  checkboxes.forEach(checkbox => {
+                      checkbox.addEventListener('change', updateProgress);
+                  });
+
+                  updateProgress(); // Initial calculation
+                  checklist.dataset.initialized = 'true'; // Mark as initialized
+              }
+
+              function renderAppendixCharts() {
+                  if (charts.feedback) return;
+                  const feedbackEl = document.querySelector("#feedbackChart");
+                  if (feedbackEl && typeof ApexCharts !== 'undefined') {
+                      const options = {
+                          series: [75, 18, 7],
+                          chart: { type: 'donut', height: 350 },
+                          labels: ['Positive', 'Neutral', 'Negative'],
+                          colors: ['var(--color-primary)', 'var(--color-text-light)', '#f87171'],
+                          title: { text: 'Sample Volunteer Satisfaction', align: 'left', style: {fontSize: '18px', fontWeight: 'bold', color: 'var(--color-text-dark)'} },
+                          legend: { position: 'bottom' },
+                          responsive: [{ breakpoint: 480, options: { chart: { width: 200 }, legend: { position: 'bottom' } } }]
+                      };
+                      charts.feedback = new ApexCharts(feedbackEl, options);
+                      charts.feedback.render();
+                  }
+              }
+
+              function renderLeadershipCharts() {
+                  if (charts.leadership) return;
+                  const leadershipEl = document.querySelector("#leadershipChart");
+                  if (leadershipEl && typeof ApexCharts !== 'undefined') {
+                       const options = { series: [{ name: 'Transformational', data: [8, 7, 9, 6] }, { name: 'Situational', data: [5, 9, 4, 9] }, { name: 'Servant', data: [9, 8, 6, 7] }, { name: 'Adaptive', data: [7, 9, 8, 9] }], chart: { type: 'radar', height: 380, toolbar: { show: false } }, colors: ['#14b8a6', '#a3e635', '#6366F1', '#F59E0B'], title: { text: 'Leadership Style Focus', align: 'left', style: {fontSize: '18px', fontWeight: 'bold', color: '#1e293b'} }, xaxis: { categories: ['Follower Growth', 'Flexibility', 'Vision', 'Task Focus'] }, yaxis: { show: false }, stroke: { width: 2 }, fill: { opacity: 0.15 }, markers: { size: 4 } };
+                       charts.leadership = new ApexCharts(leadershipEl, options);
+                       charts.leadership.render();
+                  }
+
+                  if (charts.ei) return;
+                  const eiChartEl = document.querySelector('#eiChart');
+                  if (eiChartEl && typeof ApexCharts !== 'undefined') {
+                      const eiOptions = { chart: { height: 350, type: 'radialBar' }, series: [90, 85, 70, 65, 50], plotOptions: { radialBar: { offsetY: 0, startAngle: 0, endAngle: 270, hollow: { margin: 5, size: '30%', background: 'transparent' }, dataLabels: { name: { show: false }, value: { show: false } } } }, colors: ['#14b8a6', '#6366F1', '#10B981', '#a3e635', '#EF4444'], labels: ['Self-Awareness', 'Self-Regulation', 'Motivation', 'Empathy', 'Social Skills'], legend: { show: true, floating: true, fontSize: '14px', position: 'left', offsetX: 50, offsetY: 15, labels: { useSeriesColors: true }, markers: { size: 0 }, formatter: function(seriesName, opts) { return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex] }, itemMargin: { vertical: 3 } } };
+                      charts.ei = new ApexCharts(eiChartEl, eiOptions);
+                      charts.ei.render();
+                  }
+              }
+
+              function renderOrgGanttChart() {
+                   if (charts.gantt) return;
+                   const ganttEl = document.querySelector("#ganttChart");
+                  if (ganttEl && typeof ApexCharts !== 'undefined') {
+                      const options = {
+                        series: [ { name: 'Planning', data: [{ x: 'Recruitment', y: [new Date('2025-07-01').getTime(), new Date('2025-08-15').getTime()] }, { x: 'Venue & Logistics', y: [new Date('2025-07-15').getTime(), new Date('2025-09-01').getTime()] }] }, { name: 'Execution', data: [{ x: 'Promotion', y: [new Date('2025-08-01').getTime(), new Date('2025-09-20').getTime()] }, { x: 'Community Event Day', y: [new Date('2025-09-21').getTime(), new Date('2025-09-21').getTime()] }] }, { name: 'Follow-up', data: [{ x: 'Thank Yous & Feedback', y: [new Date('2025-09-22').getTime(), new Date('2025-10-05').getTime()] }] } ],
+                        chart: { height: 350, type: 'rangeBar', toolbar: { show: false } },
+                        plotOptions: { bar: { horizontal: true, barHeight: '50%', rangeBarGroupRows: true } },
+                        colors: [ 'var(--color-primary)', 'var(--color-secondary)', '#6366F1'],
+                        fill: { type: 'solid' },
+                        xaxis: { type: 'datetime' },
+                        legend: { position: 'top' },
+                         title: { text: 'Example Community Project Timeline', align: 'left', style:{color: 'var(--color-text-dark)'} },
+                      };
+                      charts.gantt = new ApexCharts(ganttEl, options);
+                      charts.gantt.render();
+                  }
+              }
+
+              function initializeSectionScripts(sectionId) {
+                  if (sectionId === 'leadership-foundations') renderLeadershipCharts();
+                  if (sectionId === 'organizational-time-management') renderOrgGanttChart();
+                  if (sectionId === 'templates-checklists-appendix') {
+                      renderAppendixCharts();
+                      setupInteractiveChecklists();
+                  }
+              }
+
+              // --- MAIN EXECUTION ---
+              populateUI();
+              setupAccordions();
+              setupScrollAnimations();
+
+              document.querySelectorAll(".nav-link").forEach(link => {
+                link.addEventListener("click", (event) => {
+                  event.preventDefault();
+                  const targetId = event.currentTarget.dataset.target;
+                  if (targetId) {
+                      showSection(targetId);
+                      window.location.hash = targetId;
+                  }
+                });
+              });
+
+              mainContentContainer.addEventListener('scroll', () => {
+                  let scrollHeight = mainContentContainer.scrollHeight - mainContentContainer.clientHeight;
+                  progressBar.style.width = `${(mainContentContainer.scrollTop / scrollHeight) * 100}%`;
+              });
+
+              const initialHash = window.location.hash.substring(1) || "introduction";
+              showSection(initialHash);
+      >>>>>>> 7a146dbab5ffb69a1a17fba0028e4623ee10f893
+            });
     </script>
   </body>
 </html>
