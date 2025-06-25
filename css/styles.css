@@ -1,104 +1,1213 @@
 /*
-  styles.css
-  This file contains the main styles for your community webpages.
-  You can change colors, fonts, and layout here. 
-  Look for comments like 'EDIT HERE' to customize easily.
+  Design System & Layout Guide for Web Effects Showcase
 */
 
+/* 1. Overall Philosophy & Aesthetic */
 :root {
-  /* === EDIT HERE: Main Color Palette === */
-  --primary: #a16207; /* Gold/Amber */
-  --primary-dark: #7c2d12;
-  --accent: #b76e79; /* Rose Gold */
-  --background: #fffbeb; /* Cream */
-  --text: #374151; /* Dark Gray */
-  --surface: #fff8e1; /* Light surface */
-  --glass: rgba(255,255,255,0.3);
-  --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  /* Color Palette */
+  --bg-primary: #0f172a; /* Slate 950 */
+  --text-primary: #cbd5e1; /* Slate 300 */
+  --text-muted: #94a3b8; /* Slate 400 */
+  --text-secondary: #64748b; /* Slate 500 */
+  --nav-bg: rgba(15, 23, 42, 0.6);
+  --card-bg: rgba(30, 41, 59, 0.5);
+  --border-primary: rgba(255, 255, 255, 0.1);
+  --border-secondary: rgba(255, 255, 255, 0.2);
+  --accent-primary: #4f46e5; /* Indigo 600 */
+  --accent-gradient: linear-gradient(to right, #4f46e5, #a855f7);
+
+  /* Typography */
+  --font-ui: 'Inter', sans-serif;
+  --font-code: 'Roboto Mono', monospace;
 }
 
 body {
-  font-family: 'Inter', Arial, sans-serif;
-  background: var(--background);
-  color: var(--text);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
   margin: 0;
-  min-height: 100vh;
-  transition: background 0.5s, color 0.5s;
+  overflow: hidden; /* Prevent body from scrolling */
 }
 
-header, nav {
-  background: var(--primary-dark);
-  color: #fff;
-  box-shadow: var(--shadow);
-}
-nav {
+/* 2. Layout Structure */
+.page-container {
   display: flex;
-  gap: 1rem;
-  padding: 1rem 2rem;
-  justify-content: center;
-}
-nav a {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  transition: background 0.2s, color 0.2s;
-}
-nav a:hover, nav a.active {
-  background: var(--accent);
-  color: #fff;
 }
 
-main {
-  max-width: 900px;
-  margin: 2rem auto;
+.side-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background-color: var(--nav-bg);
+  backdrop-filter: blur(16px);
+  border-right: 1px solid var(--border-primary);
   padding: 2rem;
-  background: var(--surface);
-  border-radius: 1.5rem;
-  box-shadow: var(--shadow);
+  box-sizing: border-box;
 }
 
-h1, h2, h3 {
-  font-family: 'Inter', Arial, sans-serif;
-  color: var(--primary-dark);
+.main-content {
+  margin-left: 260px;
+  height: 100vh;
+  overflow-y: scroll;
+  flex-grow: 1;
+  padding: 3rem;
+  box-sizing: border-box;
 }
 
-/* === Glassmorphism Utility === */
-.glass {
-  background: var(--glass);
-  backdrop-filter: blur(12px);
+/* 3. Typography */
+.hero-heading {
+  font-size: 3.75rem; /* text-6xl */
+  font-weight: 900; /* font-black */
+}
+
+.chapter-heading {
+  font-size: 2.5rem;
+  font-weight: 700; /* font-bold */
+  padding-bottom: 1rem;
+  border-bottom: 2px solid;
+  border-image: var(--accent-gradient) 1;
+}
+
+.effect-title {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 600; /* font-semibold */
+}
+
+pre, code {
+  font-family: var(--font-code);
+}
+
+/* 4. Reusable Component Templates */
+.effect-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-secondary);
   border-radius: 1rem;
-  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* === Button Styles === */
+.effect-description {
+  color: var(--text-muted);
+  margin: 0.75rem 0 1.5rem 0;
+}
+
+.demo-container {
+  border-radius: 0.75rem;
+  background-color: rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 16rem; /* h-64 */
+}
+
+/* Grid for cards */
+.effects-grid {
+    margin-top: 2rem; /* mt-8 */
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 2rem; /* gap-8 */
+}
+
+@media (min-width: 1280px) {
+    .effects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Side Nav Specifics */
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li a {
+    display: block;
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-links li a:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.nav-links li a.active {
+    background-color: var(--accent-primary);
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Homepage Specific Styles */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0; /* Behind content but above background color */
+}
+
+.main-content {
+    position: relative; /* Ensure main content is layer above particles */
+    z-index: 1;
+}
+
+.hero-header {
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    max-width: 60ch;
+    margin: 0 auto;
+}
+
+.chapter-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.chapter-card .btn {
+    margin-top: 1.5rem;
+    align-self: flex-start;
+}
+
+
+/* General Button Style */
 .btn {
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s;
-  box-shadow: var(--shadow);
-}
-.btn:hover {
-  background: var(--primary-dark);
+    display: inline-block;
+    background-color: var(--accent-primary);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
 }
 
-/* === Responsive === */
-@media (max-width: 600px) {
-  main {
-    padding: 1rem;
-  }
-  nav {
+.btn:hover {
+    background-color: #4338ca; /* Darker Indigo */
+}
+
+/* Loader Specific Styles */
+.svg-loader path {
+    stroke: var(--accent-primary);
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: draw 2s forwards infinite;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.blob-loader {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+    animation: blob-morph 1.5s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes blob-morph {
+    to {
+        border-radius: 40% 60% 60% 40% / 60% 40% 60% 40%;
+        transform: scale(1.1) rotate(10deg);
+    }
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0;
+    background-color: var(--accent-primary);
+    border-radius: 4px;
+    transition: width 0.4s ease-in-out;
+}
+
+#microLoaderBtn {
+    position: relative;
+}
+
+#microLoaderBtn .micro-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -12px;
+    margin-left: -12px;
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+#microLoaderBtn.loading .btn-text {
+    opacity: 0;
+}
+
+#microLoaderBtn.loading .micro-loader {
+    opacity: 1;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Chapter 1: Background Effects */
+#tsparticles-container {
+    position: relative;
+    overflow: hidden;
+}
+
+#tsparticles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.parallax {
+    position: relative;
+    overflow: hidden;
+    background-color: #000; /* Fallback */
+}
+
+.parallax-layer {
+    position: absolute;
+    top: -10%; left: -10%;
+    width: 120%; height: 120%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.1s ease-out;
+    z-index: 1;
+}
+
+.parallax-layer.layer-1 {
+    background-image: url('https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1200&q=80');
+    z-index: 1;
+}
+
+.parallax-layer.layer-2 {
+    background-image: url('https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1200&q=80');
+    z-index: 2;
+}
+
+.parallax-text {
+    position: relative;
+    z-index: 3;
+    padding: 2rem;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+.ambient-light {
+    position: relative;
+    overflow: hidden;
+    cursor: none;
+}
+
+.ambient-light .spotlight {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out;
+}
+
+.svg-filter-bg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Chapter 2: Scrolling & Navigation */
+#gsap-box {
+    background: var(--accent-gradient);
+    color: #fff;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+}
+
+.scroll-snap-container {
+    height: 16rem;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    padding: 0;
+}
+
+.snap-section {
+    height: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.snap-section-1 { background-color: #1e40af; }
+.snap-section-2 { background-color: #3730a3; }
+.snap-section-3 { background-color: #4f46e5; }
+
+.horizontal-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    padding: 0;
+    scrollbar-width: none; /* Firefox */
+}
+
+.horizontal-scroll-container::-webkit-scrollbar { 
+    display: none; /* Safari and Chrome */
+}
+
+.horizontal-item {
+    flex: 0 0 10rem;
+    height: 10rem;
+    background-color: rgba(255,255,255,0.05);
+    border: 1px solid var(--border-secondary);
+    border-radius: 0.5rem;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.infinite-carousel {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+}
+
+.infinite-carousel::before, .infinite-carousel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4rem;
+    z-index: 1;
+}
+
+.infinite-carousel::before {
+    left: 0;
+    background: linear-gradient(to right, var(--card-bg), transparent);
+}
+
+.infinite-carousel::after {
+    right: 0;
+    background: linear-gradient(to left, var(--card-bg), transparent);
+}
+
+.carousel-track {
+    display: flex;
+    width: max-content;
+    animation: scroll 20s linear infinite;
+}
+
+.carousel-track span {
+    background-color: rgba(255,255,255,0.05);
+    padding: 0.5rem 1.5rem;
+    margin: 0 0.5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+.lazy-reveal-demo {
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.lazy-reveal-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    margin-bottom: 1rem;
+}
+
+.lazy-reveal-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#progress-bar-container {
+    width: 100%;
+    height: 4px;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+#progress-bar {
+    height: 100%;
+    width: 0;
+    background: var(--accent-gradient);
+    border-radius: 2px;
+}
+
+.scroll-prompt-demo {
+    height: 100px;
+}
+
+/* Chapter 3: Interaction & Micro-Interactions */
+.demo-button {
+    background: var(--accent-gradient);
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple-effect 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple-effect {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.magnetic-btn {
+    transition: transform 0.1s linear;
+}
+
+.tilt-card {
+    width: 12rem;
+    height: 12rem;
+    background: var(--accent-gradient);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-radius: 1rem;
+    transform-style: preserve-3d;
+}
+
+.cursor-trail-container {
+    cursor: none;
+}
+
+.cursor-trail {
+    position: fixed; /* Use fixed to position relative to viewport */
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    z-index: 9999;
+}
+
+.focus-input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid var(--border-primary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    width: 80%;
+    position: relative;
+    outline: none;
+}
+
+.focus-input::placeholder {
+    color: var(--text-secondary);
+}
+
+.focus-input:focus {
+    border-image: var(--accent-gradient) 1;
+}
+
+.pop-out-card {
+    padding: 2rem;
+    background-color: rgba(255,255,255,0.05);
+    border-radius: 0.75rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pop-out-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Chapter 4: Typography & Text Animations */
+.typewriter {
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    min-height: 2rem; /* Prevent layout shift */
+}
+
+.gradient-text {
+    font-size: 2.5rem;
+    font-weight: 900;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.kinetic-text {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--text-primary);
+}
+
+.glitch-text {
+    position: relative;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    animation: glitch-shake 2s infinite linear alternate-reverse;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: var(--card-bg);
+}
+
+.glitch-text::before {
+    left: 2px;
+    text-shadow: -1px 0 red;
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+    left: -2px;
+    text-shadow: -1px 0 blue;
+    animation: glitch-anim-2 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+    0% { clip-path: inset(5% 0 90% 0); }
+    100% { clip-path: inset(60% 0 35% 0); }
+}
+
+@keyframes glitch-anim-2 {
+    0% { clip-path: inset(15% 0 70% 0); }
+    100% { clip-path: inset(80% 0 5% 0); }
+}
+
+@keyframes glitch-shake {
+    0% { transform: skewX(0deg); }
+    100% { transform: skewX(5deg); }
+}
+
+.liquid-svg {
+    font-size: 2.5rem;
+    font-weight: 900;
+}
+
+.liquid-text {
+    fill: var(--accent-primary);
+}
+
+.hover-reveal-text {
+    font-size: 2.5rem;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.hover-reveal-text span {
+    display: inline-block;
+}
+
+/* Chapter 5: Imagery & Media */
+.svg-draw-path {
+    stroke: var(--accent-primary);
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 3s ease-in-out forwards infinite;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.kenburns-container {
+    overflow: hidden;
+    border-radius: 0.5rem;
+    height: 200px;
+}
+
+.kenburns-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: kenburns 15s ease-in-out infinite alternate;
+}
+
+@keyframes kenburns {
+    0% {
+        transform: scale(1) translate(0, 0);
+    }
+    100% {
+        transform: scale(1.2) translate(10px, -5px);
+    }
+}
+
+.blur-up {
+    filter: blur(20px);
+    transition: filter 0.5s ease;
+}
+
+.blur-up.loaded {
+    filter: blur(0);
+}
+
+#canvas-filters {
+    border-radius: 0.5rem;
+}
+
+.controls {
+    margin-top: 1rem;
+    display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    padding: 1rem;
-  }
 }
 
-/* === Add more effect-specific classes in each demo page === */ 
+.controls label {
+    font-size: 0.9rem;
+}
+
+.full-width-card {
+    grid-column: 1 / -1;
+}
+
+/* Juxtapose Slider Overrides */
+.jx-slider {
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.jx-image.jx-left {
+    background: #111;
+}
+
+.jx-image.jx-right {
+    background: #222;
+}
+
+.jx-handle {
+    background: var(--accent-primary);
+}
+
+.jx-label {
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border: none;
+    backdrop-filter: blur(5px);
+}
+
+/* Chapter 6: Layout & Structure */
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 10rem;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.flip-card-front {
+    background: var(--accent-gradient);
+    color: #fff;
+}
+
+.flip-card-back {
+    background-color: var(--border-secondary);
+    color: var(--text-primary);
+    transform: rotateY(180deg);
+}
+
+.accordion-item {
+    background-color: rgba(255,255,255,0.05);
+    border: 1px solid var(--border-secondary);
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+}
+
+.accordion-header {
+    padding: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.accordion-content p {
+    padding: 0 1rem 1rem;
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+.masonry-grid {
+    width: 100%;
+}
+
+.masonry-item {
+    width: calc(33.333% - 11px); /* 11px = 2/3 of gutter */
+    margin-bottom: 16px;
+    background-color: rgba(255,255,255,0.05);
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-secondary);
+}
+
+.masonry-content {
+    padding: 1rem;
+    font-size: 2rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.masonry-h-1 { height: 100px; }
+.masonry-h-2 { height: 200px; }
+.masonry-h-3 { height: 120px; }
+.masonry-h-4 { height: 150px; }
+.masonry-h-5 { height: 220px; }
+.masonry-h-6 { height: 180px; }
+
+.split-screen {
+    display: flex;
+    height: 12rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.split-panel {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    transition: flex 0.5s ease-in-out;
+}
+
+.split-panel.left {
+    background-color: #1e40af;
+}
+
+.split-panel.right {
+    background-color: #3730a3;
+}
+
+.split-screen:hover .left {
+    flex: 0.25;
+}
+
+.split-screen:hover .right {
+    flex: 1.75;
+}
+
+.sticky-demo-container {
+    height: 250px;
+    overflow-y: auto;
+    padding: 0 1rem;
+}
+
+.sticky-element {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 1rem;
+    background-color: var(--accent-primary);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    z-index: 10;
+}
+
+.sticky-spacer-top { height: 100px; }
+.sticky-spacer-bottom { height: 300px; }
+
+/* Chapter 7: UI Styles & Themes */
+.neumorphic-card {
+    background: var(--bg-primary);
+    border-radius: 1rem;
+    padding: 2rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    box-shadow: 
+        -8px -8px 16px rgba(255, 255, 255, 0.05),
+        8px 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.brutalist-card {
+    background: #fff;
+    border: 4px solid #000;
+    padding: 1rem;
+    color: #000;
+}
+
+.brutalist-header {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.25rem;
+    margin: 0 0 1rem 0;
+    text-align: center;
+}
+
+.brutalist-button {
+    font-family: 'Press Start 2P', cursive;
+    background: #ffdd00;
+    color: #000;
+    border: 4px solid #000;
+    padding: 0.5rem 1rem;
+    box-shadow: 4px 4px 0 #000;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.brutalist-button:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
+}
+
+.form-wizard {
+    position: relative;
+    height: 12rem;
+    overflow: hidden;
+}
+
+.wizard-step {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.wizard-step.active {
+    opacity: 1;
+    transform: translateX(0);
+    visibility: visible;
+}
+
+.wizard-step h4 {
+    margin: 0 0 1rem 0;
+    font-weight: 600;
+}
+
+.wizard-step input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--border-secondary);
+    border-radius: 0.25rem;
+    color: var(--text-primary);
+}
+
+.wizard-btn {
+    background: var(--accent-primary);
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    margin-right: 0.5rem;
+}
+
+.wizard-btn.prev {
+    background: var(--border-primary);
+}
+
+/* Chapter 8: Data Visualization */
+#barChart {
+    max-height: 300px;
+}
+
+.radial-progress {
+    width: 100px;
+    height: 100px;
+    transform: rotate(-90deg);
+}
+
+.radial-progress-text {
+    position: absolute;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.progress-bg {
+    fill: none;
+    stroke: var(--border-secondary);
+    stroke-width: 10;
+}
+
+.progress-bar {
+    fill: none;
+    stroke: var(--accent-primary);
+    stroke-width: 10;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s ease-out;
+}
+
+.tooltip-trigger {
+    background: var(--accent-gradient);
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    position: relative;
+}
+
+.tooltip-content {
+    position: absolute;
+    background: #111;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+    white-space: nowrap;
+}
+
+.tooltip-trigger:hover .tooltip-content {
+    opacity: 1;
+    visibility: visible;
+}
+
+.timeline-demo-container {
+    height: 300px;
+    overflow-y: auto;
+}
+
+.timeline {
+    position: relative;
+    padding: 1rem 0;
+    margin-left: 1rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border-secondary);
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -1px;
+    top: 5px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    border: 3px solid var(--bg-primary);
+}
+
+.timeline-content h4 {
+    margin: 0 0 0.25rem 0;
+    font-weight: 600;
+}
+
+.timeline-content p {
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+/* Chapter 9: Loaders & Preloaders */
+.svg-loader path {
+    stroke: var(--accent-primary);
+    stroke-dasharray: 280;
+    stroke-dashoffset: 280;
+    animation: draw 2s linear infinite;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.blob-loader {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-gradient);
+    border-radius: 50%;
+    animation: blob-morph 3s ease-in-out infinite;
+}
+
+@keyframes blob-morph {
+    0%, 100% {
+        border-radius: 45% 55% 70% 30% / 30% 70% 30% 70%;
+    }
+    50% {
+        border-radius: 30% 70% 45% 55% / 55% 30% 70% 30%;
+    }
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 1.5rem;
+    background: rgba(0,0,0,0.2);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.progress-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: var(--accent-gradient);
+    border-radius: 0.75rem;
+    transition: width 1s ease-in-out;
+}
+
+#microLoaderBtn .micro-loader {
+    display: none;
+    width: 1.25em;
+    height: 1.25em;
+    border: 2px solid rgba(255,255,255,0.5);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+#microLoaderBtn.loading .btn-text {
+    display: none;
+}
+
+#microLoaderBtn.loading .micro-loader {
+    display: block;
+}
