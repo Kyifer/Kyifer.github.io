@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Submit Strike Report</title>
+    <title>Strike Record Search</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,21 +26,33 @@
         font-family: "Inter", sans-serif;
         background-color: #111827;
       }
-      .form-input {
+      .search-input {
         background-color: #1f2937;
         border-color: #4b5563;
         color: #f9fafb;
       }
-      .form-input:focus {
+      .search-input:focus {
         --tw-ring-color: #4f46e5;
         border-color: #4f46e5;
       }
-      .file-input-label {
-        background-color: #374151;
-        border-color: #4b5563;
+      .result-card {
+        background-color: #1f2937;
+        border: 1px solid #374151;
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
       }
-      .file-input-label:hover {
-        background-color: #4b5563;
+      .result-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(79, 70, 229, 0.2);
+      }
+      .loader {
+        border-top-color: #4f46e5;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
       }
     </style>
   </head>
@@ -53,7 +65,7 @@
       <div class="text-center">
         <h1 class="text-3xl font-bold text-white">Moderation Portal</h1>
         <p class="text-gray-400 mt-2 mb-8">
-          Please sign in with your authorized Google account to submit a report.
+          Please sign in with your authorized Google account to continue.
         </p>
         <div
           id="g_id_onload"
@@ -81,119 +93,99 @@
       id="main-content"
       class="w-full min-h-full mx-auto hidden flex-col p-4 sm:p-6 md:p-8"
     >
-      <div class="max-w-2xl mx-auto w-full">
-        <div class="text-center mb-8">
-          <h1 class="text-3xl sm:text-4xl font-bold text-white">
-            Submit a New Strike Report
-          </h1>
-          <p class="text-gray-400 mt-2">
-            Fill out the details below. All fields are required.
+      <!-- Header -->
+      <div class="text-center mb-8">
+        <h1 class="text-3xl sm:text-4xl font-bold text-white">
+          Strike Record Search Portal
+        </h1>
+        <p class="text-gray-400 mt-2">
+          Enter a search term in one of the boxes below.
+        </p>
+      </div>
+
+      <!-- Search Controls -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 p-6 bg-gray-800 rounded-lg shadow-lg border border-gray-700"
+      >
+        <div>
+          <label
+            for="moderator-search"
+            class="block text-sm font-medium text-gray-300 mb-2"
+            >Search by Moderator</label
+          >
+          <input
+            type="text"
+            id="moderator-search"
+            placeholder="Enter moderator name..."
+            class="search-input w-full rounded-md shadow-sm focus:ring focus:ring-opacity-50"
+          />
+        </div>
+        <div>
+          <label
+            for="member-search"
+            class="block text-sm font-medium text-gray-300 mb-2"
+            >Search by Member Name</label
+          >
+          <input
+            type="text"
+            id="member-search"
+            placeholder="Enter member name..."
+            class="search-input w-full rounded-md shadow-sm focus:ring focus:ring-opacity-50"
+          />
+        </div>
+        <div>
+          <label
+            for="discord-search"
+            class="block text-sm font-medium text-gray-300 mb-2"
+            >Search by Discord ID</label
+          >
+          <input
+            type="text"
+            id="discord-search"
+            placeholder="Enter Discord ID..."
+            class="search-input w-full rounded-md shadow-sm focus:ring focus:ring-opacity-50"
+          />
+        </div>
+      </div>
+
+      <!-- Results Area -->
+      <div class="flex-grow flex flex-col">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-2xl font-semibold text-white">Results</h2>
+          <div id="results-count" class="text-gray-400 font-medium"></div>
+        </div>
+        <div
+          id="loader"
+          class="text-center p-8 hidden flex-grow items-center justify-center"
+        >
+          <div
+            class="loader h-12 w-12 rounded-full border-4 border-gray-700 mx-auto"
+          ></div>
+          <p class="mt-4 text-gray-400">Searching...</p>
+        </div>
+        <div
+          id="no-results"
+          class="text-center p-8 bg-gray-800 rounded-lg hidden flex-grow items-center justify-center"
+        >
+          <p class="text-gray-400">
+            No records found matching your search criteria.
           </p>
         </div>
-
-        <form id="strike-form" class="space-y-6">
-          <div>
-            <label
-              for="moderator-name"
-              class="block text-sm font-medium text-gray-300"
-              >Your Name (Moderator)</label
-            >
-            <input
-              type="text"
-              id="moderator-name"
-              required
-              class="mt-1 form-input w-full rounded-md shadow-sm focus:ring focus:ring-opacity-50"
-            />
-          </div>
-          <div>
-            <label
-              for="member-name"
-              class="block text-sm font-medium text-gray-300"
-              >Member's Name</label
-            >
-            <input
-              type="text"
-              id="member-name"
-              required
-              class="mt-1 form-input w-full rounded-md shadow-sm focus:ring focus:ring-opacity-50"
-            />
-          </div>
-          <div>
-            <label
-              for="discord-id"
-              class="block text-sm font-medium text-gray-300"
-              >Member's Discord ID</label
-            >
-            <input
-              type="text"
-              id="discord-id"
-              required
-              class="mt-1 form-input w-full rounded-md shadow-sm focus:ring focus:ring-opacity-50"
-            />
-          </div>
-          <div>
-            <label for="reason" class="block text-sm font-medium text-gray-300"
-              >Reason for Strike</label
-            >
-            <textarea
-              id="reason"
-              rows="4"
-              required
-              class="mt-1 form-input w-full rounded-md shadow-sm focus:ring focus:ring-opacity-50"
-            ></textarea>
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-300"
-              >Upload Supporting Evidence (Optional)</label
-            >
-            <div class="mt-1">
-              <input type="file" id="evidence-file" class="hidden" />
-              <label
-                for="evidence-file"
-                class="file-input-label cursor-pointer inline-flex items-center px-4 py-2 border rounded-md shadow-sm text-sm font-medium text-white"
-              >
-                Choose File
-              </label>
-              <span id="file-name" class="ml-3 text-gray-400"
-                >No file selected</span
-              >
-            </div>
-          </div>
-          <div class="relative flex items-start">
-            <div class="flex h-5 items-center">
-              <input
-                id="agreement"
-                type="checkbox"
-                required
-                class="h-4 w-4 rounded border-gray-600 bg-gray-700 text-indigo-600 focus:ring-indigo-500"
-              />
-            </div>
-            <div class="ml-3 text-sm">
-              <label for="agreement" class="font-medium text-gray-300"
-                >Data Protection & Conduct Agreement</label
-              >
-              <p class="text-gray-400 text-xs">
-                I acknowledge this data is confidential and agree not to share
-                it.
-              </p>
-            </div>
-          </div>
-          <div>
-            <button
-              type="submit"
-              id="submit-button"
-              class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              Submit Report
-            </button>
-          </div>
-        </form>
-        <div id="form-message" class="mt-4 text-center"></div>
+        <div
+          id="initial-message"
+          class="text-center p-8 bg-gray-800 rounded-lg flex-grow flex items-center justify-center"
+        >
+          <p class="text-gray-400">Search results will appear here.</p>
+        </div>
+        <div
+          id="results-grid"
+          class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6"
+        ></div>
       </div>
     </div>
 
     <script>
-      // --- DECODE JWT & AUTH ---
+      // --- DECODE JWT ---
       function decodeJwtResponse(token) {
         var base64Url = token.split(".")[1];
         var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
@@ -207,6 +199,8 @@
         );
         return JSON.parse(jsonPayload);
       }
+
+      // --- AUTHENTICATION ---
       const authScreen = document.getElementById("auth-screen");
       const deniedScreen = document.getElementById("denied-screen");
       const mainContent = document.getElementById("main-content");
@@ -226,102 +220,166 @@
       function handleCredentialResponse(response) {
         const responsePayload = decodeJwtResponse(response.credential);
         const userEmail = responsePayload.email;
+
         if (AUTHORIZED_EMAILS.includes(userEmail)) {
+          // User is authorized
           authScreen.style.display = "none";
           deniedScreen.style.display = "none";
           mainContent.style.display = "flex";
-          document.getElementById("moderator-name").value =
-            responsePayload.name || "";
         } else {
+          // User is not authorized
           authScreen.style.display = "none";
           deniedScreen.style.display = "flex";
           unauthorizedEmailEl.textContent = `(${userEmail})`;
         }
       }
 
-      // --- FORM LOGIC ---
-      const WEB_APP_URL =
-        "https://script.google.com/macros/s/AKfycbyS1JzB-RFYJ4pkcJRQMaK2kG9fMNtm6YQqFNX28bxPgeVpMd8d20mqyhyktVdiPV0U/exec";
-      const form = document.getElementById("strike-form");
-      const submitButton = document.getElementById("submit-button");
-      const formMessage = document.getElementById("form-message");
-      const fileInput = document.getElementById("evidence-file");
-      const fileNameSpan = document.getElementById("file-name");
+      // --- CONFIGURATION ---
+      const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyS1JzB-RFYJ4pkcJRQMaK2kG9fMNtm6YQqFNX28bxPgeVpMd8d20mqyhyktVdiPV0U/exec";
 
-      fileInput.addEventListener("change", () => {
-        fileNameSpan.textContent =
-          fileInput.files.length > 0
-            ? fileInput.files[0].name
-            : "No file selected";
-      });
+      // --- DOM ELEMENTS ---
+      const moderatorInput = document.getElementById("moderator-search");
+      const memberInput = document.getElementById("member-search");
+      const discordInput = document.getElementById("discord-search");
+      const resultsGrid = document.getElementById("results-grid");
+      const resultsCount = document.getElementById("results-count");
+      const loader = document.getElementById("loader");
+      const noResults = document.getElementById("no-results");
+      const initialMessage = document.getElementById("initial-message");
 
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        submitButton.disabled = true;
-        submitButton.textContent = "Submitting...";
-        formMessage.textContent = "";
-
-        const file = fileInput.files[0];
-        let fileData = { base64: null, name: null, type: null };
-
-        if (file) {
-          try {
-            fileData = await readFileAsBase64(file);
-          } catch (error) {
-            formMessage.textContent = "Error reading file.";
-            formMessage.className = "text-red-500";
-            submitButton.disabled = false;
-            submitButton.textContent = "Submit Report";
-            return;
-          }
-        }
-
-        const formData = {
-          moderatorName: document.getElementById("moderator-name").value,
-          memberName: document.getElementById("member-name").value,
-          discordId: document.getElementById("discord-id").value,
-          reason: document.getElementById("reason").value,
-          agreement: document.getElementById("agreement").checked,
-          fileData: fileData.base64,
-          fileName: fileData.name,
-          fileType: fileData.type,
-        };
-
-        try {
-          const response = await fetch(WEB_APP_URL, {
-            method: "POST",
-            mode: "no-cors", // Important for simple POST requests to Apps Script
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData),
-          });
-
-          // Since 'no-cors' prevents reading the response, we assume success
-          // and let the Apps Script handle notifications.
-          formMessage.textContent =
-            "Report submitted successfully! You can now close this page or submit another report.";
-          formMessage.className = "text-green-500";
-          form.reset();
-          fileNameSpan.textContent = "No file selected";
-        } catch (error) {
-          console.error("Error:", error);
-          formMessage.textContent = "An error occurred during submission.";
-          formMessage.className = "text-red-500";
-        } finally {
-          submitButton.disabled = false;
-          submitButton.textContent = "Submit Report";
-        }
-      });
-
-      function readFileAsBase64(file) {
-        return new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = () => {
-            const base64String = reader.result.split(",")[1];
-            resolve({ base64: base64String, name: file.name, type: file.type });
-          };
-          reader.onerror = (error) => reject(error);
-          reader.readAsDataURL(file);
+      // --- EVENT LISTENERS ---
+      let debounceTimer;
+      [moderatorInput, memberInput, discordInput].forEach((input) => {
+        input.addEventListener("input", (e) => {
+          clearOtherInputs(e.target);
+          clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(() => {
+            const searchTerm = e.target.value.trim();
+            const searchType = e.target.id.split("-")[0];
+            if (searchTerm) {
+              fetchData(searchType, searchTerm);
+            } else {
+              clearResults();
+            }
+          }, 500);
         });
+      });
+
+      // --- FUNCTIONS ---
+      function clearOtherInputs(currentInput) {
+        [moderatorInput, memberInput, discordInput].forEach((input) => {
+          if (input !== currentInput) input.value = "";
+        });
+      }
+
+      function showLoader() {
+        loader.classList.remove("hidden");
+        loader.classList.add("flex");
+        resultsGrid.classList.add("hidden");
+        noResults.classList.add("hidden");
+        initialMessage.classList.add("hidden");
+      }
+
+      function hideLoader() {
+        loader.classList.add("hidden");
+        loader.classList.remove("flex");
+      }
+
+      function clearResults() {
+        resultsGrid.innerHTML = "";
+        resultsCount.textContent = "";
+        resultsGrid.classList.add("hidden");
+        noResults.classList.add("hidden");
+        initialMessage.classList.remove("hidden");
+        initialMessage.classList.add("flex");
+      }
+
+      async function fetchData(type, term) {
+        showLoader();
+        resultsCount.textContent = "";
+        try {
+          const response = await fetch(
+            `${WEB_APP_URL}?type=${type}&term=${encodeURIComponent(term)}`
+          );
+          if (!response.ok) throw new Error("Network response was not ok.");
+          const result = await response.json();
+          if (result.success) {
+            displayResults(result.data);
+          } else {
+            throw new Error(result.error || "Failed to fetch data.");
+          }
+        } catch (error) {
+          console.error("Fetch Error:", error);
+          displayError(error.message);
+        } finally {
+          hideLoader();
+        }
+      }
+
+      function displayResults(data) {
+        resultsGrid.innerHTML = "";
+        initialMessage.classList.add("hidden");
+        initialMessage.classList.remove("flex");
+        if (data.length === 0) {
+          noResults.classList.remove("hidden");
+          noResults.classList.add("flex");
+          resultsGrid.classList.add("hidden");
+          resultsCount.textContent = "0 results";
+          return;
+        }
+        resultsCount.textContent = `${data.length} result(s)`;
+        noResults.classList.add("hidden");
+        noResults.classList.remove("flex");
+        resultsGrid.classList.remove("hidden");
+        data.forEach((record) => {
+          const card = document.createElement("div");
+          card.className = "result-card rounded-lg p-6 flex flex-col gap-4";
+          const evidenceLink = record.evidence
+            ? `<a href="${record.evidence}" target="_blank" class="text-indigo-400 hover:text-indigo-300 hover:underline break-all">View Evidence</a>`
+            : "<span>N/A</span>";
+          let formattedDate = "Invalid Date";
+          if (record.timestamp) {
+            try {
+              const date = new Date(record.timestamp);
+              formattedDate = date.toLocaleString("en-GB", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+              });
+            } catch (e) {}
+          }
+          card.innerHTML = `
+                    <div>
+                        <p class="text-sm text-gray-400">${formattedDate}</p>
+                        <h3 class="text-xl font-bold text-white">${
+                          record.member || "N/A"
+                        }</h3>
+                        <p class="text-sm text-indigo-400">${
+                          record.discordId || "N/A"
+                        }</p>
+                    </div>
+                    <div class="space-y-3 text-sm border-t border-gray-700 pt-4">
+                        <p><strong class="text-gray-400">Moderator:</strong> ${
+                          record.moderator || "N/A"
+                        }</p>
+                        <p><strong class="text-gray-400">Reason:</strong> ${
+                          record.reason || "N/A"
+                        }</p>
+                        <p><strong class="text-gray-400">Evidence:</strong> ${evidenceLink}</p>
+                    </div>
+                `;
+          resultsGrid.appendChild(card);
+        });
+      }
+
+      function displayError(message) {
+        resultsGrid.innerHTML = "";
+        noResults.classList.remove("hidden");
+        noResults.classList.add("flex");
+        initialMessage.classList.add("hidden");
+        noResults.innerHTML = `<p class="text-red-400">An error occurred: ${message}</p>`;
       }
     </script>
   </body>
