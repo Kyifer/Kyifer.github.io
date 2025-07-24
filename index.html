@@ -7,11 +7,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Urbanist:wght@400;500&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        'sans': ['Urbanist', 'sans-serif'],
+                        'display': ['Poppins', 'sans-serif'],
+                    },
                     colors: {
                         'besocia-teal': '#00A6A6',
                         'besocia-offwhite': '#F7F7F7',
@@ -24,7 +28,8 @@
         }
     </script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #F7F7F7; color: #2D3A3A; }
+        body { font-family: 'Urbanist', sans-serif; background-color: #F7F7F7; color: #2D3A3A; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
         .nav-link { position: relative; }
         .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 50%; background-color: #00A6A6; transition: all 0.3s ease; }
         .nav-link:hover::after { width: 100%; left: 0; }
@@ -48,7 +53,7 @@
                 <a href="feedback.html" class="nav-link text-besocia-slate font-semibold">Feedback</a>
             </div>
             <div>
-                <a href="YOUR_DISCORD_INVITE_LINK" target="_blank" class="bg-besocia-teal text-white font-bold px-5 py-2 rounded-lg shadow-lg hover:opacity-90 transform hover:-translate-y-0.5 transition-all">
+                <a href="YOUR_DISCORD_INVITE_LINK" target="_blank" class="bg-besocia-teal text-white font-display font-bold px-5 py-2 rounded-lg shadow-lg hover:opacity-90 transform hover:-translate-y-0.5 transition-all">
                     Join Discord
                 </a>
             </div>
@@ -65,7 +70,7 @@
                 <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-600">
                     BeSocia is a community dedicated to combating loneliness and creating genuine friendships. We host regular, relaxed events designed to make it easy to connect with others in a safe and welcoming environment.
                 </p>
-                <a href="YOUR_DISCORD_INVITE_LINK" target="_blank" class="mt-8 inline-block bg-besocia-coral text-white font-bold text-lg px-10 py-4 rounded-lg shadow-lg hover:opacity-90 transform hover:-translate-y-1 transition-all">
+                <a href="YOUR_DISCORD_INVITE_LINK" target="_blank" class="mt-8 inline-block bg-besocia-coral text-white font-display font-bold text-lg px-10 py-4 rounded-lg shadow-lg hover:opacity-90 transform hover:-translate-y-1 transition-all">
                     Start Connecting Today
                 </a>
             </div>
@@ -101,7 +106,7 @@
                 <p class="mt-4 max-w-2xl mx-auto text-gray-300">
                     Our volunteers are the heart of BeSocia. If you're passionate about our mission and want to develop your skills, we have a role for you.
                 </p>
-                <a href="volunteer.html" class="mt-8 inline-block bg-besocia-yellow text-besocia-slate font-bold text-lg px-10 py-4 rounded-lg shadow-lg hover:opacity-90 transform hover:-translate-y-1 transition-all">
+                <a href="volunteer.html" class="mt-8 inline-block bg-besocia-yellow text-besocia-slate font-display font-bold text-lg px-10 py-4 rounded-lg shadow-lg hover:opacity-90 transform hover:-translate-y-1 transition-all">
                     Explore Volunteer Roles
                 </a>
             </div>
