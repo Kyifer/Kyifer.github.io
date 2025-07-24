@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Give Feedback - BeSocia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'besocia-teal': '#00A6A6',
+                        'besocia-offwhite': '#F7F7F7',
+                        'besocia-slate': '#2D3A3A',
+                        'besocia-coral': '#F47A60',
+                        'besocia-yellow': '#FFC43D',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F7F7F7; color: #2D3A3A; }
+        .form-input { background-color: #FFFFFF; border-color: #E0E0E0; color: #2D3A3A; }
+        .form-input:focus { --tw-ring-color: #00A6A6; border-color: #00A6A6; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="bg-besocia-offwhite/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="./index.html" class="flex items-center gap-3">
+                <img src="https://placehold.co/40x40/00A6A6/F7F7F7?text=B" alt="BeSocia Logo" class="h-10 w-10 rounded-full">
+                <span class="text-2xl font-bold text-besocia-slate">BeSocia</span>
+            </a>
+            <div>
+                <a href="YOUR_DISCORD_INVITE_LINK" target="_blank" class="bg-besocia-teal text-white font-bold px-5 py-2 rounded-lg shadow-lg hover:opacity-90 transform hover:-translate-y-0.5 transition-all">
+                    Join Discord
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-10">
+                    <h1 class="text-4xl font-extrabold text-besocia-slate">Share Your Thoughts</h1>
+                    <p class="mt-3 text-lg text-gray-600">Your feedback is vital to helping us grow and improve. All submissions are sent directly to the leadership team. Thank you for taking the time to help us build a better community.</p>
+                </div>
+
+                <form id="feedback-form" class="space-y-6 bg-white p-8 rounded-lg shadow-md border border-gray-200">
+                    <div>
+                        <label for="feedback-type" class="block text-sm font-medium text-gray-700">What is your feedback about?</label>
+                        <select id="feedback-type" required class="mt-1 form-input w-full rounded-md shadow-sm">
+                            <option>A Recent Event</option>
+                            <option>The Discord Server</option>
+                            <option>A Volunteer Experience</option>
+                            <option>A New Idea or Suggestion</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="positive-feedback" class="block text-sm font-medium text-gray-700">What went well? What do you like?</label>
+                        <textarea id="positive-feedback" rows="4" required class="mt-1 form-input w-full rounded-md shadow-sm"></textarea>
+                    </div>
+                    <div>
+                        <label for="improvement-feedback" class="block text-sm font-medium text-gray-700">Is there anything we could improve?</label>
+                        <textarea id="improvement-feedback" rows="4" required class="mt-1 form-input w-full rounded-md shadow-sm"></textarea>
+                    </div>
+                     <div>
+                        <label for="contact-info" class="block text-sm font-medium text-gray-700">Your Name or Discord ID (Optional)</label>
+                        <input type="text" id="contact-info" placeholder="Leave blank to remain anonymous" class="mt-1 form-input w-full rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <button type="submit" id="submit-button" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-besocia-coral hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-besocia-coral">
+                            Submit Feedback
+                        </button>
+                    </div>
+                </form>
+                <div id="form-message" class="mt-4 text-center"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white text-center py-8 mt-16">
+        <p class="text-gray-500">&copy; 2025 BeSocia. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // NOTE: This form requires a new backend script to handle submissions.
+        const form = document.getElementById('feedback-form');
+        const submitButton = document.getElementById('submit-button');
+        const formMessage = document.getElementById('form-message');
+        const WEB_APP_URL = 'YOUR_NEW_WEB_APP_URL_HERE'; // This will be a new URL
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
+            formMessage.textContent = '';
+
+            const formData = {
+                type: 'feedback', // Add a type to distinguish from other forms
+                feedbackType: document.getElementById('feedback-type').value,
+                positive: document.getElementById('positive-feedback').value,
+                improvement: document.getElementById('improvement-feedback').value,
+                contact: document.getElementById('contact-info').value,
+            };
+
+            try {
+                const response = await fetch(WEB_APP_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(formData)
+                });
+                const result = await response.json();
+                if (result.success) {
+                    formMessage.textContent = 'Thank you! Your feedback has been submitted successfully.';
+                    formMessage.className = 'text-green-600';
+                    form.reset();
+                } else {
+                    throw new Error(result.error || 'An unknown error occurred.');
+                }
+            } catch (error) {
+                formMessage.textContent = `Submission Failed: ${error.message}`;
+                formMessage.className = 'text-red-600';
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Submit Feedback';
+            }
+        });
+    </script>
+
+</body>
+</html>
