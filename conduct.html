@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeSocia - Welcome to Your Community</title>
+    <title>Code of Conduct - BeSocia</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Urbanist:wght@400;500&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        'sans': ['Urbanist', 'sans-serif'],
+                        'display': ['Poppins', 'sans-serif'],
+                    },
                     colors: {
                         'besocia-teal': '#00A6A6',
                         'besocia-offwhite': '#F7F7F7',
@@ -24,12 +28,14 @@
         }
     </script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #F7F7F7; color: #2D3A3A; }
-        .nav-link { position: relative; }
-        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 50%; background-color: #00A6A6; transition: all 0.3s ease; }
-        .nav-link:hover::after { width: 100%; left: 0; }
-        .fade-in-section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-        .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+        body { font-family: 'Urbanist', sans-serif; background-color: #F7F7F7; color: #2D3A3A; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+        .prose h2 { color: #2D3A3A; font-weight: 700; margin-bottom: 1em; }
+        .prose h3 { color: #00A6A6; font-weight: 600; margin-top: 2em; margin-bottom: 1em; }
+        .prose h4 { color: #2D3A3A; font-weight: 600; margin-top: 1.5em; margin-bottom: 0.5em;}
+        .prose a { color: #F47A60; text-decoration: underline; }
+        .prose ul { margin-top: 0.5em; }
+        .prose p, .prose li { color: #2D3A3A; }
     </style>
 </head>
 <body class="antialiased">
@@ -37,123 +43,127 @@
     <!-- Header -->
     <header class="bg-besocia-offwhite/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-3">
+            <a href="./index.html" class="flex items-center gap-3">
                 <img src="https://placehold.co/40x40/00A6A6/F7F7F7?text=B" alt="BeSocia Logo" class="h-10 w-10 rounded-full">
                 <span class="text-2xl font-bold text-besocia-slate">BeSocia</span>
-            </div>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#about" class="nav-link text-besocia-slate font-semibold">About</a>
-                <a href="volunteer.html" class="nav-link text-besocia-slate font-semibold">Volunteer</a>
-                <a href="conduct.html" class="nav-link text-besocia-slate font-semibold">Code of Conduct</a>
-                <a href="feedback.html" class="nav-link text-besocia-slate font-semibold">Feedback</a>
-            </div>
+            </a>
             <div>
-                <a href="YOUR_DISCORD_INVITE_LINK" target="_blank" class="bg-besocia-teal text-white font-bold px-5 py-2 rounded-lg shadow-lg hover:opacity-90 transform hover:-translate-y-0.5 transition-all">
+                <a href="YOUR_DISCORD_INVITE_LINK" target="_blank" class="bg-besocia-teal text-white font-display font-bold px-5 py-2 rounded-lg shadow-lg hover:opacity-90 transform hover:-translate-y-0.5 transition-all">
                     Join Discord
                 </a>
             </div>
         </nav>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="text-center py-24 px-6 bg-white">
-            <div class="container mx-auto">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-besocia-slate leading-tight">
-                    Manchester is Full of People.<br>Let's Help You Find Yours.
-                </h1>
-                <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-600">
-                    BeSocia is a community dedicated to combating loneliness and creating genuine friendships. We host regular, relaxed events designed to make it easy to connect with others in a safe and welcoming environment.
-                </p>
-                <a href="YOUR_DISCORD_INVITE_LINK" target="_blank" class="mt-8 inline-block bg-besocia-coral text-white font-bold text-lg px-10 py-4 rounded-lg shadow-lg hover:opacity-90 transform hover:-translate-y-1 transition-all">
-                    Start Connecting Today
-                </a>
-            </div>
-        </section>
+    <main class="py-16">
+        <div class="container mx-auto px-6">
+            <article class="prose lg:prose-lg max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-lg shadow-md">
+                <h2>Community Code of Conduct</h2>
+                <p class="text-sm text-gray-500 -mt-4">Version 1.1</p>
 
-        <!-- Features Section -->
-        <section id="about" class="py-20 px-6 fade-in-section">
-            <div class="container mx-auto">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold text-besocia-slate">What We're All About</h2>
-                </div>
-                <div class="grid md:grid-cols-3 gap-10 text-left">
-                    <div class="bg-white p-8 rounded-xl shadow-md">
-                        <h3 class="text-xl font-bold text-besocia-teal">Real-World Events</h3>
-                        <p class="mt-2 text-gray-600">From casual pub meets and board game nights to city walks and coffee mornings, our focus is on getting people together in person to build real connections.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-xl shadow-md">
-                        <h3 class="text-xl font-bold text-besocia-teal">A Safe & Welcoming Space</h3>
-                        <p class="mt-2 text-gray-600">Our community is built on a foundation of respect and kindness. Our comprehensive Code of Conduct and dedicated moderation team ensure a safe environment for all.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-xl shadow-md">
-                        <h3 class="text-xl font-bold text-besocia-teal">Community-Driven</h3>
-                        <p class="mt-2 text-gray-600">BeSocia is shaped by its members. Through feedback, suggestions, and our volunteer program, everyone has the opportunity to help build the community they want to be a part of.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+                <h4>Welcome to BeSocia!</h4>
+                <p>At BeSocia, we believe in the power of genuine connection and shared experiences. Our community is built on the foundation of warmth, respect, and friendship, providing a safe and inclusive space for individuals across Greater Manchester to connect in person and online.</p>
+                <p>This Code of Conduct is more than just a set of rules; it's a shared commitment to our core values and a guide for how we interact with one another. By setting clear expectations, we empower every member and our dedicated volunteer team to maintain an environment that celebrates diversity and fosters trust. Your well-being is our highest priority, and these guidelines ensure that all interactions, whether online or face-to-face, are supportive and kind.</p>
 
-        <!-- Call to Action Section -->
-        <section class="py-20 px-6 bg-besocia-slate fade-in-section">
-            <div class="container mx-auto text-center">
-                <h2 class="text-3xl font-bold text-white">Ready to Make a Difference?</h2>
-                <p class="mt-4 max-w-2xl mx-auto text-gray-300">
-                    Our volunteers are the heart of BeSocia. If you're passionate about our mission and want to develop your skills, we have a role for you.
-                </p>
-                <a href="volunteer.html" class="mt-8 inline-block bg-besocia-yellow text-besocia-slate font-bold text-lg px-10 py-4 rounded-lg shadow-lg hover:opacity-90 transform hover:-translate-y-1 transition-all">
-                    Explore Volunteer Roles
-                </a>
-            </div>
-        </section>
+                <h3>Our Mission and Values</h3>
+                <p>BeSocia's mission is to create a safe, inclusive, and welcoming environment for individuals in Greater Manchester to connect, build friendships, and engage in social activities. Our core values guide every interaction and decision, ensuring we remain true to our purpose:</p>
+                <ul>
+                    <li><strong>Inclusivity:</strong> We welcome all people, regardless of age, race, gender identity, sexuality, disability, or mental health conditions. Everyone deserves a space where they feel safe, accepted, and understood.</li>
+                    <li><strong>Compassion:</strong> We foster a culture of kindness, understanding, and support. We recognise that many individuals may struggle with social isolation and mental health challenges, and we aim to provide an empathetic environment.</li>
+                    <li><strong>Community:</strong> We believe that meaningful relationships are built through shared experiences. We are dedicated to providing regular, accessible opportunities for people to connect in person, fostering genuine friendships and a strong sense of belonging.</li>
+                    <li><strong>Respect:</strong> We uphold a judgment-free space where every individual’s journey is valued. We expect all members and volunteers to engage with courtesy and mutual understanding.</li>
+                    <li><strong>Empowerment:</strong> We encourage members to step out of their comfort zones, build confidence in social settings, and take positive steps toward improving their well-being.</li>
+                    <li><strong>Non-Profit Ethos:</strong> Our fundamental focus is on people, not profit. BeSocia exists solely to support and uplift those who need a community to belong to.</li>
+                </ul>
+
+                <h3>I. Scope of this Code of Conduct</h3>
+                <p>This Code of Conduct applies to all members and volunteers of BeSocia across all official platforms and activities:</p>
+                <ul>
+                    <li>All online communication channels (e.g., Discord server, Reddit subreddit).</li>
+                    <li>All in-person meetups, events, and social gatherings organised by BeSocia.</li>
+                    <li>Any official social media presence (e.g., Instagram, Facebook).</li>
+                </ul>
+
+                <h3>II. Expected Behaviour</h3>
+                <p>We encourage all members and volunteers to contribute positively to our community by:</p>
+                <ul>
+                    <li><strong>Being Respectful and Courteous:</strong> Engage in friendly, polite, and constructive communication.</li>
+                    <li><strong>Promoting Inclusivity:</strong> Actively welcome new members and ensure everyone feels included.</li>
+                    <li><strong>Upholding Safety:</strong> Contribute actively to maintaining a secure environment and report any unsafe behaviour.</li>
+                    <li><strong>Respecting Boundaries:</strong> Be mindful of personal space and individual comfort levels.</li>
+                    <li><strong>Fostering Genuine Connections:</strong> Focus interactions on building platonic friendships.</li>
+                    <li><strong>Being Transparent:</strong> Communicate openly and honestly.</li>
+                    <li><strong>Supporting Others:</strong> Offer help, answer questions, and contribute valuable insights.</li>
+                </ul>
+
+                <h3>III. Unacceptable Behaviour</h3>
+                <p>The following behaviours undermine the spirit of our community and will not be tolerated. This list is not exhaustive.</p>
+                <ul>
+                    <li><strong>Bullying & Harassment:</strong> Any form of bullying, intimidation, personal attacks, insults, threats, or persistent unwanted attention.</li>
+                    <li><strong>Hate Speech & Discrimination:</strong> Content or behaviour promoting hate or discrimination based on age, race, ethnicity, gender, gender identity, sexual orientation, religion, disability, or mental health condition.</li>
+                    <li><strong>Violation of Privacy (Doxxing):</strong> Sharing any personal information of other members in public forums without their explicit consent.</li>
+                    <li><strong>Inappropriate Content:</strong> Explicit, adult, or NSFW content; content that is sexually suggestive or steers towards dating/casual encounters; content that promotes self-harm or eating disorders.</li>
+                    <li><strong>Illegal Activities:</strong> Any discussions, promotion, or direct involvement in illegal activities, including illicit drug use.</li>
+                    <li><strong>Spam & Self-Promotion:</strong> Excessive posting of self-promotional material or irrelevant content without prior approval.</li>
+                    <li><strong>Misinformation & Trolling:</strong> Spreading false information or intentionally posting disruptive content.</li>
+                    <li><strong>Inappropriate Comments on Appearance:</strong> Making unsolicited comments on a member's physical attributes, style, or voice.</li>
+                    <li><strong>Underage Membership:</strong> As an 18+ community, any member found to be under the age of 18 will be immediately removed.</li>
+                    <li><strong>Disruptive Behaviour at Events:</strong> Any behaviour at in-person events that significantly disrupts the experience for others, including public intoxication leading to nuisance.</li>
+                </ul>
+
+                <h3>IV. Reporting Incidents</h3>
+                <p>We encourage everyone to speak up if they witness or experience behaviour that violates this Code of Conduct. All reports will be treated seriously and confidentially.</p>
+                <h4>How to Report:</h4>
+                <ul>
+                    <li><strong>Online:</strong> Send a private message to a designated Community Moderator or the Community Lead on Discord.</li>
+                    <li><strong>Email:</strong> Use our dedicated confidential email address for reports: admin@besocia.com.</li>
+                    <li><strong>In-Person:</strong> Speak directly and privately to a Community Moderator or the Community Lead at an event.</li>
+                </ul>
+                <h4>What to Include in Your Report:</h4>
+                <ul>
+                    <li>Date, time, and location of the incident.</li>
+                    <li>Identity of the person(s) involved (if known).</li>
+                    <li>Factual description of what happened.</li>
+                    <li>Any relevant evidence (e.g., screenshots).</li>
+                    <li>Your name and contact details (kept confidential, but needed for follow-up).</li>
+                </ul>
+                <h4>Confidentiality:</h4>
+                <p>Your identity will be kept strictly confidential and will only be shared with the small, designated leadership team responsible for handling the report. We will never reveal your identity to the person you are reporting. The only exception is if we are legally required to disclose it to the authorities.</p>
+                <h4>Immediate Danger:</h4>
+                <p>If someone is in immediate danger or you suspect illegal activity, call 999 (emergency services) immediately, then report to the Community Lead.</p>
+                <h4>Mental Health Concerns:</h4>
+                <p>If a member expresses severe mental health distress or suicidal ideation, listen empathetically and immediately report to the Community Lead. We can signpost to professional helplines like Samaritans (116 123) or Shout (text 85258).</p>
+
+                <h3>V. Our Commitment to Fairness & Safety</h3>
+                <p>BeSocia is committed to fair, transparent, and consistent enforcement of this Code of Conduct. All reports will be promptly reviewed and thoroughly investigated by the leadership team.</p>
+                <h4>Our Moderation Process is to ensure fairness and consistency, while our leadership team follows a transparent three-strike process for most violations:</h4>
+                <ul>
+                    <li><strong>First Strike:</strong> A private, informal warning to address the issue and clarify expectations.</li>
+                    <li><strong>Second Strike:</strong> A formal written warning outlining the violation and the potential consequences of further breaches.</li>
+                    <li><strong>Third Strike:</strong> Permanent removal from the BeSocia community, including all online platforms and future events.</li>
+                </ul>
+                <p>Please note that severe violations (such as threats, harassment, or illegal activities) will result in immediate removal without warning, at the sole discretion of the leadership team.</p>
+                <h4>Confidential Moderation Log & Data Retention</h4>
+                <p>As part of this process, our leadership team maintains a confidential, internal moderation log. This log includes the member's name (as provided upon joining), their Discord User ID, and details of any violations of the Code of Conduct.</p>
+                <ul>
+                    <li><strong>Purpose:</strong> This data is processed under the "Legitimate Interest" of protecting the safety and well-being of our community, upholding our Code of Conduct, and ensuring our enforcement actions are consistent and fair.</li>
+                    <li><strong>Access:</strong> The log is strictly confidential and accessible only to authorised leadership members for moderation purposes.</li>
+                    <li><strong>Data Retention:</strong> Records of moderation actions will be held for a period of 12 months following the last recorded incident. This retention period allows us to identify patterns of behaviour over time while respecting member privacy. After this period, the specific log entry will be anonymised or deleted.</li>
+                </ul>
+                <h4>No Retaliation:</h4>
+                <p>Retaliation against anyone who reports a concern in good faith is strictly prohibited and will result in immediate disciplinary action.</p>
+
+                <h3>VI. Review and Updates</h3>
+                <p>This Code of Conduct is a living document. BeSocia is committed to regularly reviewing and updating these guidelines to ensure they remain relevant and effective. We welcome feedback on this document via our designated feedback channels.</p>
+                <p>Thank you for being a vital part of BeSocia and for helping us build a community where warmth, respect, and genuine friendship are at the heart of everything we do.</p>
+            </article>
+        </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white">
-        <div class="container mx-auto px-6 py-8">
-            <div class="md:flex md:justify-between">
-                <div class="mb-6 md:mb-0">
-                    <span class="text-2xl font-bold text-besocia-slate">BeSocia</span>
-                    <p class="mt-2 text-gray-600">Creating Connections in Manchester.</p>
-                </div>
-                <div class="grid grid-cols-2 gap-8">
-                    <div>
-                        <h2 class="mb-4 font-semibold text-besocia-slate uppercase">Community</h2>
-                        <ul class="text-gray-600 space-y-2">
-                            <li><a href="conduct.html" class="hover:text-besocia-teal">Code of Conduct</a></li>
-                            <li><a href="feedback.html" class="hover:text-besocia-teal">Give Feedback</a></li>
-                            <li><a href="report-member.html" class="hover:text-besocia-teal">Report an Issue</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h2 class="mb-4 font-semibold text-besocia-slate uppercase">Get Involved</h2>
-                        <ul class="text-gray-600 space-y-2">
-                            <li><a href="YOUR_DISCORD_INVITE_LINK" target="_blank" class="hover:text-besocia-teal">Join Discord</a></li>
-                            <li><a href="volunteer.html" class="hover:text-besocia-teal">Volunteer</a></li>
-                            <li><a href="./strike.html" class="hover:text-besocia-teal">Moderation Portal</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <hr class="my-6 border-gray-200" />
-            <div class="text-center text-gray-500">
-                &copy; 2025 BeSocia. All rights reserved.
-            </div>
-        </div>
+    <footer class="bg-white text-center py-8">
+        <p class="text-gray-500">&copy; 2025 BeSocia. All rights reserved.</p>
     </footer>
-
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.fade-in-section').forEach(section => {
-            observer.observe(section);
-        });
-    </script>
 
 </body>
 </html>
