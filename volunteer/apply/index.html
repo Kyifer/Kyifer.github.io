@@ -107,6 +107,7 @@
           >
             Join Discord
           </a>
+          <!-- Mobile Menu Button -->
           <button
             id="mobile-menu-button"
             class="md:hidden p-2 rounded-md text-besocia-slate hover:bg-gray-100"
@@ -318,7 +319,7 @@
       const WEB_APP_URL =
         "https://script.google.com/a/macros/besocia.com/s/AKfycbxVQmnUD4ODM1uIDkcIseeZH5uTMRyUMX3w5q06I9JvOFETGyHsFTeQz15zkI7UI-3uCg/exec";
 
-      form.addEventListener("submit", async (e) => {
+      form.addEventListener("submit", (e) => {
         e.preventDefault();
         submitButton.disabled = true;
         submitButton.textContent = "Submitting...";
@@ -332,29 +333,26 @@
           reason: document.getElementById("application-reason").value,
         };
 
-        try {
-          const response = await fetch(WEB_APP_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData),
-          });
-          const result = await response.json();
-          if (result.success) {
+        fetch(WEB_APP_URL, {
+          method: "POST",
+          mode: "no-cors", // Use no-cors to send a simple request
+          body: JSON.stringify(formData),
+        })
+          .then(() => {
             formMessage.innerHTML =
               "<strong>Thank you for applying!</strong><br>We have received your application and will be in touch soon via Discord.";
             formMessage.className = "text-green-600";
             form.reset();
-          } else {
-            throw new Error(result.error || "An unknown error occurred.");
-          }
-        } catch (error) {
-          console.error("Submission Error:", error);
-          formMessage.textContent = `Submission Failed: ${error.message}`;
-          formMessage.className = "text-red-600";
-        } finally {
-          submitButton.disabled = false;
-          submitButton.textContent = "Submit Application";
-        }
+          })
+          .catch((error) => {
+            console.error("Submission Error:", error);
+            formMessage.textContent = `Submission Failed. Please try again or contact an admin.`;
+            formMessage.className = "text-red-600";
+          })
+          .finally(() => {
+            submitButton.disabled = false;
+            submitButton.textContent = "Submit Application";
+          });
       });
     </script>
   </body>
