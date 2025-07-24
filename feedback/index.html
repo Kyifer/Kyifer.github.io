@@ -107,7 +107,6 @@
           >
             Join Discord
           </a>
-          <!-- Mobile Menu Button -->
           <button
             id="mobile-menu-button"
             class="md:hidden p-2 rounded-md text-besocia-slate hover:bg-gray-100"
@@ -291,8 +290,8 @@
 
         fetch(WEB_APP_URL, {
           method: "POST",
-          body: JSON.stringify(formData),
           mode: "no-cors",
+          body: JSON.stringify(formData),
         })
           .then(() => {
             formMessage.textContent =
