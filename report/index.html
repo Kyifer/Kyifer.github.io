@@ -278,7 +278,7 @@
       const WEB_APP_URL =
         "https://script.google.com/a/macros/besocia.com/s/AKfycbxVQmnUD4ODM1uIDkcIseeZH5uTMRyUMX3w5q06I9JvOFETGyHsFTeQz15zkI7UI-3uCg/exec";
 
-      form.addEventListener("submit", async (e) => {
+      form.addEventListener("submit", (e) => {
         e.preventDefault();
         submitButton.disabled = true;
         submitButton.textContent = "Submitting...";
@@ -292,28 +292,26 @@
           description: document.getElementById("incident-description").value,
         };
 
-        try {
-          const response = await fetch(WEB_APP_URL, {
-            method: "POST",
-            headers: { "Content-Type": "text/plain;charset=utf-8" },
-            body: JSON.stringify(formData),
-          });
-          const result = await response.json();
-          if (result.success) {
+        fetch(WEB_APP_URL, {
+          method: "POST",
+          body: JSON.stringify(formData),
+          mode: "no-cors",
+        })
+          .then(() => {
             formMessage.innerHTML =
               "<strong>Thank you. Your report has been submitted.</strong><br>A member of our team will review it and may contact you via Discord for more information. Your confidentiality will be protected.";
             formMessage.className = "text-green-600";
             form.reset();
-          } else {
-            throw new Error(result.error || "An unknown error occurred.");
-          }
-        } catch (error) {
-          formMessage.textContent = `Submission Failed: ${error.message}`;
-          formMessage.className = "text-red-600";
-        } finally {
-          submitButton.disabled = false;
-          submitButton.textContent = "Submit Confidential Report";
-        }
+          })
+          .catch((error) => {
+            console.error("Submission Error:", error);
+            formMessage.textContent = `Submission Failed. Please try again or contact an admin.`;
+            formMessage.className = "text-red-600";
+          })
+          .finally(() => {
+            submitButton.disabled = false;
+            submitButton.textContent = "Submit Confidential Report";
+          });
       });
     </script>
   </body>
