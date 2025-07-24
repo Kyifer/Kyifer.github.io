@@ -8,11 +8,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Urbanist:wght@400;500&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        'sans': ['Urbanist', 'sans-serif'],
+                        'display': ['Poppins', 'sans-serif'],
+                    },
                     colors: {
                         'besocia-teal': '#00A6A6',
                         'besocia-offwhite': '#F7F7F7',
@@ -25,7 +29,8 @@
         }
     </script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #F7F7F7; color: #2D3A3A; }
+        body { font-family: 'Urbanist', sans-serif; background-color: #F7F7F7; color: #2D3A3A; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
         .card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
         .fade-in-section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
@@ -37,13 +42,12 @@
     <!-- Header -->
     <header class="bg-besocia-offwhite/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <!-- LOGO PLACEHOLDER: Replace with your logo -->
-                <img src="https://placehold.co/40x40/00A6A6/F7F7F7?text=B" alt="BeSocia Logo" class="h-10 w-10 rounded-full">
+            <a href="./index.html" class="flex items-center gap-3">
+                <img src="https://i.imgur.com/BQFxJWJ.png" alt="BeSocia Logo" class="h-10 w-10">
                 <span class="text-2xl font-bold text-besocia-slate">BeSocia</span>
-            </div>
+            </a>
             <div>
-                <a href="./index.html" class="text-besocia-slate font-semibold hover:text-besocia-teal transition-colors">Moderation Portal</a>
+                <a href="./index.html" class="text-besocia-slate font-semibold hover:text-besocia-teal transition-colors">Back to Hub</a>
             </div>
         </nav>
     </header>
@@ -58,7 +62,7 @@
                 <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
                     You have the power to turn a stranger's day around, to spark a new friendship, and to help us build a more connected Manchester. Volunteering with BeSocia is more than just helping out—it's making a real, tangible impact.
                 </p>
-                <a href="#apply" class="mt-8 inline-block bg-besocia-teal text-white font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:opacity-90 transform hover:-translate-y-1 transition-all">
+                <a href="#apply" class="mt-8 inline-block bg-besocia-teal text-white font-display font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:opacity-90 transform hover:-translate-y-1 transition-all">
                     View Open Roles
                 </a>
             </div>
@@ -111,7 +115,7 @@
                 <!-- Tier 1 Section -->
                 <div class="mb-16">
                     <div class="text-center mb-8">
-                        <span class="inline-block bg-besocia-yellow text-besocia-slate font-bold px-4 py-1 rounded-full text-sm">TIER 1</span>
+                        <span class="inline-block bg-besocia-yellow text-besocia-slate font-display font-bold px-4 py-1 rounded-full text-sm">TIER 1</span>
                         <h3 class="mt-2 text-2xl font-bold text-besocia-slate">Community Contributor Roles</h3>
                         <p class="mt-2 max-w-2xl mx-auto text-gray-600">Perfect for getting started! These roles are super flexible and a great way to meet people. There is no formal goodwill agreement, and the time commitments are simply what we'd appreciate, not what we expect.</p>
                     </div>
@@ -153,7 +157,7 @@
                 <!-- Tier 2 Section -->
                 <div class="mb-16">
                     <div class="text-center mb-8">
-                        <span class="inline-block bg-besocia-coral text-white font-bold px-4 py-1 rounded-full text-sm">TIER 2</span>
+                        <span class="inline-block bg-besocia-coral text-white font-display font-bold px-4 py-1 rounded-full text-sm">TIER 2</span>
                         <h3 class="mt-2 text-2xl font-bold text-besocia-slate">Specialist & Coordinator Roles</h3>
                         <p class="mt-2 max-w-2xl mx-auto text-gray-600">Perfect if you want to take on more responsibility and develop specific skills. These roles involve a mutually beneficial Goodwill Agreement to ensure clarity on commitments and support.</p>
                     </div>
@@ -195,14 +199,14 @@
                 <!-- Tier 3 Section -->
                  <div class="mb-16">
                     <div class="text-center mb-8">
-                        <span class="inline-block bg-besocia-slate text-white font-bold px-4 py-1 rounded-full text-sm">TIER 3</span>
+                        <span class="inline-block bg-besocia-slate text-white font-display font-bold px-4 py-1 rounded-full text-sm">TIER 3</span>
                         <h3 class="mt-2 text-2xl font-bold text-besocia-slate">Leadership Team</h3>
                         <p class="mt-2 max-w-2xl mx-auto text-gray-600">These are senior roles for those who want to shape the future of BeSocia. Our Tier 3 roles are currently not open, but as we grow, opportunities may become available. They guide our strategy, manage our teams, and keep our community safe.</p>
                     </div>
                 </div>
 
                  <div class="text-center mt-12">
-                     <a href="YOUR_GOOGLE_FORM_APPLICATION_LINK_HERE" target="_blank" class="bg-besocia-coral text-white font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:opacity-90 transform hover:-translate-y-1 transition-all inline-block">
+                     <a href="YOUR_GOOGLE_FORM_APPLICATION_LINK_HERE" target="_blank" class="bg-besocia-coral text-white font-display font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:opacity-90 transform hover:-translate-y-1 transition-all inline-block">
                         Apply to Join the Team
                     </a>
                  </div>
