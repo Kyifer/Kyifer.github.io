@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Strike Record Search</title>
+    <title>BeSocia - Welcome to Your Community</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -26,131 +24,136 @@
         }
     </script>
     <style>
-        html, body { width: 100%; height: 100%; margin: 0; padding: 0; overflow-x: hidden; }
         body { font-family: 'Inter', sans-serif; background-color: #F7F7F7; color: #2D3A3A; }
-        .search-input { background-color: #FFFFFF; border-color: #E0E0E0; color: #2D3A3A; }
-        .search-input:focus { --tw-ring-color: #00A6A6; border-color: #00A6A6; }
-        .result-card { background-color: #FFFFFF; border: 1px solid #E0E0E0; }
-        .result-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 166, 166, 0.1); }
-        .loader { border-top-color: #00A6A6; animation: spin 1s linear infinite; }
-        @keyframes spin { to { transform: rotate(360deg); } }
+        .nav-link { position: relative; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 50%; background-color: #00A6A6; transition: all 0.3s ease; }
+        .nav-link:hover::after { width: 100%; left: 0; }
+        .fade-in-section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
-<body>
+<body class="antialiased">
 
-    <!-- Auth Screen -->
-    <div id="auth-screen" class="w-full h-full flex flex-col items-center justify-center p-4">
-        <div class="text-center">
-            <h1 class="text-3xl font-bold text-besocia-slate">Moderation Portal</h1>
-            <p class="text-gray-600 mt-2 mb-8">Please sign in with your authorized Google account to continue.</p>
-            <div id="g_id_onload"
-                 data-client_id="491306000259-eq4b3s56240n079l0jenii4ntmgv11ft.apps.googleusercontent.com"
-                 data-callback="handleCredentialResponse">
+    <!-- Header -->
+    <header class="bg-besocia-offwhite/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="https://placehold.co/40x40/00A6A6/F7F7F7?text=B" alt="BeSocia Logo" class="h-10 w-10 rounded-full">
+                <span class="text-2xl font-bold text-besocia-slate">BeSocia</span>
             </div>
-            <div class="g_id_signin" data-type="standard"></div>
-        </div>
-    </div>
-
-    <!-- Access Denied Screen -->
-    <div id="denied-screen" class="w-full h-full hidden flex-col items-center justify-center p-4 text-center">
-        <h1 class="text-3xl font-bold text-red-600">Access Denied</h1>
-        <p class="text-gray-600 mt-2">The account you signed in with is not authorized to view this content.</p>
-        <p id="unauthorized-email" class="text-sm text-gray-500 mt-1"></p>
-    </div>
-
-    <!-- Main Content (Initially Hidden) -->
-    <div id="main-content" class="w-full min-h-full mx-auto hidden flex-col p-4 sm:p-6 md:p-8">
-        <!-- Header -->
-        <div class="text-center mb-8 relative">
-            <h1 class="text-3xl sm:text-4xl font-bold text-besocia-slate">Strike Record Search Portal</h1>
-            <p class="text-gray-600 mt-2">Enter a search term in one of the boxes below.</p>
-            <div class="absolute top-0 right-0">
-                <a href="./report.html" class="inline-block bg-besocia-teal text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:opacity-90 transition-opacity">
-                    Submit New Report
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="nav-link text-besocia-slate font-semibold">About</a>
+                <a href="volunteer.html" class="nav-link text-besocia-slate font-semibold">Volunteer</a>
+                <a href="conduct.html" class="nav-link text-besocia-slate font-semibold">Code of Conduct</a>
+                <a href="feedback.html" class="nav-link text-besocia-slate font-semibold">Feedback</a>
+            </div>
+            <div>
+                <a href="YOUR_DISCORD_INVITE_LINK" target="_blank" class="bg-besocia-teal text-white font-bold px-5 py-2 rounded-lg shadow-lg hover:opacity-90 transform hover:-translate-y-0.5 transition-all">
+                    Join Discord
                 </a>
             </div>
-        </div>
+        </nav>
+    </header>
 
-        <!-- Search Controls -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 p-6 bg-white rounded-lg shadow-md border border-gray-200">
-            <div>
-                <label for="moderator-search" class="block text-sm font-medium text-gray-700 mb-2">Search by Moderator</label>
-                <input type="text" id="moderator-search" placeholder="Enter moderator name..." class="search-input w-full rounded-md shadow-sm focus:ring focus:ring-opacity-50">
+    <main>
+        <!-- Hero Section -->
+        <section class="text-center py-24 px-6 bg-white">
+            <div class="container mx-auto">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-besocia-slate leading-tight">
+                    Manchester is Full of People.<br>Let's Help You Find Yours.
+                </h1>
+                <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-600">
+                    BeSocia is a community dedicated to combating loneliness and creating genuine friendships. We host regular, relaxed events designed to make it easy to connect with others in a safe and welcoming environment.
+                </p>
+                <a href="YOUR_DISCORD_INVITE_LINK" target="_blank" class="mt-8 inline-block bg-besocia-coral text-white font-bold text-lg px-10 py-4 rounded-lg shadow-lg hover:opacity-90 transform hover:-translate-y-1 transition-all">
+                    Start Connecting Today
+                </a>
             </div>
-            <div>
-                <label for="member-search" class="block text-sm font-medium text-gray-700 mb-2">Search by Member Name</label>
-                <input type="text" id="member-search" placeholder="Enter member name..." class="search-input w-full rounded-md shadow-sm focus:ring focus:ring-opacity-50">
-            </div>
-            <div>
-                <label for="discord-search" class="block text-sm font-medium text-gray-700 mb-2">Search by Discord ID</label>
-                <input type="text" id="discord-search" placeholder="Enter Discord ID..." class="search-input w-full rounded-md shadow-sm focus:ring focus:ring-opacity-50">
-            </div>
-        </div>
+        </section>
 
-        <!-- Results Area -->
-        <div class="flex-grow flex flex-col">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-2xl font-semibold text-besocia-slate">Results</h2>
-                <div id="results-count" class="text-gray-600 font-medium"></div>
+        <!-- Features Section -->
+        <section id="about" class="py-20 px-6 fade-in-section">
+            <div class="container mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-besocia-slate">What We're All About</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-10 text-left">
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold text-besocia-teal">Real-World Events</h3>
+                        <p class="mt-2 text-gray-600">From casual pub meets and board game nights to city walks and coffee mornings, our focus is on getting people together in person to build real connections.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold text-besocia-teal">A Safe & Welcoming Space</h3>
+                        <p class="mt-2 text-gray-600">Our community is built on a foundation of respect and kindness. Our comprehensive Code of Conduct and dedicated moderation team ensure a safe environment for all.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold text-besocia-teal">Community-Driven</h3>
+                        <p class="mt-2 text-gray-600">BeSocia is shaped by its members. Through feedback, suggestions, and our volunteer program, everyone has the opportunity to help build the community they want to be a part of.</p>
+                    </div>
+                </div>
             </div>
-            <div id="loader" class="text-center p-8 hidden flex-grow items-center justify-center">
-                <div class="loader h-12 w-12 rounded-full border-4 border-gray-200 mx-auto"></div>
-                <p class="mt-4 text-gray-500">Searching...</p>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="py-20 px-6 bg-besocia-slate fade-in-section">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold text-white">Ready to Make a Difference?</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-gray-300">
+                    Our volunteers are the heart of BeSocia. If you're passionate about our mission and want to develop your skills, we have a role for you.
+                </p>
+                <a href="volunteer.html" class="mt-8 inline-block bg-besocia-yellow text-besocia-slate font-bold text-lg px-10 py-4 rounded-lg shadow-lg hover:opacity-90 transform hover:-translate-y-1 transition-all">
+                    Explore Volunteer Roles
+                </a>
             </div>
-            <div id="no-results" class="text-center p-8 bg-white rounded-lg hidden flex-grow items-center justify-center">
-                <p class="text-gray-500">No records found matching your search criteria.</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white">
+        <div class="container mx-auto px-6 py-8">
+            <div class="md:flex md:justify-between">
+                <div class="mb-6 md:mb-0">
+                    <span class="text-2xl font-bold text-besocia-slate">BeSocia</span>
+                    <p class="mt-2 text-gray-600">Creating Connections in Manchester.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-8">
+                    <div>
+                        <h2 class="mb-4 font-semibold text-besocia-slate uppercase">Community</h2>
+                        <ul class="text-gray-600 space-y-2">
+                            <li><a href="conduct.html" class="hover:text-besocia-teal">Code of Conduct</a></li>
+                            <li><a href="feedback.html" class="hover:text-besocia-teal">Give Feedback</a></li>
+                            <li><a href="report-member.html" class="hover:text-besocia-teal">Report an Issue</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="mb-4 font-semibold text-besocia-slate uppercase">Get Involved</h2>
+                        <ul class="text-gray-600 space-y-2">
+                            <li><a href="YOUR_DISCORD_INVITE_LINK" target="_blank" class="hover:text-besocia-teal">Join Discord</a></li>
+                            <li><a href="volunteer.html" class="hover:text-besocia-teal">Volunteer</a></li>
+                            <li><a href="./strike.html" class="hover:text-besocia-teal">Moderation Portal</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div id="initial-message" class="text-center p-8 bg-white rounded-lg flex-grow flex items-center justify-center">
-                <p class="text-gray-500">Search results will appear here.</p>
+            <hr class="my-6 border-gray-200" />
+            <div class="text-center text-gray-500">
+                &copy; 2025 BeSocia. All rights reserved.
             </div>
-            <div id="results-grid" class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6"></div>
         </div>
-    </div>
+    </footer>
 
     <script>
-        // --- DECODE JWT & AUTH ---
-        function decodeJwtResponse(token) { try { var base64Url = token.split('.')[1]; var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/'); var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) { return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2); }).join('')); return JSON.parse(jsonPayload); } catch (e) { return null; } }
-        const authScreen = document.getElementById('auth-screen'); const deniedScreen = document.getElementById('denied-screen'); const mainContent = document.getElementById('main-content'); const unauthorizedEmailEl = document.getElementById('unauthorized-email');
-        const AUTHORIZED_EMAILS = ["admin@besocia.com", "jamie@besocia.com", "kylejfernley@gmail.com"];
-        function handleCredentialResponse(response) { const responsePayload = decodeJwtResponse(response.credential); if (responsePayload && AUTHORIZED_EMAILS.includes(responsePayload.email)) { sessionStorage.setItem('google_token', response.credential); showMainContent(); } else { sessionStorage.removeItem('google_token'); showDeniedScreen(responsePayload ? responsePayload.email : 'Unknown'); } }
-        function showMainContent() { authScreen.style.display = 'none'; deniedScreen.style.display = 'none'; mainContent.style.display = 'flex'; }
-        function showDeniedScreen(email) { authScreen.style.display = 'none'; deniedScreen.style.display = 'flex'; unauthorizedEmailEl.textContent = `(${email})`; }
-        window.onload = function() { const token = sessionStorage.getItem('google_token'); if (token) { const payload = decodeJwtResponse(token); if (payload && payload.exp * 1000 > Date.now() && AUTHORIZED_EMAILS.includes(payload.email)) { showMainContent(); } else { sessionStorage.removeItem('google_token'); } } };
-        
-        // --- CONFIGURATION ---
-        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyS1JzB-RFYJ4pkcJRQMaK2kG9fMNtm6YQqFNX28bxPgeVpMd8d20mqyhyktVdiPV0U/exec';
-
-        // --- DOM ELEMENTS ---
-        const moderatorInput = document.getElementById('moderator-search'); const memberInput = document.getElementById('member-search'); const discordInput = document.getElementById('discord-search'); const resultsGrid = document.getElementById('results-grid'); const resultsCount = document.getElementById('results-count'); const loader = document.getElementById('loader'); const noResults = document.getElementById('no-results'); const initialMessage = document.getElementById('initial-message');
-        
-        // --- EVENT LISTENERS ---
-        let debounceTimer; [moderatorInput, memberInput, discordInput].forEach(input => { input.addEventListener('input', (e) => { clearOtherInputs(e.target); clearTimeout(debounceTimer); debounceTimer = setTimeout(() => { const searchTerm = e.target.value.trim(); const searchType = e.target.id.split('-')[0]; if (searchTerm) { fetchData(searchType, searchTerm); } else { clearResults(); } }, 500); }); });
-        
-        // --- FUNCTIONS ---
-        function clearOtherInputs(currentInput) { [moderatorInput, memberInput, discordInput].forEach(input => { if (input !== currentInput) input.value = ''; }); }
-        function showLoader() { loader.classList.remove('hidden'); loader.classList.add('flex'); resultsGrid.classList.add('hidden'); noResults.classList.add('hidden'); initialMessage.classList.add('hidden'); }
-        function hideLoader() { loader.classList.add('hidden'); loader.classList.remove('flex'); }
-        function clearResults() { resultsGrid.innerHTML = ''; resultsCount.textContent = ''; resultsGrid.classList.add('hidden'); noResults.classList.add('hidden'); initialMessage.classList.remove('hidden'); initialMessage.classList.add('flex'); }
-        async function fetchData(type, term) { showLoader(); resultsCount.textContent = ''; try { const response = await fetch(`${WEB_APP_URL}?type=${type}&term=${encodeURIComponent(term)}`); if (!response.ok) throw new Error('Network response was not ok.'); const result = await response.json(); if (result.success) { displayResults(result.data); } else { throw new Error(result.error || 'Failed to fetch data.'); } } catch (error) { console.error('Fetch Error:', error); displayError(error.message); } finally { hideLoader(); } }
-        function displayResults(data) { resultsGrid.innerHTML = ''; initialMessage.classList.add('hidden'); initialMessage.classList.remove('flex'); if (data.length === 0) { noResults.classList.remove('hidden'); noResults.classList.add('flex'); resultsGrid.classList.add('hidden'); resultsCount.textContent = '0 results'; return; } resultsCount.textContent = `${data.length} result(s)`; noResults.classList.add('hidden'); noResults.classList.remove('flex'); resultsGrid.classList.remove('hidden'); data.forEach(record => { const card = document.createElement('div'); card.className = 'result-card rounded-lg p-6 flex flex-col gap-4'; const evidenceLink = record.evidence ? `<a href="${record.evidence}" target="_blank" class="text-besocia-coral hover:underline break-all">View Evidence</a>` : '<span>N/A</span>'; let formattedDate = 'Invalid Date'; if (record.timestamp) { try { const date = new Date(record.timestamp); formattedDate = date.toLocaleString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }); } catch (e) {} } card.innerHTML = `
-                    <div>
-                        <p class="text-sm text-gray-500">${formattedDate}</p>
-                        <div class="mt-2">
-                            <p class="text-sm text-gray-500">Member Name:</p>
-                            <h3 class="text-xl font-bold text-besocia-slate">${record.member || 'N/A'}</h3>
-                        </div>
-                        <div class="mt-1">
-                            <p class="text-sm text-gray-500">Discord ID:</p>
-                            <p class="text-md font-semibold text-besocia-teal">${record.discordId || 'N/A'}</p>
-                        </div>
-                    </div>
-                    <div class="space-y-3 text-sm border-t border-gray-200 pt-4">
-                        <p><strong class="text-gray-500">Moderator:</strong> ${record.moderator || 'N/A'}</p>
-                        <p><strong class="text-gray-500">Reason:</strong> ${record.reason || 'N/A'}</p>
-                        <p><strong class="text-gray-500">Evidence:</strong> ${evidenceLink}</p>
-                    </div>
-                `; resultsGrid.appendChild(card); }); }
-        function displayError(message) { resultsGrid.innerHTML = ''; noResults.classList.remove('hidden'); noResults.classList.add('flex'); initialMessage.classList.add('hidden'); noResults.innerHTML = `<p class="text-red-500">An error occurred: ${message}</p>`; }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
     </script>
+
 </body>
 </html>
