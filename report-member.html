@@ -7,11 +7,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Urbanist:wght@400;500&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        'sans': ['Urbanist', 'sans-serif'],
+                        'display': ['Poppins', 'sans-serif'],
+                    },
                     colors: {
                         'besocia-teal': '#00A6A6',
                         'besocia-offwhite': '#F7F7F7',
@@ -24,7 +28,8 @@
         }
     </script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #F7F7F7; color: #2D3A3A; }
+        body { font-family: 'Urbanist', sans-serif; background-color: #F7F7F7; color: #2D3A3A; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
         .form-input { background-color: #FFFFFF; border-color: #E0E0E0; color: #2D3A3A; }
         .form-input:focus { --tw-ring-color: #00A6A6; border-color: #00A6A6; }
     </style>
@@ -77,7 +82,7 @@
                         <textarea id="incident-description" rows="6" required placeholder="What happened? Who was involved? When did it occur?" class="mt-1 form-input w-full rounded-md shadow-sm"></textarea>
                     </div>
                     <div>
-                        <button type="submit" id="submit-button" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                        <button type="submit" id="submit-button" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-display font-bold text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                             Submit Confidential Report
                         </button>
                     </div>
