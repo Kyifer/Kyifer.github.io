@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Urbanist:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Urbanist:wght@400;500&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -30,8 +30,10 @@
     <style>
         body { font-family: 'Urbanist', sans-serif; background-color: #F7F7F7; color: #2D3A3A; }
         h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
-        .form-input { background-color: #FFFFFF; border-color: #E0E0E0; color: #2D3A3A; }
+        .form-input { background-color: #FFFFFF; border-color: #E0E0E0; }
         .form-input:focus { --tw-ring-color: #00A6A6; border-color: #00A6A6; }
+        .mobile-nav { transform: translateX(-100%); transition: transform 0.3s ease-in-out; }
+        .mobile-nav.is-open { transform: translateX(0); }
     </style>
 </head>
 <body class="antialiased">
@@ -40,16 +42,40 @@
     <header class="bg-besocia-offwhite/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="./index.html" class="flex items-center gap-3">
-                <img src="https://placehold.co/40x40/00A6A6/F7F7F7?text=B" alt="BeSocia Logo" class="h-10 w-10 rounded-full">
+                <img src="https://i.imgur.com/BQFxJWJ.png" alt="BeSocia Logo" class="h-10 w-10">
                 <span class="text-2xl font-bold text-besocia-slate">BeSocia</span>
             </a>
-            <div>
-                <a href="YOUR_DISCORD_INVITE_LINK" target="_blank" class="bg-besocia-teal text-white font-bold px-5 py-2 rounded-lg shadow-lg hover:opacity-90 transform hover:-translate-y-0.5 transition-all">
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="./index.html#about" class="text-besocia-slate font-semibold hover:text-besocia-teal transition-colors">About</a>
+                <a href="volunteer.html" class="text-besocia-slate font-semibold hover:text-besocia-teal transition-colors">Volunteer</a>
+                <a href="conduct.html" class="text-besocia-slate font-semibold hover:text-besocia-teal transition-colors">Code of Conduct</a>
+                <a href="feedback.html" class="text-besocia-slate font-semibold hover:text-besocia-teal transition-colors">Feedback</a>
+            </div>
+            <div class="flex items-center gap-4">
+                 <a href="https://discord.com/invite/ntSBv2Szsb" target="_blank" class="hidden sm:inline-block bg-besocia-teal text-white font-display font-bold px-5 py-2 rounded-lg shadow-lg hover:opacity-90 transform hover:-translate-y-0.5 transition-all">
                     Join Discord
                 </a>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-besocia-slate hover:bg-gray-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                </button>
             </div>
         </nav>
     </header>
+
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-menu" class="mobile-nav fixed top-0 left-0 h-full w-64 bg-besocia-slate shadow-lg z-50 p-6">
+        <button id="close-menu-button" class="absolute top-4 right-4 p-2 rounded-md text-white hover:bg-gray-700">&times;</button>
+        <nav class="mt-10 flex flex-col space-y-6">
+            <a href="./index.html#about" class="text-white font-semibold text-lg">About</a>
+            <a href="volunteer.html" class="text-white font-semibold text-lg">Volunteer</a>
+            <a href="conduct.html" class="text-white font-semibold text-lg">Code of Conduct</a>
+            <a href="feedback.html" class="text-white font-semibold text-lg">Feedback</a>
+            <a href="https://discord.com/invite/ntSBv2Szsb" target="_blank" class="mt-4 inline-block bg-besocia-teal text-white font-display font-bold px-5 py-2 rounded-lg text-center">Join Discord</a>
+        </nav>
+    </div>
 
     <main class="py-16">
         <div class="container mx-auto px-6">
@@ -62,15 +88,15 @@
                 <form id="report-form" class="space-y-6 bg-white p-8 rounded-lg shadow-md border border-gray-200">
                     <div>
                         <label for="reporter-id" class="block text-sm font-medium text-gray-700">Your Discord ID (Required)</label>
-                        <input type="text" id="reporter-id" required placeholder="e.g., YourName#1234" class="mt-1 form-input w-full rounded-md shadow-sm">
+                        <input type="text" id="reporter-id" required placeholder="e.g., YourName#1234" class="mt-1 form-input w-full rounded-md shadow-sm text-besocia-slate">
                     </div>
                     <div>
                         <label for="reported-user-id" class="block text-sm font-medium text-gray-700">Discord ID of Person You Are Reporting (if applicable)</label>
-                        <input type="text" id="reported-user-id" placeholder="e.g., OtherPerson#5678" class="mt-1 form-input w-full rounded-md shadow-sm">
+                        <input type="text" id="reported-user-id" placeholder="e.g., OtherPerson#5678" class="mt-1 form-input w-full rounded-md shadow-sm text-besocia-slate">
                     </div>
                     <div>
                         <label for="incident-location" class="block text-sm font-medium text-gray-700">Where did the incident occur?</label>
-                        <select id="incident-location" required class="mt-1 form-input w-full rounded-md shadow-sm">
+                        <select id="incident-location" required class="mt-1 form-input w-full rounded-md shadow-sm text-besocia-slate">
                             <option>At an in-person event</option>
                             <option>On the Discord Server</option>
                             <option>On another social media platform</option>
@@ -79,7 +105,7 @@
                     </div>
                     <div>
                         <label for="incident-description" class="block text-sm font-medium text-gray-700">Please describe the incident in as much detail as possible.</label>
-                        <textarea id="incident-description" rows="6" required placeholder="What happened? Who was involved? When did it occur?" class="mt-1 form-input w-full rounded-md shadow-sm"></textarea>
+                        <textarea id="incident-description" rows="6" required placeholder="What happened? Who was involved? When did it occur?" class="mt-1 form-input w-full rounded-md shadow-sm text-besocia-slate"></textarea>
                     </div>
                     <div>
                         <button type="submit" id="submit-button" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-display font-bold text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
@@ -98,7 +124,14 @@
     </footer>
 
     <script>
-        // NOTE: This form requires a new backend script to handle submissions.
+        // Mobile Menu Logic
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.add('is-open'));
+        closeMenuButton.addEventListener('click', () => mobileMenu.classList.remove('is-open'));
+
+        // Form Logic
         const form = document.getElementById('report-form');
         const submitButton = document.getElementById('submit-button');
         const formMessage = document.getElementById('form-message');
