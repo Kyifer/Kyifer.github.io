@@ -317,7 +317,7 @@
       const submitButton = document.getElementById("submit-button");
       const formMessage = document.getElementById("form-message");
       const WEB_APP_URL =
-        "https://script.google.com/a/macros/besocia.com/s/AKfycbxVQmnUD4ODM1uIDkcIseeZH5uTMRyUMX3w5q06I9JvOFETGyHsFTeQz15zkI7UI-3uCg/exec"; // This will be a new URL
+        "https://script.google.com/a/macros/besocia.com/s/AKfycbxVQmnUD4ODM1uIDkcIseeZH5uTMRyUMX3w5q06I9JvOFETGyHsFTeQz15zkI7UI-3uCg/exec";
 
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -336,9 +336,12 @@
         try {
           const response = await fetch(WEB_APP_URL, {
             method: "POST",
+            headers: { "Content-Type": "text/plain;charset=utf-8" }, // Use text/plain for this method
             body: JSON.stringify(formData),
           });
+
           const result = await response.json();
+
           if (result.success) {
             formMessage.innerHTML =
               "<strong>Thank you for applying!</strong><br>We have received your application and will be in touch soon via Discord.";
@@ -348,6 +351,7 @@
             throw new Error(result.error || "An unknown error occurred.");
           }
         } catch (error) {
+          console.error("Submission Error:", error);
           formMessage.textContent = `Submission Failed: ${error.message}`;
           formMessage.className = "text-red-600";
         } finally {
